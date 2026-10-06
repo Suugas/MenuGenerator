@@ -32,3 +32,41 @@ impl ListIngredient {
         }
     }
 }
+
+pub struct Recette {
+    pub name: String,
+    pub nbPersonne: i8,
+    pub duree: i8,
+    pub ingredients: ListIngredient,
+    pub recette: String,
+}
+impl Recette {
+    pub fn display(&self) -> String {
+        return format!(
+            "{} pour {} personnes ({}):\n{}\n{}",
+            &self.name,
+            &self.nbPersonne,
+            &self.duree,
+            &self.ingredients.display(),
+            &self.recette,
+        );
+    }
+}
+
+pub struct Repas {
+    pub name: String,
+    pub nbPersonne: i8,
+    pub recette: Option<Recette>,
+}
+impl Repas {
+    pub fn display(&self) -> String {
+        let recette_txt = match &self.recette {
+            Some(r) => r.display(),
+            None => "Aucune".to_string(),
+        };
+        return format!(
+            "Name: {} - Nb de personne: {} - recette: {}",
+            self.name, self.nbPersonne, recette_txt,
+        );
+    }
+}
