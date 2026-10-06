@@ -1,0 +1,34 @@
+use std::collections::HashMap;
+
+pub struct ListIngredient {
+    pub ingredients: HashMap<String, i8>,
+}
+impl ListIngredient {
+    pub fn display(&self) -> String {
+        let mut res: String = String::from("");
+        for (cle, val) in &self.ingredients {
+            res.push_str(&cle.to_string());
+            res.push_str(": ");
+            res.push_str(&val.to_string());
+            res.push_str(" - ");
+        }
+        return res;
+    }
+    pub fn add(&mut self, name: String, nb: i8) {
+        if let Some(quantite) = self.ingredients.get_mut(&name) {
+            *quantite += nb;
+        } else {
+            self.ingredients.insert(name, nb);
+        }
+    }
+    pub fn reduce(&mut self, name: String, nb: i8) {
+        if let Some(quantite) = self.ingredients.get_mut(&name) {
+            *quantite -= nb;
+        }
+    }
+    pub fn remove(&mut self, name: String) {
+        if self.ingredients.contains_key(&name) {
+            self.ingredients.remove(&name);
+        }
+    }
+}
