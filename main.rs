@@ -13,7 +13,23 @@ impl ListIngredient {
         }
         return res;
     }
-    fn add(&self, name: String, nb: i8) {}
+    fn add(&mut self, name: String, nb: i8) {
+        if let Some(quantite) = self.ingredients.get_mut(&name) {
+            *quantite += nb;
+        } else {
+            self.ingredients.insert(name, nb);
+        }
+    }
+    fn reduce(&mut self, name: String, nb: i8) {
+        if let Some(quantite) = self.ingredients.get_mut(&name) {
+            *quantite -= nb;
+        }
+    }
+    fn remove(&mut self, name: String) {
+        if self.ingredients.contains_key(&name) {
+            self.ingredients.remove(&name);
+        }
+    }
 }
 
 struct Recette {
@@ -71,6 +87,7 @@ impl Day {
 
 struct Week {
     days: Vec<Day>,
+    tMax: i32,
 }
 impl Week {
     fn generate(&mut self) {
@@ -259,6 +276,14 @@ impl Week {
         }
         return res;
     }
+    fn getDayByDate(&self, date: String) -> Option<&Day> {
+        for d in &self.days {
+            if d.date.eq(&date) {
+                return Some(d);
+            }
+        }
+        return None;
+    }
 }
 
 fn main() {
@@ -288,7 +313,10 @@ fn main() {
         menu: vec![menu1, menu2],
     };
     println!("{}\n\n", &jour.display());
-    let mut semaine = Week { days: vec![] };
+    let mut semaine = Week {
+        days: vec![],
+        tMax: 200,
+    };
     semaine.generate();
     println!("{}", semaine.display());
 }
