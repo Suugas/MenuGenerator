@@ -1,7 +1,9 @@
+use serde::Deserialize;
 use std::collections::HashMap;
 
+#[derive(Debug, Deserialize)]
 pub struct ListIngredient {
-    pub ingredients: HashMap<String, i8>,
+    pub ingredients: HashMap<String, i32>,
 }
 impl ListIngredient {
     pub fn display(&self) -> String {
@@ -14,14 +16,14 @@ impl ListIngredient {
         }
         return res;
     }
-    pub fn add(&mut self, name: String, nb: i8) {
+    pub fn add(&mut self, name: String, nb: i32) {
         if let Some(quantite) = self.ingredients.get_mut(&name) {
             *quantite += nb;
         } else {
             self.ingredients.insert(name, nb);
         }
     }
-    pub fn reduce(&mut self, name: String, nb: i8) {
+    pub fn reduce(&mut self, name: String, nb: i32) {
         if let Some(quantite) = self.ingredients.get_mut(&name) {
             *quantite -= nb;
         }
@@ -33,6 +35,7 @@ impl ListIngredient {
     }
 }
 
+#[derive(Debug, Deserialize)]
 pub struct Recette {
     pub name: String,
     pub nbPersonne: i8,

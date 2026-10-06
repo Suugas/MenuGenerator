@@ -1,4 +1,5 @@
 use std::collections::HashMap;
+use std::fs;
 
 mod menu;
 mod schedule;
@@ -6,7 +7,30 @@ mod schedule;
 use menu::{ListIngredient, Recette, Repas};
 use schedule::{Day, Week};
 
+fn charger_recettes(chemin_fichier: &str) -> Result<Vec<Recette>, Box<dyn std::error::Error>> {
+    // 1. Lecture du fichier JSON en texte
+    let contenu_json = fs::read_to_string(chemin_fichier)?;
+
+    // 2. Conversion du texte JSON vers Vec<Recette>
+    let recettes: Vec<Recette> = serde_json::from_str(&contenu_json)?;
+
+    Ok(recettes)
+}
+
 fn main() {
+    match charger_recettes("recettes.json") {
+        Ok(recettes) => {
+            println!("{} recette(s) chargée(s) avec succès !", recettes.len());
+            for r in recettes {
+                println!("- {}", r.name);
+            }
+        }
+        Err(e) => {
+            eprintln!("Erreur lors du chargement des recettes : {}", e);
+            return;
+        }
+    }
+
     let mut menu1 = Repas {
         name: "test1".to_string(),
         nbPersonne: 1,
