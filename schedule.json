@@ -1,0 +1,303 @@
+[
+  {
+    "days": [
+      {
+        "menu": [
+          {
+            "name": "petit-dej",
+            "nbPersonne": 1,
+            "isActive": false,
+            "recette": null
+          },
+          {
+            "name": "dej",
+            "nbPersonne": 1,
+            "isActive": false,
+            "recette": null
+          },
+          {
+            "name": "gouter",
+            "nbPersonne": 1,
+            "isActive": false,
+            "recette": null
+          },
+          {
+            "name": "diner",
+            "nbPersonne": 1,
+            "isActive": true,
+            "recette": {
+              "name": "Omelette aux Champignons",
+              "nbPersonne": 1,
+              "duree": 10,
+              "ingredients": {
+                "ingredients": {
+                  "Champignons de paris (g)": 100,
+                  "Œufs": 3,
+                  "Beurre (g)": 15,
+                  "Persil": 1
+                }
+              },
+              "recette": "1. Couper et faire poêler les champignons dans le beurre.\n2. Battre les œufs en omelette avec du sel et du poivre.\n3. Verser les œufs battus sur les champignons et cuire 3 à 4 minutes."
+            }
+          }
+        ],
+        "date": "2026-10-12T12:25:50.595284800+02:00"
+      },
+      {
+        "menu": [
+          {
+            "name": "petit-dej",
+            "nbPersonne": 1,
+            "isActive": false,
+            "recette": null
+          },
+          {
+            "name": "dej",
+            "nbPersonne": 1,
+            "isActive": false,
+            "recette": null
+          },
+          {
+            "name": "gouter",
+            "nbPersonne": 1,
+            "isActive": false,
+            "recette": null
+          },
+          {
+            "name": "diner",
+            "nbPersonne": 1,
+            "isActive": true,
+            "recette": {
+              "name": "Pâtes Carbonara",
+              "nbPersonne": 2,
+              "duree": 15,
+              "ingredients": {
+                "ingredients": {
+                  "Guanciale (g)": 100,
+                  "Pâtes (g)": 200,
+                  "Pecorino (g)": 50,
+                  "Jaunes d'œuf": 3
+                }
+              },
+              "recette": "1. Cuire les pâtes.\n2. Faire dorér le guanciale à la poêle.\n3. Mélanger les jaunes d'œuf avec le pecorino râpé.\n4. Hors du feu, mélanger les pâtes avec la crème d'œuf et le guanciale."
+            }
+          }
+        ],
+        "date": "2026-10-13T12:25:50.595326400+02:00"
+      },
+      {
+        "menu": [
+          {
+            "name": "petit-dej",
+            "nbPersonne": 1,
+            "isActive": false,
+            "recette": null
+          },
+          {
+            "name": "dej",
+            "nbPersonne": 1,
+            "isActive": false,
+            "recette": null
+          },
+          {
+            "name": "gouter",
+            "nbPersonne": 1,
+            "isActive": false,
+            "recette": null
+          },
+          {
+            "name": "diner",
+            "nbPersonne": 1,
+            "isActive": true,
+            "recette": {
+              "name": "Pâtes Carbonara",
+              "nbPersonne": 2,
+              "duree": 15,
+              "ingredients": {
+                "ingredients": {
+                  "Guanciale (g)": 100,
+                  "Pâtes (g)": 200,
+                  "Pecorino (g)": 50,
+                  "Jaunes d'œuf": 3
+                }
+              },
+              "recette": "1. Cuire les pâtes.\n2. Faire dorér le guanciale à la poêle.\n3. Mélanger les jaunes d'œuf avec le pecorino râpé.\n4. Hors du feu, mélanger les pâtes avec la crème d'œuf et le guanciale."
+            }
+          }
+        ],
+        "date": "2026-10-14T12:25:50.595340200+02:00"
+      },
+      {
+        "menu": [
+          {
+            "name": "petit-dej",
+            "nbPersonne": 1,
+            "isActive": false,
+            "recette": null
+          },
+          {
+            "name": "dej",
+            "nbPersonne": 1,
+            "isActive": false,
+            "recette": null
+          },
+          {
+            "name": "gouter",
+            "nbPersonne": 1,
+            "isActive": false,
+            "recette": null
+          },
+          {
+            "name": "diner",
+            "nbPersonne": 1,
+            "isActive": true,
+            "recette": {
+              "name": "Poulet au Curry et Riz",
+              "nbPersonne": 4,
+              "duree": 25,
+              "ingredients": {
+                "ingredients": {
+                  "Riz basmati (g)": 300,
+                  "Lait de coco (ml)": 200,
+                  "Blancs de poulet": 4,
+                  "Poudre de curry (cuillères)": 2,
+                  "Oignon": 1
+                }
+              },
+              "recette": "1. Faire cuire le riz basmati.\n2. Émincer l'oignon et le poulet, puis les faire revenir dans une sauteuse.\n3. Ajouter la poudre de curry, puis verser le lait de coco.\n4. Laisser mijoter 10 minutes à feu doux."
+            }
+          }
+        ],
+        "date": "2026-10-15T12:25:50.595354+02:00"
+      },
+      {
+        "menu": [
+          {
+            "name": "petit-dej",
+            "nbPersonne": 1,
+            "isActive": false,
+            "recette": null
+          },
+          {
+            "name": "dej",
+            "nbPersonne": 1,
+            "isActive": false,
+            "recette": null
+          },
+          {
+            "name": "gouter",
+            "nbPersonne": 1,
+            "isActive": false,
+            "recette": null
+          },
+          {
+            "name": "diner",
+            "nbPersonne": 1,
+            "isActive": true,
+            "recette": {
+              "name": "Omelette aux Champignons",
+              "nbPersonne": 1,
+              "duree": 10,
+              "ingredients": {
+                "ingredients": {
+                  "Champignons de paris (g)": 100,
+                  "Œufs": 3,
+                  "Beurre (g)": 15,
+                  "Persil": 1
+                }
+              },
+              "recette": "1. Couper et faire poêler les champignons dans le beurre.\n2. Battre les œufs en omelette avec du sel et du poivre.\n3. Verser les œufs battus sur les champignons et cuire 3 à 4 minutes."
+            }
+          }
+        ],
+        "date": "2026-10-16T12:25:50.595387300+02:00"
+      },
+      {
+        "menu": [
+          {
+            "name": "petit-dej",
+            "nbPersonne": 1,
+            "isActive": false,
+            "recette": null
+          },
+          {
+            "name": "dej",
+            "nbPersonne": 1,
+            "isActive": false,
+            "recette": null
+          },
+          {
+            "name": "gouter",
+            "nbPersonne": 1,
+            "isActive": false,
+            "recette": null
+          },
+          {
+            "name": "diner",
+            "nbPersonne": 1,
+            "isActive": true,
+            "recette": {
+              "name": "Omelette aux Champignons",
+              "nbPersonne": 1,
+              "duree": 10,
+              "ingredients": {
+                "ingredients": {
+                  "Champignons de paris (g)": 100,
+                  "Œufs": 3,
+                  "Beurre (g)": 15,
+                  "Persil": 1
+                }
+              },
+              "recette": "1. Couper et faire poêler les champignons dans le beurre.\n2. Battre les œufs en omelette avec du sel et du poivre.\n3. Verser les œufs battus sur les champignons et cuire 3 à 4 minutes."
+            }
+          }
+        ],
+        "date": "2026-10-17T12:25:50.595401400+02:00"
+      },
+      {
+        "menu": [
+          {
+            "name": "petit-dej",
+            "nbPersonne": 1,
+            "isActive": false,
+            "recette": null
+          },
+          {
+            "name": "dej",
+            "nbPersonne": 1,
+            "isActive": false,
+            "recette": null
+          },
+          {
+            "name": "gouter",
+            "nbPersonne": 1,
+            "isActive": false,
+            "recette": null
+          },
+          {
+            "name": "diner",
+            "nbPersonne": 1,
+            "isActive": true,
+            "recette": {
+              "name": "Poulet au Curry et Riz",
+              "nbPersonne": 4,
+              "duree": 25,
+              "ingredients": {
+                "ingredients": {
+                  "Riz basmati (g)": 300,
+                  "Lait de coco (ml)": 200,
+                  "Blancs de poulet": 4,
+                  "Poudre de curry (cuillères)": 2,
+                  "Oignon": 1
+                }
+              },
+              "recette": "1. Faire cuire le riz basmati.\n2. Émincer l'oignon et le poulet, puis les faire revenir dans une sauteuse.\n3. Ajouter la poudre de curry, puis verser le lait de coco.\n4. Laisser mijoter 10 minutes à feu doux."
+            }
+          }
+        ],
+        "date": "2026-10-18T12:25:50.595414500+02:00"
+      }
+    ],
+    "tMax": 200
+  }
+]

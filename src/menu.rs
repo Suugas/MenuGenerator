@@ -1,7 +1,7 @@
-use serde::Deserialize;
+use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
 
-#[derive(Debug, Deserialize, Clone)]
+#[derive(Debug, Deserialize, Serialize, Clone)]
 pub struct ListIngredient {
     pub ingredients: HashMap<String, i32>,
 }
@@ -35,11 +35,11 @@ impl ListIngredient {
     }
 }
 
-#[derive(Debug, Deserialize, Clone)]
+#[derive(Debug, Deserialize, Serialize, Clone)]
 pub struct Recette {
     pub name: String,
-    pub nbPersonne: i8,
-    pub duree: i8,
+    pub nbPersonne: i32,
+    pub duree: i32,
     pub ingredients: ListIngredient,
     pub recette: String,
 }
@@ -56,6 +56,7 @@ impl Recette {
     }
 }
 
+#[derive(Debug, Deserialize, Serialize, Clone)]
 pub struct Repas {
     pub name: String,
     pub nbPersonne: i8,

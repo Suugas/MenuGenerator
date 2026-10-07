@@ -3,6 +3,7 @@ use chrono::{
     DateTime, Datelike, Duration, Local,
     Weekday::{self, Mon},
 };
+use serde::{Deserialize, Serialize};
 
 pub fn getNextMonday() -> DateTime<Local> {
     let today = Local::now();
@@ -13,7 +14,7 @@ pub fn getNextMonday() -> DateTime<Local> {
     }
     unreachable!()
 }
-
+#[derive(Debug, Deserialize, Serialize, Clone)]
 pub struct Day {
     pub menu: Vec<Repas>,
     pub date: DateTime<Local>,
@@ -29,6 +30,7 @@ impl Day {
     }
 }
 
+#[derive(Debug, Deserialize, Serialize, Clone)]
 pub struct Week {
     pub days: Vec<Day>,
     pub tMax: i32,

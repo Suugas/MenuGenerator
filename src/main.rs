@@ -23,14 +23,66 @@ fn charger_recettes(chemin_fichier: &str) -> Vec<Recette> {
     recettes
 }
 
-fn generateMenu(week: &mut Week, recettes: Vec<Recette>) {
+fn loadWeeks(chemin_fichier: &str) -> Vec<Week> {
+    let contenu_json =
+        fs::read_to_string(chemin_fichier).expect("Erreur lors de la lecture du schedule");
+
+    let weeks: Vec<Week> =
+        serde_json::from_str(&contenu_json).expect("Erreur : le format json ne correspond pas");
+
+    weeks
+}
+fn saveWeeks(chemin_fichier: &str, weeks: Vec<Week>) {
+    let weeks_json = serde_json::to_string_pretty(&weeks)
+        .expect("Erreur: impossible de sérialiser les donnée en JSON");
+    fs::write(chemin_fichier, weeks_json).expect("Erreur : impossible de sauvegarder les données");
+}
+fn getRepasByMaxDuration(week: &mut Week) -> &mut Repas {
+    let mut max_index: Option<(usize, usize)> = None;
+    let mut max_duree: i32 = -1;
+
+    // 1. On cherche les INDEX du jour et du repas le plus long
+    for (i, d) in week.days.iter().enumerate() {
+        for (j, r) in d.menu.iter().enumerate() {
+            if let Some(recette) = &r.recette {
+                if recette.duree > max_duree {
+                    max_duree = recette.duree;
+                    max_index = Some((i, j));
+                }
+            }
+        }
+    }
+
+    // 2. On extrait la référence mutable grâce aux index trouvés
+    let (day_idx, menu_idx) = max_index.expect("Erreur : Aucune recette trouvée !");
+    &mut week.days[day_idx].menu[menu_idx]
+}
+fn getSumDuration(week: &Week) -> i32 {
+    let mut som: i32 = 0;
+    for d in &week.days {
+        for r in &d.menu {
+            if let Some(recette) = &r.recette {
+                som += recette.duree;
+            }
+        }
+    }
+    return som;
+}
+fn generateMenu(week: &mut Week, recettes: Vec<Recette>, dureeMax: i32) {
     let mut rng = rand::thread_rng();
+    let mut som: i32 = 0;
     for d in &mut week.days {
         for r in &mut d.menu {
             if !recettes.is_empty() && r.isActive {
                 r.recette = recettes.choose(&mut rng).cloned();
+                if let Some(rec) = &r.recette {
+                    som += rec.duree;
+                }
             }
         }
+    }
+    while getSumDuration(week) > dureeMax {
+        getRepasByMaxDuration(week).recette = recettes.choose(&mut rng).cloned();
     }
 }
 
@@ -75,9 +127,9 @@ fn main() {
         tMax: 200,
     };
     semaine.generate();
-    generateMenu(&mut semaine, recetteList);
+    generateMenu(&mut semaine, recetteList, 70);
 
-    //showWeek(&semaine);
+    showWeek(&semaine);
     let date_str = today.format("%Y-%m-%d").to_string();
     println!("Date du jour : {}", date_str);
 
@@ -86,4 +138,6 @@ fn main() {
     } else {
         println!("AUCUN MENU POUR AUJOURD'HUI");
     }
+
+    println!("{}", getRepasByMaxDuration(&mut semaine).display());
 }
