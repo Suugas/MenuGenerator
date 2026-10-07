@@ -1,7 +1,7 @@
 use serde::Deserialize;
 use std::collections::HashMap;
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, Clone)]
 pub struct ListIngredient {
     pub ingredients: HashMap<String, i32>,
 }
@@ -35,7 +35,7 @@ impl ListIngredient {
     }
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, Clone)]
 pub struct Recette {
     pub name: String,
     pub nbPersonne: i8,
@@ -59,12 +59,13 @@ impl Recette {
 pub struct Repas {
     pub name: String,
     pub nbPersonne: i8,
+    pub isActive: bool,
     pub recette: Option<Recette>,
 }
 impl Repas {
     pub fn display(&self) -> String {
         let recette_txt = match &self.recette {
-            Some(r) => r.display(),
+            Some(r) => r.name.to_string(),
             None => "Aucune".to_string(),
         };
         return format!(

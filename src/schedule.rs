@@ -1,8 +1,22 @@
 use crate::menu::Repas;
+use chrono::{
+    DateTime, Datelike, Duration, Local,
+    Weekday::{self, Mon},
+};
+
+pub fn getNextMonday() -> DateTime<Local> {
+    let today = Local::now();
+    for i in 1..7 {
+        if (today + Duration::days(i)).weekday() == Weekday::Mon {
+            return (today + Duration::days(i));
+        }
+    }
+    unreachable!()
+}
 
 pub struct Day {
     pub menu: Vec<Repas>,
-    pub date: String,
+    pub date: DateTime<Local>,
 }
 impl Day {
     pub fn display(&self) -> String {
@@ -11,7 +25,7 @@ impl Day {
             menu.push_str(&repas.display());
             menu.push_str("\n");
         }
-        return format!(" - {} : \n{}", self.date, menu);
+        return format!(" - {} : \n{}", self.date.format("%Y-%m-%d"), menu);
     }
 }
 
@@ -26,176 +40,203 @@ impl Week {
                 Repas {
                     name: "petit-dej".to_string(),
                     nbPersonne: 1,
+                    isActive: false,
                     recette: None,
                 },
                 Repas {
                     name: "dej".to_string(),
                     nbPersonne: 1,
+                    isActive: false,
                     recette: None,
                 },
                 Repas {
                     name: "gouter".to_string(),
                     nbPersonne: 1,
+                    isActive: false,
                     recette: None,
                 },
                 Repas {
                     name: "diner".to_string(),
                     nbPersonne: 1,
+                    isActive: true,
                     recette: None,
                 },
             ],
-            date: "lun".to_string(),
+            date: getNextMonday(),
         };
         let mut mar = Day {
             menu: vec![
                 Repas {
                     name: "petit-dej".to_string(),
                     nbPersonne: 1,
+                    isActive: false,
                     recette: None,
                 },
                 Repas {
                     name: "dej".to_string(),
                     nbPersonne: 1,
+                    isActive: false,
                     recette: None,
                 },
                 Repas {
                     name: "gouter".to_string(),
                     nbPersonne: 1,
+                    isActive: false,
                     recette: None,
                 },
                 Repas {
                     name: "diner".to_string(),
                     nbPersonne: 1,
+                    isActive: true,
                     recette: None,
                 },
             ],
-            date: "mardi".to_string(),
+            date: getNextMonday() + Duration::days(1),
         };
         let mut mer = Day {
             menu: vec![
                 Repas {
                     name: "petit-dej".to_string(),
                     nbPersonne: 1,
+                    isActive: false,
                     recette: None,
                 },
                 Repas {
                     name: "dej".to_string(),
                     nbPersonne: 1,
+                    isActive: false,
                     recette: None,
                 },
                 Repas {
                     name: "gouter".to_string(),
                     nbPersonne: 1,
+                    isActive: false,
                     recette: None,
                 },
                 Repas {
                     name: "diner".to_string(),
                     nbPersonne: 1,
+                    isActive: true,
                     recette: None,
                 },
             ],
-            date: "mercredi".to_string(),
+            date: getNextMonday() + Duration::days(2),
         };
         let mut jeu = Day {
             menu: vec![
                 Repas {
                     name: "petit-dej".to_string(),
                     nbPersonne: 1,
+                    isActive: false,
                     recette: None,
                 },
                 Repas {
                     name: "dej".to_string(),
                     nbPersonne: 1,
+                    isActive: false,
                     recette: None,
                 },
                 Repas {
                     name: "gouter".to_string(),
                     nbPersonne: 1,
-
+                    isActive: false,
                     recette: None,
                 },
                 Repas {
                     name: "diner".to_string(),
                     nbPersonne: 1,
+                    isActive: true,
                     recette: None,
                 },
             ],
-            date: "jeudi".to_string(),
+            date: getNextMonday() + Duration::days(3),
         };
         let mut ven = Day {
             menu: vec![
                 Repas {
                     name: "petit-dej".to_string(),
                     nbPersonne: 1,
+                    isActive: false,
                     recette: None,
                 },
                 Repas {
                     name: "dej".to_string(),
                     nbPersonne: 1,
+                    isActive: false,
                     recette: None,
                 },
                 Repas {
                     name: "gouter".to_string(),
                     nbPersonne: 1,
+                    isActive: false,
                     recette: None,
                 },
                 Repas {
                     name: "diner".to_string(),
                     nbPersonne: 1,
+                    isActive: true,
                     recette: None,
                 },
             ],
-            date: "vendredi".to_string(),
+            date: getNextMonday() + Duration::days(4),
         };
         let mut sam = Day {
             menu: vec![
                 Repas {
                     name: "petit-dej".to_string(),
                     nbPersonne: 1,
+                    isActive: false,
                     recette: None,
                 },
                 Repas {
                     name: "dej".to_string(),
                     nbPersonne: 1,
+                    isActive: false,
                     recette: None,
                 },
                 Repas {
                     name: "gouter".to_string(),
                     nbPersonne: 1,
+                    isActive: false,
                     recette: None,
                 },
                 Repas {
                     name: "diner".to_string(),
                     nbPersonne: 1,
+                    isActive: true,
                     recette: None,
                 },
             ],
-            date: "samedi".to_string(),
+            date: getNextMonday() + Duration::days(5),
         };
         let mut dim = Day {
             menu: vec![
                 Repas {
                     name: "petit-dej".to_string(),
                     nbPersonne: 1,
+                    isActive: false,
                     recette: None,
                 },
                 Repas {
                     name: "dej".to_string(),
                     nbPersonne: 1,
+                    isActive: false,
                     recette: None,
                 },
                 Repas {
                     name: "gouter".to_string(),
                     nbPersonne: 1,
+                    isActive: false,
                     recette: None,
                 },
                 Repas {
                     name: "diner".to_string(),
                     nbPersonne: 1,
+                    isActive: true,
                     recette: None,
                 },
             ],
-            date: "dimanche".to_string(),
+            date: getNextMonday() + Duration::days(6),
         };
         self.days = vec![lun, mar, mer, jeu, ven, sam, dim];
     }
@@ -206,9 +247,9 @@ impl Week {
         }
         return res;
     }
-    pub fn getDayByDate(&self, date: String) -> Option<&Day> {
+    pub fn getDayByDate(&self, date: DateTime<Local>) -> Option<&Day> {
         for d in &self.days {
-            if d.date.eq(&date) {
+            if d.date.format("%Y-%m-%d").to_string() == date.format("%Y-%m-%d").to_string() {
                 return Some(d);
             }
         }
