@@ -70,19 +70,51 @@ fn getSumDuration(week: &Week) -> i32 {
 }
 fn generateMenu(week: &mut Week, recettes: Vec<Recette>, dureeMax: i32) {
     let mut rng = rand::thread_rng();
-    let mut som: i32 = 0;
+
     for d in &mut week.days {
         for r in &mut d.menu {
             if !recettes.is_empty() && r.isActive {
-                r.recette = recettes.choose(&mut rng).cloned();
-                if let Some(rec) = &r.recette {
-                    som += rec.duree;
+                // 1. On filtre les recettes valides pour ce repas
+                // Une recette convient si :
+                // - r.nbPersonne % rec.nbPersonne == 0 (la recette est un diviseur du nombre de mangeurs)
+                // - OU rec.nbPersonne == r.nbPersonne as i32 (pile le même nombre)
+                let recettes_valides: Vec<&Recette> = recettes
+                    .iter()
+                    .filter(|rec| {
+                        rec.nbPersonne > 0
+                            && (r.nbPersonne as i32 % rec.nbPersonne == 0
+                                || rec.nbPersonne == r.nbPersonne as i32)
+                    })
+                    .collect();
+
+                // 2. On pioche parmi les recettes éligibles (si la liste n'est pas vide)
+                if let Some(recette_choisie) = recettes_valides.choose(&mut rng) {
+                    r.recette = Some((*recette_choisie).clone());
+                } else {
+                    // Repli : si aucune ne correspond aux critères de personnes, on pioche n'importe laquelle
+                    r.recette = recettes.choose(&mut rng).cloned();
                 }
             }
         }
     }
-    while getSumDuration(week) > dureeMax {
-        getRepasByMaxDuration(week).recette = recettes.choose(&mut rng).cloned();
+
+    // Ajustement de la durée max avec sécurité pour éviter les boucles infinies
+    let mut tentatives = 0;
+    while getSumDuration(week) > dureeMax && tentatives < 100 {
+        let repas = getRepasByMaxDuration(week);
+
+        let recettes_valides: Vec<&Recette> = recettes
+            .iter()
+            .filter(|rec| rec.nbPersonne > 0 && (repas.nbPersonne as i32 % rec.nbPersonne == 0))
+            .collect();
+
+        if let Some(recette_choisie) = recettes_valides.choose(&mut rng) {
+            repas.recette = Some((*recette_choisie).clone());
+        } else {
+            repas.recette = recettes.choose(&mut rng).cloned();
+        }
+
+        tentatives += 1;
     }
 }
 
@@ -127,7 +159,7 @@ fn main() {
         tMax: 200,
     };
     semaine.generate();
-    generateMenu(&mut semaine, recetteList, 70);
+    generateMenu(&mut semaine, recetteList, 200);
 
     showWeek(&semaine);
     let date_str = today.format("%Y-%m-%d").to_string();
