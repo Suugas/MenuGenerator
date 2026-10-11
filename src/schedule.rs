@@ -41,19 +41,19 @@ impl Week {
             menu: vec![
                 Repas {
                     name: "petit-dej".to_string(),
-                    nbPersonne: 1,
+                    nbPersonne: 2,
                     isActive: false,
                     recette: None,
                 },
                 Repas {
                     name: "dej".to_string(),
-                    nbPersonne: 1,
+                    nbPersonne: 2,
                     isActive: false,
                     recette: None,
                 },
                 Repas {
                     name: "gouter".to_string(),
-                    nbPersonne: 1,
+                    nbPersonne: 2,
                     isActive: false,
                     recette: None,
                 },
@@ -70,19 +70,19 @@ impl Week {
             menu: vec![
                 Repas {
                     name: "petit-dej".to_string(),
-                    nbPersonne: 1,
+                    nbPersonne: 2,
                     isActive: false,
                     recette: None,
                 },
                 Repas {
                     name: "dej".to_string(),
-                    nbPersonne: 1,
+                    nbPersonne: 2,
                     isActive: false,
                     recette: None,
                 },
                 Repas {
                     name: "gouter".to_string(),
-                    nbPersonne: 1,
+                    nbPersonne: 2,
                     isActive: false,
                     recette: None,
                 },
@@ -99,25 +99,25 @@ impl Week {
             menu: vec![
                 Repas {
                     name: "petit-dej".to_string(),
-                    nbPersonne: 1,
+                    nbPersonne: 2,
                     isActive: false,
                     recette: None,
                 },
                 Repas {
                     name: "dej".to_string(),
-                    nbPersonne: 1,
+                    nbPersonne: 2,
                     isActive: false,
                     recette: None,
                 },
                 Repas {
                     name: "gouter".to_string(),
-                    nbPersonne: 1,
+                    nbPersonne: 2,
                     isActive: false,
                     recette: None,
                 },
                 Repas {
                     name: "diner".to_string(),
-                    nbPersonne: 1,
+                    nbPersonne: 2,
                     isActive: true,
                     recette: None,
                 },
@@ -128,25 +128,25 @@ impl Week {
             menu: vec![
                 Repas {
                     name: "petit-dej".to_string(),
-                    nbPersonne: 1,
+                    nbPersonne: 2,
                     isActive: false,
                     recette: None,
                 },
                 Repas {
                     name: "dej".to_string(),
-                    nbPersonne: 1,
+                    nbPersonne: 2,
                     isActive: false,
                     recette: None,
                 },
                 Repas {
                     name: "gouter".to_string(),
-                    nbPersonne: 1,
+                    nbPersonne: 2,
                     isActive: false,
                     recette: None,
                 },
                 Repas {
                     name: "diner".to_string(),
-                    nbPersonne: 1,
+                    nbPersonne: 2,
                     isActive: true,
                     recette: None,
                 },
@@ -157,25 +157,25 @@ impl Week {
             menu: vec![
                 Repas {
                     name: "petit-dej".to_string(),
-                    nbPersonne: 1,
+                    nbPersonne: 2,
                     isActive: false,
                     recette: None,
                 },
                 Repas {
                     name: "dej".to_string(),
-                    nbPersonne: 1,
+                    nbPersonne: 2,
                     isActive: false,
                     recette: None,
                 },
                 Repas {
                     name: "gouter".to_string(),
-                    nbPersonne: 1,
+                    nbPersonne: 2,
                     isActive: false,
                     recette: None,
                 },
                 Repas {
                     name: "diner".to_string(),
-                    nbPersonne: 1,
+                    nbPersonne: 2,
                     isActive: true,
                     recette: None,
                 },
@@ -186,25 +186,25 @@ impl Week {
             menu: vec![
                 Repas {
                     name: "petit-dej".to_string(),
-                    nbPersonne: 1,
+                    nbPersonne: 2,
                     isActive: false,
                     recette: None,
                 },
                 Repas {
                     name: "dej".to_string(),
-                    nbPersonne: 1,
+                    nbPersonne: 2,
                     isActive: false,
                     recette: None,
                 },
                 Repas {
                     name: "gouter".to_string(),
-                    nbPersonne: 1,
+                    nbPersonne: 2,
                     isActive: false,
                     recette: None,
                 },
                 Repas {
                     name: "diner".to_string(),
-                    nbPersonne: 1,
+                    nbPersonne: 3,
                     isActive: true,
                     recette: None,
                 },
@@ -215,25 +215,25 @@ impl Week {
             menu: vec![
                 Repas {
                     name: "petit-dej".to_string(),
-                    nbPersonne: 1,
+                    nbPersonne: 2,
                     isActive: false,
                     recette: None,
                 },
                 Repas {
                     name: "dej".to_string(),
-                    nbPersonne: 1,
+                    nbPersonne: 3,
                     isActive: false,
                     recette: None,
                 },
                 Repas {
                     name: "gouter".to_string(),
-                    nbPersonne: 1,
+                    nbPersonne: 2,
                     isActive: false,
                     recette: None,
                 },
                 Repas {
                     name: "diner".to_string(),
-                    nbPersonne: 1,
+                    nbPersonne: 3,
                     isActive: true,
                     recette: None,
                 },

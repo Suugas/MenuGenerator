@@ -1,5 +1,5 @@
 use serde::{Deserialize, Serialize};
-use std::collections::HashMap;
+use std::{collections::HashMap, fmt::format};
 
 #[derive(Debug, Deserialize, Serialize, Clone)]
 pub struct ListIngredient {
@@ -54,19 +54,25 @@ impl Recette {
             &self.recette,
         );
     }
+    pub fn multNbRecette(&mut self, nb: i32) {
+        for ingr in &mut self.ingredients.ingredients {
+            *ingr.1 *= nb;
+        }
+        self.nbPersonne *= nb;
+    }
 }
 
 #[derive(Debug, Deserialize, Serialize, Clone)]
 pub struct Repas {
     pub name: String,
-    pub nbPersonne: i8,
+    pub nbPersonne: i32,
     pub isActive: bool,
     pub recette: Option<Recette>,
 }
 impl Repas {
     pub fn display(&self) -> String {
         let recette_txt = match &self.recette {
-            Some(r) => r.name.to_string(),
+            Some(r) => format!("{} : {}", r.name, r.ingredients.display()),
             None => "Aucune".to_string(),
         };
         return format!(

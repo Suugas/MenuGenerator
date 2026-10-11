@@ -77,13 +77,13 @@ fn generateMenu(week: &mut Week, recettes: Vec<Recette>, dureeMax: i32) {
                 // 1. On filtre les recettes valides pour ce repas
                 // Une recette convient si :
                 // - r.nbPersonne % rec.nbPersonne == 0 (la recette est un diviseur du nombre de mangeurs)
-                // - OU rec.nbPersonne == r.nbPersonne as i32 (pile le même nombre)
+                // - OU rec.nbPersonne == r.nbPersonne (pile le même nombre)
                 let recettes_valides: Vec<&Recette> = recettes
                     .iter()
                     .filter(|rec| {
                         rec.nbPersonne > 0
-                            && (r.nbPersonne as i32 % rec.nbPersonne == 0
-                                || rec.nbPersonne == r.nbPersonne as i32)
+                            && (r.nbPersonne % rec.nbPersonne == 0
+                                || rec.nbPersonne == r.nbPersonne)
                     })
                     .collect();
 
@@ -105,7 +105,7 @@ fn generateMenu(week: &mut Week, recettes: Vec<Recette>, dureeMax: i32) {
 
         let recettes_valides: Vec<&Recette> = recettes
             .iter()
-            .filter(|rec| rec.nbPersonne > 0 && (repas.nbPersonne as i32 % rec.nbPersonne == 0))
+            .filter(|rec| rec.nbPersonne > 0 && (repas.nbPersonne % rec.nbPersonne == 0))
             .collect();
 
         if let Some(recette_choisie) = recettes_valides.choose(&mut rng) {
@@ -116,8 +116,18 @@ fn generateMenu(week: &mut Week, recettes: Vec<Recette>, dureeMax: i32) {
 
         tentatives += 1;
     }
-}
 
+    // Ajustement des ingredient par rapport au nombre de mangeur
+    for d in &mut week.days {
+        for r in &mut d.menu {
+            if let Some(rec) = &mut r.recette {
+                let mult = r.nbPersonne / rec.nbPersonne;
+                rec.multNbRecette(mult);
+                println!("{}", mult);
+            }
+        }
+    }
+}
 fn showWeek(week: &Week) {
     println!("{}", week.display());
 }
