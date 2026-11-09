@@ -32,7 +32,7 @@
     3,
     4
   ],
-  "duree_max": 500,
+  "duree_max": 200,
   "is_recette_filtre": true,
-  "auto_send_sl": false
+  "auto_send_sl": true
 }
