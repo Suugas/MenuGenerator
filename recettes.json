@@ -5,13 +5,38 @@
     "duree": 15,
     "ingredients": {
       "ingredients": {
-        "Pâtes (g)": 200,
-        "Guanciale (g)": 100,
-        "Jaunes d'œuf": 3,
-        "Pecorino (g)": 50
+        "Jaunes d'œuf": {
+          "ingredient": {
+            "nom": "Jaunes d'œuf",
+            "disponibilité": []
+          },
+          "quantite": 3
+        },
+        "Pâtes (g)": {
+          "ingredient": {
+            "nom": "Pâtes (g)",
+            "disponibilité": []
+          },
+          "quantite": 200
+        },
+        "Guanciale (g)": {
+          "ingredient": {
+            "nom": "Guanciale (g)",
+            "disponibilité": []
+          },
+          "quantite": 100
+        },
+        "Pecorino (g)": {
+          "ingredient": {
+            "nom": "Pecorino (g)",
+            "disponibilité": []
+          },
+          "quantite": 50
+        }
       }
     },
-    "recette": "1. Cuire les pâtes.\n2. Faire dorér le guanciale à la poêle.\n3. Mélanger les jaunes d'œuf avec le pecorino râpé.\n4. Hors du feu, mélanger les pâtes avec la crème d'œuf et le guanciale."
+    "recette": "1. Cuire les pâtes.\n2. Faire dorér le guanciale à la poêle.\n3. Mélanger les jaunes d'œuf avec le pecorino râpé.\n4. Hors du feu, mélanger les pâtes avec la crème d'œuf et le guanciale.",
+    "activable": true
   },
   {
     "name": "Poulet au Curry et Riz",
@@ -19,14 +44,45 @@
     "duree": 25,
     "ingredients": {
       "ingredients": {
-        "Blancs de poulet": 4,
-        "Riz basmati (g)": 300,
-        "Lait de coco (ml)": 200,
-        "Poudre de curry (cuillères)": 2,
-        "Oignon": 1
+        "Blancs de poulet": {
+          "ingredient": {
+            "nom": "Blancs de poulet",
+            "disponibilité": []
+          },
+          "quantite": 4
+        },
+        "Lait de coco (ml)": {
+          "ingredient": {
+            "nom": "Lait de coco (ml)",
+            "disponibilité": []
+          },
+          "quantite": 200
+        },
+        "Oignon": {
+          "ingredient": {
+            "nom": "Oignon",
+            "disponibilité": []
+          },
+          "quantite": 1
+        },
+        "Poudre de curry (cuillères)": {
+          "ingredient": {
+            "nom": "Poudre de curry (cuillères)",
+            "disponibilité": []
+          },
+          "quantite": 2
+        },
+        "Riz basmati (g)": {
+          "ingredient": {
+            "nom": "Riz basmati (g)",
+            "disponibilité": []
+          },
+          "quantite": 300
+        }
       }
     },
-    "recette": "1. Faire cuire le riz basmati.\n2. Émincer l'oignon et le poulet, puis les faire revenir dans une sauteuse.\n3. Ajouter la poudre de curry, puis verser le lait de coco.\n4. Laisser mijoter 10 minutes à feu doux."
+    "recette": "1. Faire cuire le riz basmati.\n2. Émincer l'oignon et le poulet, puis les faire revenir dans une sauteuse.\n3. Ajouter la poudre de curry, puis verser le lait de coco.\n4. Laisser mijoter 10 minutes à feu doux.",
+    "activable": true
   },
   {
     "name": "Omelette aux Champignons",
@@ -34,12 +90,78 @@
     "duree": 10,
     "ingredients": {
       "ingredients": {
-        "Œufs": 3,
-        "Champignons de paris (g)": 100,
-        "Beurre (g)": 15,
-        "Persil": 1
+        "Persil": {
+          "ingredient": {
+            "nom": "Persil",
+            "disponibilité": []
+          },
+          "quantite": 1
+        },
+        "Beurre (g)": {
+          "ingredient": {
+            "nom": "Beurre (g)",
+            "disponibilité": []
+          },
+          "quantite": 15
+        },
+        "Champignons de paris (g)": {
+          "ingredient": {
+            "nom": "Champignons de paris (g)",
+            "disponibilité": []
+          },
+          "quantite": 100
+        },
+        "Œufs": {
+          "ingredient": {
+            "nom": "Œufs",
+            "disponibilité": []
+          },
+          "quantite": 3
+        }
       }
     },
-    "recette": "1. Couper et faire poêler les champignons dans le beurre.\n2. Battre les œufs en omelette avec du sel et du poivre.\n3. Verser les œufs battus sur les champignons et cuire 3 à 4 minutes."
+    "recette": "1. Couper et faire poêler les champignons dans le beurre.\n2. Battre les œufs en omelette avec du sel et du poivre.\n3. Verser les œufs battus sur les champignons et cuire 3 à 4 minutes.",
+    "activable": true
+  },
+  {
+    "name": "Salade Tomates Mozzarella",
+    "nbPersonne": 2,
+    "duree": 10,
+    "ingredients": {
+      "ingredients": {
+        "Tomates": {
+          "ingredient": {
+            "nom": "Tomates",
+            "disponibilité": [
+              "Ete"
+            ]
+          },
+          "quantite": 4
+        },
+        "Mozzarella (g)": {
+          "ingredient": {
+            "nom": "Mozzarella (g)",
+            "disponibilité": []
+          },
+          "quantite": 250
+        },
+        "Huile d'olive (cuillères)": {
+          "ingredient": {
+            "nom": "Huile d'olive (cuillères)",
+            "disponibilité": []
+          },
+          "quantite": 2
+        },
+        "Basilic": {
+          "ingredient": {
+            "nom": "Basilic",
+            "disponibilité": []
+          },
+          "quantite": 1
+        }
+      }
+    },
+    "recette": "1. Couper les tomates et la mozzarella en tranches.\n2. Les alterner dans un plat et ajouter les feuilles de basilic.\n3. Assaisonner avec l'huile d'olive, du sel et du poivre.",
+    "activable": false
   }
 ]

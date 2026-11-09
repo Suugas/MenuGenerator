@@ -6,296 +6,1502 @@
           {
             "name": "petit-dej",
             "nbPersonne": 1,
-            "isActive": false,
-            "recette": null
-          },
-          {
-            "name": "dej",
-            "nbPersonne": 1,
-            "isActive": false,
-            "recette": null
-          },
-          {
-            "name": "gouter",
-            "nbPersonne": 1,
-            "isActive": false,
-            "recette": null
-          },
-          {
-            "name": "diner",
-            "nbPersonne": 1,
-            "isActive": true,
             "recette": {
               "name": "Omelette aux Champignons",
               "nbPersonne": 1,
               "duree": 10,
               "ingredients": {
                 "ingredients": {
-                  "Champignons de paris (g)": 100,
-                  "Œufs": 3,
-                  "Beurre (g)": 15,
-                  "Persil": 1
+                  "Œufs": {
+                    "ingredient": {
+                      "nom": "Œufs",
+                      "disponibilité": []
+                    },
+                    "quantite": 3
+                  },
+                  "Persil": {
+                    "ingredient": {
+                      "nom": "Persil",
+                      "disponibilité": []
+                    },
+                    "quantite": 1
+                  },
+                  "Beurre (g)": {
+                    "ingredient": {
+                      "nom": "Beurre (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 15
+                  },
+                  "Champignons de paris (g)": {
+                    "ingredient": {
+                      "nom": "Champignons de paris (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 100
+                  }
                 }
               },
-              "recette": "1. Couper et faire poêler les champignons dans le beurre.\n2. Battre les œufs en omelette avec du sel et du poivre.\n3. Verser les œufs battus sur les champignons et cuire 3 à 4 minutes."
+              "recette": "1. Couper et faire poêler les champignons dans le beurre.\n2. Battre les œufs en omelette avec du sel et du poivre.\n3. Verser les œufs battus sur les champignons et cuire 3 à 4 minutes.",
+              "activable": false
             }
-          }
-        ],
-        "date": "2026-10-12T12:25:50.595284800+02:00"
-      },
-      {
-        "menu": [
-          {
-            "name": "petit-dej",
-            "nbPersonne": 1,
-            "isActive": false,
-            "recette": null
           },
           {
             "name": "dej",
-            "nbPersonne": 1,
-            "isActive": false,
-            "recette": null
-          },
-          {
-            "name": "gouter",
-            "nbPersonne": 1,
-            "isActive": false,
-            "recette": null
-          },
-          {
-            "name": "diner",
-            "nbPersonne": 1,
-            "isActive": true,
+            "nbPersonne": 2,
             "recette": {
               "name": "Pâtes Carbonara",
               "nbPersonne": 2,
               "duree": 15,
               "ingredients": {
                 "ingredients": {
-                  "Guanciale (g)": 100,
-                  "Pâtes (g)": 200,
-                  "Pecorino (g)": 50,
-                  "Jaunes d'œuf": 3
+                  "Pâtes (g)": {
+                    "ingredient": {
+                      "nom": "Pâtes (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 200
+                  },
+                  "Jaunes d'œuf": {
+                    "ingredient": {
+                      "nom": "Jaunes d'œuf",
+                      "disponibilité": []
+                    },
+                    "quantite": 3
+                  },
+                  "Guanciale (g)": {
+                    "ingredient": {
+                      "nom": "Guanciale (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 100
+                  },
+                  "Pecorino (g)": {
+                    "ingredient": {
+                      "nom": "Pecorino (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 50
+                  }
                 }
               },
-              "recette": "1. Cuire les pâtes.\n2. Faire dorér le guanciale à la poêle.\n3. Mélanger les jaunes d'œuf avec le pecorino râpé.\n4. Hors du feu, mélanger les pâtes avec la crème d'œuf et le guanciale."
+              "recette": "1. Cuire les pâtes.\n2. Faire dorér le guanciale à la poêle.\n3. Mélanger les jaunes d'œuf avec le pecorino râpé.\n4. Hors du feu, mélanger les pâtes avec la crème d'œuf et le guanciale.",
+              "activable": false
+            }
+          },
+          {
+            "name": "gouter",
+            "nbPersonne": 0,
+            "recette": null
+          },
+          {
+            "name": "diner",
+            "nbPersonne": 3,
+            "recette": {
+              "name": "Omelette aux Champignons",
+              "nbPersonne": 3,
+              "duree": 10,
+              "ingredients": {
+                "ingredients": {
+                  "Beurre (g)": {
+                    "ingredient": {
+                      "nom": "Beurre (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 45
+                  },
+                  "Champignons de paris (g)": {
+                    "ingredient": {
+                      "nom": "Champignons de paris (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 300
+                  },
+                  "Persil": {
+                    "ingredient": {
+                      "nom": "Persil",
+                      "disponibilité": []
+                    },
+                    "quantite": 3
+                  },
+                  "Œufs": {
+                    "ingredient": {
+                      "nom": "Œufs",
+                      "disponibilité": []
+                    },
+                    "quantite": 9
+                  }
+                }
+              },
+              "recette": "1. Couper et faire poêler les champignons dans le beurre.\n2. Battre les œufs en omelette avec du sel et du poivre.\n3. Verser les œufs battus sur les champignons et cuire 3 à 4 minutes.",
+              "activable": false
             }
           }
         ],
-        "date": "2026-10-13T12:25:50.595326400+02:00"
+        "date": "2026-11-09T20:17:35.620739300+01:00"
       },
       {
         "menu": [
           {
             "name": "petit-dej",
-            "nbPersonne": 1,
-            "isActive": false,
+            "nbPersonne": 0,
             "recette": null
           },
           {
             "name": "dej",
-            "nbPersonne": 1,
-            "isActive": false,
-            "recette": null
-          },
-          {
-            "name": "gouter",
-            "nbPersonne": 1,
-            "isActive": false,
-            "recette": null
-          },
-          {
-            "name": "diner",
-            "nbPersonne": 1,
-            "isActive": true,
+            "nbPersonne": 2,
             "recette": {
               "name": "Pâtes Carbonara",
               "nbPersonne": 2,
               "duree": 15,
               "ingredients": {
                 "ingredients": {
-                  "Guanciale (g)": 100,
-                  "Pâtes (g)": 200,
-                  "Pecorino (g)": 50,
-                  "Jaunes d'œuf": 3
+                  "Jaunes d'œuf": {
+                    "ingredient": {
+                      "nom": "Jaunes d'œuf",
+                      "disponibilité": []
+                    },
+                    "quantite": 3
+                  },
+                  "Pecorino (g)": {
+                    "ingredient": {
+                      "nom": "Pecorino (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 50
+                  },
+                  "Guanciale (g)": {
+                    "ingredient": {
+                      "nom": "Guanciale (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 100
+                  },
+                  "Pâtes (g)": {
+                    "ingredient": {
+                      "nom": "Pâtes (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 200
+                  }
                 }
               },
-              "recette": "1. Cuire les pâtes.\n2. Faire dorér le guanciale à la poêle.\n3. Mélanger les jaunes d'œuf avec le pecorino râpé.\n4. Hors du feu, mélanger les pâtes avec la crème d'œuf et le guanciale."
+              "recette": "1. Cuire les pâtes.\n2. Faire dorér le guanciale à la poêle.\n3. Mélanger les jaunes d'œuf avec le pecorino râpé.\n4. Hors du feu, mélanger les pâtes avec la crème d'œuf et le guanciale.",
+              "activable": false
             }
-          }
-        ],
-        "date": "2026-10-14T12:25:50.595340200+02:00"
-      },
-      {
-        "menu": [
-          {
-            "name": "petit-dej",
-            "nbPersonne": 1,
-            "isActive": false,
-            "recette": null
-          },
-          {
-            "name": "dej",
-            "nbPersonne": 1,
-            "isActive": false,
-            "recette": null
           },
           {
             "name": "gouter",
-            "nbPersonne": 1,
-            "isActive": false,
+            "nbPersonne": 0,
             "recette": null
           },
           {
             "name": "diner",
-            "nbPersonne": 1,
-            "isActive": true,
+            "nbPersonne": 3,
             "recette": {
-              "name": "Poulet au Curry et Riz",
-              "nbPersonne": 4,
-              "duree": 25,
+              "name": "Omelette aux Champignons",
+              "nbPersonne": 3,
+              "duree": 10,
               "ingredients": {
                 "ingredients": {
-                  "Riz basmati (g)": 300,
-                  "Lait de coco (ml)": 200,
-                  "Blancs de poulet": 4,
-                  "Poudre de curry (cuillères)": 2,
-                  "Oignon": 1
+                  "Champignons de paris (g)": {
+                    "ingredient": {
+                      "nom": "Champignons de paris (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 300
+                  },
+                  "Œufs": {
+                    "ingredient": {
+                      "nom": "Œufs",
+                      "disponibilité": []
+                    },
+                    "quantite": 9
+                  },
+                  "Persil": {
+                    "ingredient": {
+                      "nom": "Persil",
+                      "disponibilité": []
+                    },
+                    "quantite": 3
+                  },
+                  "Beurre (g)": {
+                    "ingredient": {
+                      "nom": "Beurre (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 45
+                  }
                 }
               },
-              "recette": "1. Faire cuire le riz basmati.\n2. Émincer l'oignon et le poulet, puis les faire revenir dans une sauteuse.\n3. Ajouter la poudre de curry, puis verser le lait de coco.\n4. Laisser mijoter 10 minutes à feu doux."
+              "recette": "1. Couper et faire poêler les champignons dans le beurre.\n2. Battre les œufs en omelette avec du sel et du poivre.\n3. Verser les œufs battus sur les champignons et cuire 3 à 4 minutes.",
+              "activable": false
             }
           }
         ],
-        "date": "2026-10-15T12:25:50.595354+02:00"
+        "date": "2026-11-10T20:17:35.620739300+01:00"
       },
       {
         "menu": [
           {
             "name": "petit-dej",
-            "nbPersonne": 1,
-            "isActive": false,
+            "nbPersonne": 0,
             "recette": null
           },
           {
             "name": "dej",
-            "nbPersonne": 1,
-            "isActive": false,
-            "recette": null
+            "nbPersonne": 2,
+            "recette": {
+              "name": "Pâtes Carbonara",
+              "nbPersonne": 2,
+              "duree": 15,
+              "ingredients": {
+                "ingredients": {
+                  "Pâtes (g)": {
+                    "ingredient": {
+                      "nom": "Pâtes (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 200
+                  },
+                  "Jaunes d'œuf": {
+                    "ingredient": {
+                      "nom": "Jaunes d'œuf",
+                      "disponibilité": []
+                    },
+                    "quantite": 3
+                  },
+                  "Pecorino (g)": {
+                    "ingredient": {
+                      "nom": "Pecorino (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 50
+                  },
+                  "Guanciale (g)": {
+                    "ingredient": {
+                      "nom": "Guanciale (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 100
+                  }
+                }
+              },
+              "recette": "1. Cuire les pâtes.\n2. Faire dorér le guanciale à la poêle.\n3. Mélanger les jaunes d'œuf avec le pecorino râpé.\n4. Hors du feu, mélanger les pâtes avec la crème d'œuf et le guanciale.",
+              "activable": false
+            }
           },
           {
             "name": "gouter",
-            "nbPersonne": 1,
-            "isActive": false,
+            "nbPersonne": 0,
             "recette": null
           },
           {
             "name": "diner",
+            "nbPersonne": 3,
+            "recette": {
+              "name": "Omelette aux Champignons",
+              "nbPersonne": 3,
+              "duree": 10,
+              "ingredients": {
+                "ingredients": {
+                  "Œufs": {
+                    "ingredient": {
+                      "nom": "Œufs",
+                      "disponibilité": []
+                    },
+                    "quantite": 9
+                  },
+                  "Beurre (g)": {
+                    "ingredient": {
+                      "nom": "Beurre (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 45
+                  },
+                  "Champignons de paris (g)": {
+                    "ingredient": {
+                      "nom": "Champignons de paris (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 300
+                  },
+                  "Persil": {
+                    "ingredient": {
+                      "nom": "Persil",
+                      "disponibilité": []
+                    },
+                    "quantite": 3
+                  }
+                }
+              },
+              "recette": "1. Couper et faire poêler les champignons dans le beurre.\n2. Battre les œufs en omelette avec du sel et du poivre.\n3. Verser les œufs battus sur les champignons et cuire 3 à 4 minutes.",
+              "activable": false
+            }
+          }
+        ],
+        "date": "2026-11-11T20:17:35.620739300+01:00"
+      },
+      {
+        "menu": [
+          {
+            "name": "petit-dej",
+            "nbPersonne": 0,
+            "recette": null
+          },
+          {
+            "name": "dej",
+            "nbPersonne": 2,
+            "recette": {
+              "name": "Pâtes Carbonara",
+              "nbPersonne": 2,
+              "duree": 15,
+              "ingredients": {
+                "ingredients": {
+                  "Pecorino (g)": {
+                    "ingredient": {
+                      "nom": "Pecorino (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 50
+                  },
+                  "Guanciale (g)": {
+                    "ingredient": {
+                      "nom": "Guanciale (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 100
+                  },
+                  "Jaunes d'œuf": {
+                    "ingredient": {
+                      "nom": "Jaunes d'œuf",
+                      "disponibilité": []
+                    },
+                    "quantite": 3
+                  },
+                  "Pâtes (g)": {
+                    "ingredient": {
+                      "nom": "Pâtes (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 200
+                  }
+                }
+              },
+              "recette": "1. Cuire les pâtes.\n2. Faire dorér le guanciale à la poêle.\n3. Mélanger les jaunes d'œuf avec le pecorino râpé.\n4. Hors du feu, mélanger les pâtes avec la crème d'œuf et le guanciale.",
+              "activable": false
+            }
+          },
+          {
+            "name": "gouter",
+            "nbPersonne": 0,
+            "recette": null
+          },
+          {
+            "name": "diner",
+            "nbPersonne": 3,
+            "recette": {
+              "name": "Omelette aux Champignons",
+              "nbPersonne": 3,
+              "duree": 10,
+              "ingredients": {
+                "ingredients": {
+                  "Beurre (g)": {
+                    "ingredient": {
+                      "nom": "Beurre (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 45
+                  },
+                  "Champignons de paris (g)": {
+                    "ingredient": {
+                      "nom": "Champignons de paris (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 300
+                  },
+                  "Œufs": {
+                    "ingredient": {
+                      "nom": "Œufs",
+                      "disponibilité": []
+                    },
+                    "quantite": 9
+                  },
+                  "Persil": {
+                    "ingredient": {
+                      "nom": "Persil",
+                      "disponibilité": []
+                    },
+                    "quantite": 3
+                  }
+                }
+              },
+              "recette": "1. Couper et faire poêler les champignons dans le beurre.\n2. Battre les œufs en omelette avec du sel et du poivre.\n3. Verser les œufs battus sur les champignons et cuire 3 à 4 minutes.",
+              "activable": false
+            }
+          }
+        ],
+        "date": "2026-11-12T20:17:35.620739300+01:00"
+      },
+      {
+        "menu": [
+          {
+            "name": "petit-dej",
+            "nbPersonne": 0,
+            "recette": null
+          },
+          {
+            "name": "dej",
+            "nbPersonne": 2,
+            "recette": {
+              "name": "Omelette aux Champignons",
+              "nbPersonne": 2,
+              "duree": 10,
+              "ingredients": {
+                "ingredients": {
+                  "Champignons de paris (g)": {
+                    "ingredient": {
+                      "nom": "Champignons de paris (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 200
+                  },
+                  "Persil": {
+                    "ingredient": {
+                      "nom": "Persil",
+                      "disponibilité": []
+                    },
+                    "quantite": 2
+                  },
+                  "Beurre (g)": {
+                    "ingredient": {
+                      "nom": "Beurre (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 30
+                  },
+                  "Œufs": {
+                    "ingredient": {
+                      "nom": "Œufs",
+                      "disponibilité": []
+                    },
+                    "quantite": 6
+                  }
+                }
+              },
+              "recette": "1. Couper et faire poêler les champignons dans le beurre.\n2. Battre les œufs en omelette avec du sel et du poivre.\n3. Verser les œufs battus sur les champignons et cuire 3 à 4 minutes.",
+              "activable": false
+            }
+          },
+          {
+            "name": "gouter",
+            "nbPersonne": 0,
+            "recette": null
+          },
+          {
+            "name": "diner",
+            "nbPersonne": 3,
+            "recette": {
+              "name": "Omelette aux Champignons",
+              "nbPersonne": 3,
+              "duree": 10,
+              "ingredients": {
+                "ingredients": {
+                  "Persil": {
+                    "ingredient": {
+                      "nom": "Persil",
+                      "disponibilité": []
+                    },
+                    "quantite": 3
+                  },
+                  "Champignons de paris (g)": {
+                    "ingredient": {
+                      "nom": "Champignons de paris (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 300
+                  },
+                  "Œufs": {
+                    "ingredient": {
+                      "nom": "Œufs",
+                      "disponibilité": []
+                    },
+                    "quantite": 9
+                  },
+                  "Beurre (g)": {
+                    "ingredient": {
+                      "nom": "Beurre (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 45
+                  }
+                }
+              },
+              "recette": "1. Couper et faire poêler les champignons dans le beurre.\n2. Battre les œufs en omelette avec du sel et du poivre.\n3. Verser les œufs battus sur les champignons et cuire 3 à 4 minutes.",
+              "activable": false
+            }
+          }
+        ],
+        "date": "2026-11-13T20:17:35.620739300+01:00"
+      },
+      {
+        "menu": [
+          {
+            "name": "petit-dej",
+            "nbPersonne": 0,
+            "recette": null
+          },
+          {
+            "name": "dej",
+            "nbPersonne": 2,
+            "recette": {
+              "name": "Pâtes Carbonara",
+              "nbPersonne": 2,
+              "duree": 15,
+              "ingredients": {
+                "ingredients": {
+                  "Pâtes (g)": {
+                    "ingredient": {
+                      "nom": "Pâtes (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 200
+                  },
+                  "Jaunes d'œuf": {
+                    "ingredient": {
+                      "nom": "Jaunes d'œuf",
+                      "disponibilité": []
+                    },
+                    "quantite": 3
+                  },
+                  "Guanciale (g)": {
+                    "ingredient": {
+                      "nom": "Guanciale (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 100
+                  },
+                  "Pecorino (g)": {
+                    "ingredient": {
+                      "nom": "Pecorino (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 50
+                  }
+                }
+              },
+              "recette": "1. Cuire les pâtes.\n2. Faire dorér le guanciale à la poêle.\n3. Mélanger les jaunes d'œuf avec le pecorino râpé.\n4. Hors du feu, mélanger les pâtes avec la crème d'œuf et le guanciale.",
+              "activable": false
+            }
+          },
+          {
+            "name": "gouter",
+            "nbPersonne": 0,
+            "recette": null
+          },
+          {
+            "name": "diner",
+            "nbPersonne": 3,
+            "recette": {
+              "name": "Omelette aux Champignons",
+              "nbPersonne": 3,
+              "duree": 10,
+              "ingredients": {
+                "ingredients": {
+                  "Œufs": {
+                    "ingredient": {
+                      "nom": "Œufs",
+                      "disponibilité": []
+                    },
+                    "quantite": 9
+                  },
+                  "Persil": {
+                    "ingredient": {
+                      "nom": "Persil",
+                      "disponibilité": []
+                    },
+                    "quantite": 3
+                  },
+                  "Beurre (g)": {
+                    "ingredient": {
+                      "nom": "Beurre (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 45
+                  },
+                  "Champignons de paris (g)": {
+                    "ingredient": {
+                      "nom": "Champignons de paris (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 300
+                  }
+                }
+              },
+              "recette": "1. Couper et faire poêler les champignons dans le beurre.\n2. Battre les œufs en omelette avec du sel et du poivre.\n3. Verser les œufs battus sur les champignons et cuire 3 à 4 minutes.",
+              "activable": false
+            }
+          }
+        ],
+        "date": "2026-11-14T20:17:35.620739300+01:00"
+      },
+      {
+        "menu": [
+          {
+            "name": "petit-dej",
+            "nbPersonne": 0,
+            "recette": null
+          },
+          {
+            "name": "dej",
+            "nbPersonne": 2,
+            "recette": {
+              "name": "Omelette aux Champignons",
+              "nbPersonne": 2,
+              "duree": 10,
+              "ingredients": {
+                "ingredients": {
+                  "Champignons de paris (g)": {
+                    "ingredient": {
+                      "nom": "Champignons de paris (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 200
+                  },
+                  "Beurre (g)": {
+                    "ingredient": {
+                      "nom": "Beurre (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 30
+                  },
+                  "Persil": {
+                    "ingredient": {
+                      "nom": "Persil",
+                      "disponibilité": []
+                    },
+                    "quantite": 2
+                  },
+                  "Œufs": {
+                    "ingredient": {
+                      "nom": "Œufs",
+                      "disponibilité": []
+                    },
+                    "quantite": 6
+                  }
+                }
+              },
+              "recette": "1. Couper et faire poêler les champignons dans le beurre.\n2. Battre les œufs en omelette avec du sel et du poivre.\n3. Verser les œufs battus sur les champignons et cuire 3 à 4 minutes.",
+              "activable": false
+            }
+          },
+          {
+            "name": "gouter",
+            "nbPersonne": 0,
+            "recette": null
+          },
+          {
+            "name": "diner",
+            "nbPersonne": 4,
+            "recette": {
+              "name": "Omelette aux Champignons",
+              "nbPersonne": 4,
+              "duree": 10,
+              "ingredients": {
+                "ingredients": {
+                  "Champignons de paris (g)": {
+                    "ingredient": {
+                      "nom": "Champignons de paris (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 400
+                  },
+                  "Persil": {
+                    "ingredient": {
+                      "nom": "Persil",
+                      "disponibilité": []
+                    },
+                    "quantite": 4
+                  },
+                  "Œufs": {
+                    "ingredient": {
+                      "nom": "Œufs",
+                      "disponibilité": []
+                    },
+                    "quantite": 12
+                  },
+                  "Beurre (g)": {
+                    "ingredient": {
+                      "nom": "Beurre (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 60
+                  }
+                }
+              },
+              "recette": "1. Couper et faire poêler les champignons dans le beurre.\n2. Battre les œufs en omelette avec du sel et du poivre.\n3. Verser les œufs battus sur les champignons et cuire 3 à 4 minutes.",
+              "activable": false
+            }
+          }
+        ],
+        "date": "2026-11-15T20:17:35.620739300+01:00"
+      }
+    ],
+    "tMax": 200
+  },
+  {
+    "days": [
+      {
+        "menu": [
+          {
+            "name": "petit-dej",
             "nbPersonne": 1,
-            "isActive": true,
             "recette": {
               "name": "Omelette aux Champignons",
               "nbPersonne": 1,
               "duree": 10,
               "ingredients": {
                 "ingredients": {
-                  "Champignons de paris (g)": 100,
-                  "Œufs": 3,
-                  "Beurre (g)": 15,
-                  "Persil": 1
+                  "Champignons de paris (g)": {
+                    "ingredient": {
+                      "nom": "Champignons de paris (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 100
+                  },
+                  "Persil": {
+                    "ingredient": {
+                      "nom": "Persil",
+                      "disponibilité": []
+                    },
+                    "quantite": 1
+                  },
+                  "Beurre (g)": {
+                    "ingredient": {
+                      "nom": "Beurre (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 15
+                  },
+                  "Œufs": {
+                    "ingredient": {
+                      "nom": "Œufs",
+                      "disponibilité": []
+                    },
+                    "quantite": 3
+                  }
                 }
               },
-              "recette": "1. Couper et faire poêler les champignons dans le beurre.\n2. Battre les œufs en omelette avec du sel et du poivre.\n3. Verser les œufs battus sur les champignons et cuire 3 à 4 minutes."
+              "recette": "1. Couper et faire poêler les champignons dans le beurre.\n2. Battre les œufs en omelette avec du sel et du poivre.\n3. Verser les œufs battus sur les champignons et cuire 3 à 4 minutes.",
+              "activable": true
             }
-          }
-        ],
-        "date": "2026-10-16T12:25:50.595387300+02:00"
-      },
-      {
-        "menu": [
-          {
-            "name": "petit-dej",
-            "nbPersonne": 1,
-            "isActive": false,
-            "recette": null
           },
           {
             "name": "dej",
-            "nbPersonne": 1,
-            "isActive": false,
-            "recette": null
+            "nbPersonne": 2,
+            "recette": {
+              "name": "Pâtes Carbonara",
+              "nbPersonne": 2,
+              "duree": 15,
+              "ingredients": {
+                "ingredients": {
+                  "Pecorino (g)": {
+                    "ingredient": {
+                      "nom": "Pecorino (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 50
+                  },
+                  "Guanciale (g)": {
+                    "ingredient": {
+                      "nom": "Guanciale (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 100
+                  },
+                  "Pâtes (g)": {
+                    "ingredient": {
+                      "nom": "Pâtes (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 200
+                  },
+                  "Jaunes d'œuf": {
+                    "ingredient": {
+                      "nom": "Jaunes d'œuf",
+                      "disponibilité": []
+                    },
+                    "quantite": 3
+                  }
+                }
+              },
+              "recette": "1. Cuire les pâtes.\n2. Faire dorér le guanciale à la poêle.\n3. Mélanger les jaunes d'œuf avec le pecorino râpé.\n4. Hors du feu, mélanger les pâtes avec la crème d'œuf et le guanciale.",
+              "activable": true
+            }
           },
           {
             "name": "gouter",
-            "nbPersonne": 1,
-            "isActive": false,
+            "nbPersonne": 0,
             "recette": null
           },
           {
             "name": "diner",
-            "nbPersonne": 1,
-            "isActive": true,
+            "nbPersonne": 3,
             "recette": {
               "name": "Omelette aux Champignons",
-              "nbPersonne": 1,
+              "nbPersonne": 3,
               "duree": 10,
               "ingredients": {
                 "ingredients": {
-                  "Champignons de paris (g)": 100,
-                  "Œufs": 3,
-                  "Beurre (g)": 15,
-                  "Persil": 1
+                  "Champignons de paris (g)": {
+                    "ingredient": {
+                      "nom": "Champignons de paris (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 300
+                  },
+                  "Persil": {
+                    "ingredient": {
+                      "nom": "Persil",
+                      "disponibilité": []
+                    },
+                    "quantite": 3
+                  },
+                  "Beurre (g)": {
+                    "ingredient": {
+                      "nom": "Beurre (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 45
+                  },
+                  "Œufs": {
+                    "ingredient": {
+                      "nom": "Œufs",
+                      "disponibilité": []
+                    },
+                    "quantite": 9
+                  }
                 }
               },
-              "recette": "1. Couper et faire poêler les champignons dans le beurre.\n2. Battre les œufs en omelette avec du sel et du poivre.\n3. Verser les œufs battus sur les champignons et cuire 3 à 4 minutes."
+              "recette": "1. Couper et faire poêler les champignons dans le beurre.\n2. Battre les œufs en omelette avec du sel et du poivre.\n3. Verser les œufs battus sur les champignons et cuire 3 à 4 minutes.",
+              "activable": true
             }
           }
         ],
-        "date": "2026-10-17T12:25:50.595401400+02:00"
+        "date": "2026-11-16T20:17:35.620739300+01:00"
       },
       {
         "menu": [
           {
             "name": "petit-dej",
-            "nbPersonne": 1,
-            "isActive": false,
+            "nbPersonne": 0,
             "recette": null
           },
           {
             "name": "dej",
-            "nbPersonne": 1,
-            "isActive": false,
-            "recette": null
+            "nbPersonne": 2,
+            "recette": {
+              "name": "Omelette aux Champignons",
+              "nbPersonne": 2,
+              "duree": 10,
+              "ingredients": {
+                "ingredients": {
+                  "Champignons de paris (g)": {
+                    "ingredient": {
+                      "nom": "Champignons de paris (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 200
+                  },
+                  "Persil": {
+                    "ingredient": {
+                      "nom": "Persil",
+                      "disponibilité": []
+                    },
+                    "quantite": 2
+                  },
+                  "Beurre (g)": {
+                    "ingredient": {
+                      "nom": "Beurre (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 30
+                  },
+                  "Œufs": {
+                    "ingredient": {
+                      "nom": "Œufs",
+                      "disponibilité": []
+                    },
+                    "quantite": 6
+                  }
+                }
+              },
+              "recette": "1. Couper et faire poêler les champignons dans le beurre.\n2. Battre les œufs en omelette avec du sel et du poivre.\n3. Verser les œufs battus sur les champignons et cuire 3 à 4 minutes.",
+              "activable": true
+            }
           },
           {
             "name": "gouter",
-            "nbPersonne": 1,
-            "isActive": false,
+            "nbPersonne": 0,
             "recette": null
           },
           {
             "name": "diner",
-            "nbPersonne": 1,
-            "isActive": true,
+            "nbPersonne": 3,
+            "recette": {
+              "name": "Omelette aux Champignons",
+              "nbPersonne": 3,
+              "duree": 10,
+              "ingredients": {
+                "ingredients": {
+                  "Champignons de paris (g)": {
+                    "ingredient": {
+                      "nom": "Champignons de paris (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 300
+                  },
+                  "Persil": {
+                    "ingredient": {
+                      "nom": "Persil",
+                      "disponibilité": []
+                    },
+                    "quantite": 3
+                  },
+                  "Beurre (g)": {
+                    "ingredient": {
+                      "nom": "Beurre (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 45
+                  },
+                  "Œufs": {
+                    "ingredient": {
+                      "nom": "Œufs",
+                      "disponibilité": []
+                    },
+                    "quantite": 9
+                  }
+                }
+              },
+              "recette": "1. Couper et faire poêler les champignons dans le beurre.\n2. Battre les œufs en omelette avec du sel et du poivre.\n3. Verser les œufs battus sur les champignons et cuire 3 à 4 minutes.",
+              "activable": true
+            }
+          }
+        ],
+        "date": "2026-11-17T20:17:35.620739300+01:00"
+      },
+      {
+        "menu": [
+          {
+            "name": "petit-dej",
+            "nbPersonne": 0,
+            "recette": null
+          },
+          {
+            "name": "dej",
+            "nbPersonne": 2,
+            "recette": {
+              "name": "Omelette aux Champignons",
+              "nbPersonne": 2,
+              "duree": 10,
+              "ingredients": {
+                "ingredients": {
+                  "Champignons de paris (g)": {
+                    "ingredient": {
+                      "nom": "Champignons de paris (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 200
+                  },
+                  "Persil": {
+                    "ingredient": {
+                      "nom": "Persil",
+                      "disponibilité": []
+                    },
+                    "quantite": 2
+                  },
+                  "Beurre (g)": {
+                    "ingredient": {
+                      "nom": "Beurre (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 30
+                  },
+                  "Œufs": {
+                    "ingredient": {
+                      "nom": "Œufs",
+                      "disponibilité": []
+                    },
+                    "quantite": 6
+                  }
+                }
+              },
+              "recette": "1. Couper et faire poêler les champignons dans le beurre.\n2. Battre les œufs en omelette avec du sel et du poivre.\n3. Verser les œufs battus sur les champignons et cuire 3 à 4 minutes.",
+              "activable": true
+            }
+          },
+          {
+            "name": "gouter",
+            "nbPersonne": 0,
+            "recette": null
+          },
+          {
+            "name": "diner",
+            "nbPersonne": 3,
+            "recette": {
+              "name": "Omelette aux Champignons",
+              "nbPersonne": 3,
+              "duree": 10,
+              "ingredients": {
+                "ingredients": {
+                  "Champignons de paris (g)": {
+                    "ingredient": {
+                      "nom": "Champignons de paris (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 300
+                  },
+                  "Persil": {
+                    "ingredient": {
+                      "nom": "Persil",
+                      "disponibilité": []
+                    },
+                    "quantite": 3
+                  },
+                  "Beurre (g)": {
+                    "ingredient": {
+                      "nom": "Beurre (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 45
+                  },
+                  "Œufs": {
+                    "ingredient": {
+                      "nom": "Œufs",
+                      "disponibilité": []
+                    },
+                    "quantite": 9
+                  }
+                }
+              },
+              "recette": "1. Couper et faire poêler les champignons dans le beurre.\n2. Battre les œufs en omelette avec du sel et du poivre.\n3. Verser les œufs battus sur les champignons et cuire 3 à 4 minutes.",
+              "activable": true
+            }
+          }
+        ],
+        "date": "2026-11-18T20:17:35.620739300+01:00"
+      },
+      {
+        "menu": [
+          {
+            "name": "petit-dej",
+            "nbPersonne": 0,
+            "recette": null
+          },
+          {
+            "name": "dej",
+            "nbPersonne": 2,
+            "recette": {
+              "name": "Pâtes Carbonara",
+              "nbPersonne": 2,
+              "duree": 15,
+              "ingredients": {
+                "ingredients": {
+                  "Pecorino (g)": {
+                    "ingredient": {
+                      "nom": "Pecorino (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 50
+                  },
+                  "Guanciale (g)": {
+                    "ingredient": {
+                      "nom": "Guanciale (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 100
+                  },
+                  "Pâtes (g)": {
+                    "ingredient": {
+                      "nom": "Pâtes (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 200
+                  },
+                  "Jaunes d'œuf": {
+                    "ingredient": {
+                      "nom": "Jaunes d'œuf",
+                      "disponibilité": []
+                    },
+                    "quantite": 3
+                  }
+                }
+              },
+              "recette": "1. Cuire les pâtes.\n2. Faire dorér le guanciale à la poêle.\n3. Mélanger les jaunes d'œuf avec le pecorino râpé.\n4. Hors du feu, mélanger les pâtes avec la crème d'œuf et le guanciale.",
+              "activable": true
+            }
+          },
+          {
+            "name": "gouter",
+            "nbPersonne": 0,
+            "recette": null
+          },
+          {
+            "name": "diner",
+            "nbPersonne": 3,
+            "recette": {
+              "name": "Omelette aux Champignons",
+              "nbPersonne": 3,
+              "duree": 10,
+              "ingredients": {
+                "ingredients": {
+                  "Champignons de paris (g)": {
+                    "ingredient": {
+                      "nom": "Champignons de paris (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 300
+                  },
+                  "Persil": {
+                    "ingredient": {
+                      "nom": "Persil",
+                      "disponibilité": []
+                    },
+                    "quantite": 3
+                  },
+                  "Beurre (g)": {
+                    "ingredient": {
+                      "nom": "Beurre (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 45
+                  },
+                  "Œufs": {
+                    "ingredient": {
+                      "nom": "Œufs",
+                      "disponibilité": []
+                    },
+                    "quantite": 9
+                  }
+                }
+              },
+              "recette": "1. Couper et faire poêler les champignons dans le beurre.\n2. Battre les œufs en omelette avec du sel et du poivre.\n3. Verser les œufs battus sur les champignons et cuire 3 à 4 minutes.",
+              "activable": true
+            }
+          }
+        ],
+        "date": "2026-11-19T20:17:35.620739300+01:00"
+      },
+      {
+        "menu": [
+          {
+            "name": "petit-dej",
+            "nbPersonne": 0,
+            "recette": null
+          },
+          {
+            "name": "dej",
+            "nbPersonne": 2,
+            "recette": {
+              "name": "Pâtes Carbonara",
+              "nbPersonne": 2,
+              "duree": 15,
+              "ingredients": {
+                "ingredients": {
+                  "Pecorino (g)": {
+                    "ingredient": {
+                      "nom": "Pecorino (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 50
+                  },
+                  "Guanciale (g)": {
+                    "ingredient": {
+                      "nom": "Guanciale (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 100
+                  },
+                  "Pâtes (g)": {
+                    "ingredient": {
+                      "nom": "Pâtes (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 200
+                  },
+                  "Jaunes d'œuf": {
+                    "ingredient": {
+                      "nom": "Jaunes d'œuf",
+                      "disponibilité": []
+                    },
+                    "quantite": 3
+                  }
+                }
+              },
+              "recette": "1. Cuire les pâtes.\n2. Faire dorér le guanciale à la poêle.\n3. Mélanger les jaunes d'œuf avec le pecorino râpé.\n4. Hors du feu, mélanger les pâtes avec la crème d'œuf et le guanciale.",
+              "activable": true
+            }
+          },
+          {
+            "name": "gouter",
+            "nbPersonne": 0,
+            "recette": null
+          },
+          {
+            "name": "diner",
+            "nbPersonne": 3,
+            "recette": {
+              "name": "Omelette aux Champignons",
+              "nbPersonne": 3,
+              "duree": 10,
+              "ingredients": {
+                "ingredients": {
+                  "Champignons de paris (g)": {
+                    "ingredient": {
+                      "nom": "Champignons de paris (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 300
+                  },
+                  "Persil": {
+                    "ingredient": {
+                      "nom": "Persil",
+                      "disponibilité": []
+                    },
+                    "quantite": 3
+                  },
+                  "Beurre (g)": {
+                    "ingredient": {
+                      "nom": "Beurre (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 45
+                  },
+                  "Œufs": {
+                    "ingredient": {
+                      "nom": "Œufs",
+                      "disponibilité": []
+                    },
+                    "quantite": 9
+                  }
+                }
+              },
+              "recette": "1. Couper et faire poêler les champignons dans le beurre.\n2. Battre les œufs en omelette avec du sel et du poivre.\n3. Verser les œufs battus sur les champignons et cuire 3 à 4 minutes.",
+              "activable": true
+            }
+          }
+        ],
+        "date": "2026-11-20T20:17:35.620739300+01:00"
+      },
+      {
+        "menu": [
+          {
+            "name": "petit-dej",
+            "nbPersonne": 0,
+            "recette": null
+          },
+          {
+            "name": "dej",
+            "nbPersonne": 2,
+            "recette": {
+              "name": "Pâtes Carbonara",
+              "nbPersonne": 2,
+              "duree": 15,
+              "ingredients": {
+                "ingredients": {
+                  "Pecorino (g)": {
+                    "ingredient": {
+                      "nom": "Pecorino (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 50
+                  },
+                  "Guanciale (g)": {
+                    "ingredient": {
+                      "nom": "Guanciale (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 100
+                  },
+                  "Pâtes (g)": {
+                    "ingredient": {
+                      "nom": "Pâtes (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 200
+                  },
+                  "Jaunes d'œuf": {
+                    "ingredient": {
+                      "nom": "Jaunes d'œuf",
+                      "disponibilité": []
+                    },
+                    "quantite": 3
+                  }
+                }
+              },
+              "recette": "1. Cuire les pâtes.\n2. Faire dorér le guanciale à la poêle.\n3. Mélanger les jaunes d'œuf avec le pecorino râpé.\n4. Hors du feu, mélanger les pâtes avec la crème d'œuf et le guanciale.",
+              "activable": true
+            }
+          },
+          {
+            "name": "gouter",
+            "nbPersonne": 0,
+            "recette": null
+          },
+          {
+            "name": "diner",
+            "nbPersonne": 3,
+            "recette": {
+              "name": "Omelette aux Champignons",
+              "nbPersonne": 3,
+              "duree": 10,
+              "ingredients": {
+                "ingredients": {
+                  "Champignons de paris (g)": {
+                    "ingredient": {
+                      "nom": "Champignons de paris (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 300
+                  },
+                  "Persil": {
+                    "ingredient": {
+                      "nom": "Persil",
+                      "disponibilité": []
+                    },
+                    "quantite": 3
+                  },
+                  "Beurre (g)": {
+                    "ingredient": {
+                      "nom": "Beurre (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 45
+                  },
+                  "Œufs": {
+                    "ingredient": {
+                      "nom": "Œufs",
+                      "disponibilité": []
+                    },
+                    "quantite": 9
+                  }
+                }
+              },
+              "recette": "1. Couper et faire poêler les champignons dans le beurre.\n2. Battre les œufs en omelette avec du sel et du poivre.\n3. Verser les œufs battus sur les champignons et cuire 3 à 4 minutes.",
+              "activable": true
+            }
+          }
+        ],
+        "date": "2026-11-21T20:17:35.620739300+01:00"
+      },
+      {
+        "menu": [
+          {
+            "name": "petit-dej",
+            "nbPersonne": 0,
+            "recette": null
+          },
+          {
+            "name": "dej",
+            "nbPersonne": 2,
+            "recette": {
+              "name": "Pâtes Carbonara",
+              "nbPersonne": 2,
+              "duree": 15,
+              "ingredients": {
+                "ingredients": {
+                  "Pecorino (g)": {
+                    "ingredient": {
+                      "nom": "Pecorino (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 50
+                  },
+                  "Guanciale (g)": {
+                    "ingredient": {
+                      "nom": "Guanciale (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 100
+                  },
+                  "Pâtes (g)": {
+                    "ingredient": {
+                      "nom": "Pâtes (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 200
+                  },
+                  "Jaunes d'œuf": {
+                    "ingredient": {
+                      "nom": "Jaunes d'œuf",
+                      "disponibilité": []
+                    },
+                    "quantite": 3
+                  }
+                }
+              },
+              "recette": "1. Cuire les pâtes.\n2. Faire dorér le guanciale à la poêle.\n3. Mélanger les jaunes d'œuf avec le pecorino râpé.\n4. Hors du feu, mélanger les pâtes avec la crème d'œuf et le guanciale.",
+              "activable": true
+            }
+          },
+          {
+            "name": "gouter",
+            "nbPersonne": 0,
+            "recette": null
+          },
+          {
+            "name": "diner",
+            "nbPersonne": 4,
             "recette": {
               "name": "Poulet au Curry et Riz",
               "nbPersonne": 4,
               "duree": 25,
               "ingredients": {
                 "ingredients": {
-                  "Riz basmati (g)": 300,
-                  "Lait de coco (ml)": 200,
-                  "Blancs de poulet": 4,
-                  "Poudre de curry (cuillères)": 2,
-                  "Oignon": 1
+                  "Poudre de curry (cuillères)": {
+                    "ingredient": {
+                      "nom": "Poudre de curry (cuillères)",
+                      "disponibilité": []
+                    },
+                    "quantite": 2
+                  },
+                  "Blancs de poulet": {
+                    "ingredient": {
+                      "nom": "Blancs de poulet",
+                      "disponibilité": []
+                    },
+                    "quantite": 4
+                  },
+                  "Riz basmati (g)": {
+                    "ingredient": {
+                      "nom": "Riz basmati (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 300
+                  },
+                  "Lait de coco (ml)": {
+                    "ingredient": {
+                      "nom": "Lait de coco (ml)",
+                      "disponibilité": []
+                    },
+                    "quantite": 200
+                  },
+                  "Oignon": {
+                    "ingredient": {
+                      "nom": "Oignon",
+                      "disponibilité": []
+                    },
+                    "quantite": 1
+                  }
                 }
               },
-              "recette": "1. Faire cuire le riz basmati.\n2. Émincer l'oignon et le poulet, puis les faire revenir dans une sauteuse.\n3. Ajouter la poudre de curry, puis verser le lait de coco.\n4. Laisser mijoter 10 minutes à feu doux."
+              "recette": "1. Faire cuire le riz basmati.\n2. Émincer l'oignon et le poulet, puis les faire revenir dans une sauteuse.\n3. Ajouter la poudre de curry, puis verser le lait de coco.\n4. Laisser mijoter 10 minutes à feu doux.",
+              "activable": true
             }
           }
         ],
-        "date": "2026-10-18T12:25:50.595414500+02:00"
+        "date": "2026-11-22T20:17:35.620739300+01:00"
       }
     ],
     "tMax": 200
