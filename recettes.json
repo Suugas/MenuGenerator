@@ -5,12 +5,12 @@
     "duree": 15,
     "ingredients": {
       "ingredients": {
-        "Jaunes d'œuf": {
+        "Pecorino (g)": {
           "ingredient": {
-            "nom": "Jaunes d'œuf",
+            "nom": "Pecorino (g)",
             "disponibilité": []
           },
-          "quantite": 3
+          "quantite": 50
         },
         "Pâtes (g)": {
           "ingredient": {
@@ -19,19 +19,19 @@
           },
           "quantite": 200
         },
+        "Jaunes d'œuf": {
+          "ingredient": {
+            "nom": "Jaunes d'œuf",
+            "disponibilité": []
+          },
+          "quantite": 3
+        },
         "Guanciale (g)": {
           "ingredient": {
             "nom": "Guanciale (g)",
             "disponibilité": []
           },
           "quantite": 100
-        },
-        "Pecorino (g)": {
-          "ingredient": {
-            "nom": "Pecorino (g)",
-            "disponibilité": []
-          },
-          "quantite": 50
         }
       }
     },
@@ -44,26 +44,12 @@
     "duree": 25,
     "ingredients": {
       "ingredients": {
-        "Blancs de poulet": {
-          "ingredient": {
-            "nom": "Blancs de poulet",
-            "disponibilité": []
-          },
-          "quantite": 4
-        },
         "Lait de coco (ml)": {
           "ingredient": {
             "nom": "Lait de coco (ml)",
             "disponibilité": []
           },
           "quantite": 200
-        },
-        "Oignon": {
-          "ingredient": {
-            "nom": "Oignon",
-            "disponibilité": []
-          },
-          "quantite": 1
         },
         "Poudre de curry (cuillères)": {
           "ingredient": {
@@ -78,6 +64,20 @@
             "disponibilité": []
           },
           "quantite": 300
+        },
+        "Oignon": {
+          "ingredient": {
+            "nom": "Oignon",
+            "disponibilité": []
+          },
+          "quantite": 1
+        },
+        "Blancs de poulet": {
+          "ingredient": {
+            "nom": "Blancs de poulet",
+            "disponibilité": []
+          },
+          "quantite": 4
         }
       }
     },
@@ -90,6 +90,13 @@
     "duree": 10,
     "ingredients": {
       "ingredients": {
+        "Œufs": {
+          "ingredient": {
+            "nom": "Œufs",
+            "disponibilité": []
+          },
+          "quantite": 3
+        },
         "Persil": {
           "ingredient": {
             "nom": "Persil",
@@ -110,13 +117,6 @@
             "disponibilité": []
           },
           "quantite": 100
-        },
-        "Œufs": {
-          "ingredient": {
-            "nom": "Œufs",
-            "disponibilité": []
-          },
-          "quantite": 3
         }
       }
     },
@@ -129,15 +129,6 @@
     "duree": 10,
     "ingredients": {
       "ingredients": {
-        "Tomates": {
-          "ingredient": {
-            "nom": "Tomates",
-            "disponibilité": [
-              "Ete"
-            ]
-          },
-          "quantite": 4
-        },
         "Mozzarella (g)": {
           "ingredient": {
             "nom": "Mozzarella (g)",
@@ -158,10 +149,368 @@
             "disponibilité": []
           },
           "quantite": 1
+        },
+        "Tomates": {
+          "ingredient": {
+            "nom": "Tomates",
+            "disponibilité": [
+              "Ete"
+            ]
+          },
+          "quantite": 4
         }
       }
     },
     "recette": "1. Couper les tomates et la mozzarella en tranches.\n2. Les alterner dans un plat et ajouter les feuilles de basilic.\n3. Assaisonner avec l'huile d'olive, du sel et du poivre.",
+    "activable": false
+  },
+  {
+    "name": "Champignons farcis",
+    "nbPersonne": 6,
+    "duree": 40,
+    "ingredients": {
+      "ingredients": {
+        "Oeuf": {
+          "ingredient": {
+            "nom": "Oeuf",
+            "disponibilité": []
+          },
+          "quantite": 1
+        },
+        "Sel": {
+          "ingredient": {
+            "nom": "Sel",
+            "disponibilité": []
+          },
+          "quantite": 1
+        },
+        "Gousse d'ail": {
+          "ingredient": {
+            "nom": "Gouss d'ail",
+            "disponibilité": []
+          },
+          "quantite": 2
+        },
+        "Persil": {
+          "ingredient": {
+            "nom": "Persil",
+            "disponibilité": []
+          },
+          "quantite": 1
+        },
+        "Crème fraîche (cl)": {
+          "ingredient": {
+            "nom": "Crème fraîche (ml)",
+            "disponibilité": []
+          },
+          "quantite": 80
+        },
+        "Lait (cl)": {
+          "ingredient": {
+            "nom": "Lait (cl)",
+            "disponibilité": []
+          },
+          "quantite": 5
+        },
+        "Echalotes": {
+          "ingredient": {
+            "nom": "Echalotes",
+            "disponibilité": []
+          },
+          "quantite": 6
+        },
+        "Lard de poitrine (g)": {
+          "ingredient": {
+            "nom": "Lard de poitrine (g)",
+            "disponibilité": []
+          },
+          "quantite": 150
+        },
+        "Mie de pain rassis (g)": {
+          "ingredient": {
+            "nom": "Mie de pain rassis (g)",
+            "disponibilité": []
+          },
+          "quantite": 50
+        },
+        "Champignons de paris": {
+          "ingredient": {
+            "nom": "Champignons de paris",
+            "disponibilité": []
+          },
+          "quantite": 12
+        },
+        "Poivre": {
+          "ingredient": {
+            "nom": "Poivre",
+            "disponibilité": []
+          },
+          "quantite": 1
+        },
+        "Beurre (g)": {
+          "ingredient": {
+            "nom": "Beurre (g)",
+            "disponibilité": []
+          },
+          "quantite": 90
+        }
+      }
+    },
+    "recette": "1. Enlevez la partie terreuse du pied des champignons, épluchez-les, passez-les rapidement sous l'eau, épongez-les et détachez les pieds des chapeaux.\n\n2. Faites tremper la mie de pain dans la tasse de lait. Egouttes-la, essorez-la en la pressant entre les doigts.\n\n3. Epluchez les échalotes et les gousses d'ail. Enlevez la couene du lard, hachez-le finement. Hachez séparément les pieds des champignons, les échalotes, l'ail et le persil. Dans une assiette creuse, battez l'oeuf en omelette, mélangez-y la crème fraîche. Allumez le four Th.7.\n\n4. Dans une poêl, fates fondre 30g de beurre. Faites fondre les échalotes et le lard. Laissez-les revenir doucement pendant 5min. Ajoutez l'ail et les pieds de champignons. Au bout d'une minute, ajoutez la mie de pain, l'oeuf à la crème. Assaisonnez, saupoudrez de persil haché. mélangez cette farce.\n\n5. Dans un moule à gratin beurré, déposez les chapeaux des champignons, garnissez-les de farce, déposez des noissettes de beurre sur le dessus. Mettez au four 20min, servez aussitôt à la sortie du four.\n\nBonus : Faites griller à la poêle dans le beurre et des 2 côtés des demi-tranches de pain de mie, déposez-les dans le plat à gratin et les champignons dessus.",
+    "activable": false
+  },
+  {
+    "name": "Bœuf Bourguignon",
+    "nbPersonne": 4,
+    "duree": 180,
+    "ingredients": {
+      "ingredients": {
+        "Boeuf (g)": {
+          "ingredient": {
+            "nom": "Boeuf (g)",
+            "disponibilité": []
+          },
+          "quantite": 800
+        },
+        "Lardons (g)": {
+          "ingredient": {
+            "nom": "Lardons (g)",
+            "disponibilité": []
+          },
+          "quantite": 150
+        },
+        "Champignons de Paris (g)": {
+          "ingredient": {
+            "nom": "Champignons de Paris (g)",
+            "disponibilité": []
+          },
+          "quantite": 200
+        },
+        "Oignon": {
+          "ingredient": {
+            "nom": "Oignon",
+            "disponibilité": []
+          },
+          "quantite": 1
+        },
+        "Carottes": {
+          "ingredient": {
+            "nom": "Carottes",
+            "disponibilité": []
+          },
+          "quantite": 2
+        },
+        "Vin rouge (ml)": {
+          "ingredient": {
+            "nom": "Vin rouge (ml)",
+            "disponibilité": []
+          },
+          "quantite": 750
+        },
+        "Beurre (g)": {
+          "ingredient": {
+            "nom": "Beurre (g)",
+            "disponibilité": []
+          },
+          "quantite": 30
+        },
+        "Bouquet garni": {
+          "ingredient": {
+            "nom": "Bouquet garni",
+            "disponibilité": []
+          },
+          "quantite": 1
+        }
+      }
+    },
+    "recette": "1. Couper la viande en cubes. Émincer l'oignon et tailler les carottes en rondelles.\n\n2. Faire dorer la viande dans une cocotte avec le beurre, puis retirer la viande.\n\n3. Dans la même cocotte, faire revenir les oignons, les carottes et les lardons.\n\n4. Remettre la viande, singer avec un peu de farine, puis mouiller avec le vin rouge.\n\n5. Ajouter le bouquet garni, saler, poivrer, et laisser mijoter à feu très doux pendant 2h30.\n\n6. Ajouter les champignons coupés en quartiers 30 minutes avant la fin de la cuisson.",
+    "activable": false
+  },
+  {
+    "name": "Blanquette de veau",
+      "nbPersonne": 4,
+      "duree": 120,
+      "ingredients": {
+        "ingredients": {
+          "Veau (g)": {
+            "ingredient": {
+              "nom": "Veau (g)",
+              "disponibilité": []
+            },
+            "quantite": 800
+          },
+          "Carottes": {
+            "ingredient": {
+              "nom": "Carottes",
+              "disponibilité": []
+            },
+            "quantite": 2
+          },
+          "Oignon": {
+            "ingredient": {
+              "nom": "Oignon",
+              "disponibilité": []
+            },
+            "quantite": 1
+          },
+          "Champignons de Paris (g)": {
+            "ingredient": {
+              "nom": "Champignons de Paris (g)",
+              "disponibilité": []
+            },
+            "quantite": 200
+          },
+          "Beurre (g)": {
+            "ingredient": {
+              "nom": "Beurre (g)",
+              "disponibilité": []
+            },
+            "quantite": 50
+          },
+          "Farine (g)": {
+            "ingredient": {
+              "nom": "Farine (g)",
+              "disponibilité": []
+            },
+            "quantite": 50
+          },
+          "Crème fraîche (ml)": {
+            "ingredient": {
+              "nom": "Crème fraîche (ml)",
+              "disponibilité": []
+            },
+            "quantite": 200
+          },
+          "Oeuf": {
+            "ingredient": {
+              "nom": "Oeuf",
+              "disponibilité": []
+            },
+            "quantite": 1
+          }
+        }
+    },
+    "recette": "1. Couper la viande en morceaux et la placer dans une cocotte. Couvrir d'eau froide et porter à ébullition.\n\n2. Écumer, puis ajouter les carottes en gros tronçons, l'oignon piqué de clous de girofle et un bouquet garni. Cuire 1h30.\n\n3. Cuire les champignons émincés dans un peu de beurre avec un filet de jus de citron.\n\n4. Réaliser un roux blanc avec 50g de beurre et 50g de farine. Mouiller avec 500ml du bouillon de cuisson filtré pour faire un velouté.\n\n5. Lier la sauce hors du feu avec la crème fraîche et le jaune d'œuf.\n\n6. Napper la viande et les champignons égouttés avec la sauce chaude.",
+    "activable": false
+  },
+  {
+    "name": "Gratin Dauphinois",
+      "nbPersonne": 6,
+      "duree": 75,
+      "ingredients": {
+        "ingredients": {
+          "Pommes de terre (g)": {
+            "ingredient": {
+              "nom": "Pommes de terre (g)",
+              "disponibilité": []
+            },
+            "quantite": 1000
+          },
+          "Lait entier (ml)": {
+            "ingredient": {
+              "nom": "Lait entier (ml)",
+              "disponibilité": []
+            },
+            "quantite": 500
+          },
+          "Crème liquide (ml)": {
+            "ingredient": {
+              "nom": "Crème liquide (ml)",
+              "disponibilité": []
+            },
+            "quantite": 500
+          },
+          "Gousse d'ail": {
+            "ingredient": {
+              "nom": "Gouss d'ail",
+              "disponibilité": []
+            },
+            "quantite": 1
+          },
+          "Beurre (g)": {
+            "ingredient": {
+              "nom": "Beurre (g)",
+              "disponibilité": []
+            },
+            "quantite": 20
+          },
+          "Noix de muscade (pincée)": {
+            "ingredient": {
+              "nom": "Noix de muscade (pincée)",
+              "disponibilité": []
+            },
+            "quantite": 1
+          }
+        }
+    },
+    "recette": "1. Éplucher les pommes de terre et les tailler en rondelles régulières (ne pas les laver après les avoir coupées pour conserver l'amidon).\n\n2. Frotter le fond et les parois d'un plat à gratin avec la gousse d'ail coupée en deux, puis beurrer le plat.\n\n3. Disposer les rondelles de pommes de terre en couches superposées.\n\n4. Mélanger le lait, la crème, le sel, le poivre et la muscade.\n\n5. Verser le mélange sur les pommes de terre jusqu'à hauteur.\n\n6. Cuire au four à 160°C pendant environ 1 heure.",
+    "activable": false
+  },
+  {
+    "name": "Ratatouille niçoise",
+      "nbPersonne": 4,
+      "duree": 60,
+      "ingredients": {
+        "ingredients": {
+          "Aubergines": {
+            "ingredient": {
+              "nom": "Aubergines",
+              "disponibilité": []
+            },
+            "quantite": 2
+          },
+          "Courgettes": {
+            "ingredient": {
+              "nom": "Courgettes",
+              "disponibilité": []
+            },
+            "quantite": 2
+          },
+          "Poivron rouge": {
+            "ingredient": {
+              "nom": "Poivron rouge",
+              "disponibilité": []
+            },
+            "quantite": 1
+          },
+          "Poivron vert": {
+            "ingredient": {
+              "nom": "Poivron vert",
+              "disponibilité": []
+            },
+            "quantite": 1
+          },
+          "Tomates": {
+            "ingredient": {
+              "nom": "Tomates",
+              "disponibilité": []
+            },
+            "quantite": 4
+          },
+          "Oignon": {
+            "ingredient": {
+              "nom": "Oignon",
+              "disponibilité": []
+            },
+            "quantite": 1
+          },
+          "Gousse d'ail": {
+            "ingredient": {
+              "nom": "Gouss d'ail",
+              "disponibilité": []
+            },
+            "quantite": 2
+          },
+          "Huile d'olive (ml)": {
+            "ingredient": {
+              "nom": "Huile d'olive (ml)",
+              "disponibilité": []
+            },
+            "quantite": 100
+          }
+        }
+    },
+    "recette": "1. Monder les tomates et les concasser. Tailler tous les autres légumes en gros dés réguliers.\n\n2. Faire revenir séparément à l'huile d'olive les aubergines, les courgettes et les poivrons. Les égoutter.\n\n3. Dans une grande cocotte, faire suer l'oignon émincé, ajouter l'ail écrasé et les tomates concassées.\n\n4. Laisser compoter la base de tomates pendant 15 minutes.\n\n5. Ajouter tous les légumes précuits dans la cocotte, saler, poivrer et ajouter du thym.\n\n6. Laisser mijoter à feu doux et à couvert pendant 30 minutes.",
     "activable": false
   }
 ]
