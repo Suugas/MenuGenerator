@@ -1,7 +1,8 @@
-use crate::menu::{ListIngredient, Recette, Repas, Saison};
+use crate::menu::{ListIngredient, Recette, Repas, Saison, Tag};
 use crate::schedule::{Day, Week};
 use chrono::{DateTime, Datelike, Local, TimeZone};
 use eframe::emath::Numeric;
+use rand::Rng;
 use rand::seq::SliceRandom;
 use serde::{Deserialize, Serialize};
 use serde_json::json;
@@ -10,6 +11,8 @@ use std::fs;
 use tungstenite::{Message, connect};
 
 use crate::schedule::getNextMonday;
+
+const MAX_JOURS_RESTES: usize = 2;
 
 pub fn charger_recettes(chemin_fichier: &str) -> Vec<Recette> {
     // 1. Lecture du fichier JSON en texte
@@ -48,36 +51,19 @@ pub fn saveWeeks(chemin_fichier: &str, weeks: &Vec<Week>) {
         .expect("Erreur: impossible de sérialiser les donnée en JSON");
     fs::write(chemin_fichier, weeks_json).expect("Erreur : impossible de sauvegarder les données");
 }
-pub fn getRepasByMaxDuration(week: &mut Week) -> &mut Repas {
-    let mut max_index: Option<(usize, usize)> = None;
-    let mut max_duree: i32 = -1;
-
-    // 1. On cherche les INDEX du jour et du repas le plus long
-    for (i, d) in week.days.iter().enumerate() {
-        for (j, r) in d.menu.iter().enumerate() {
-            if let Some(recette) = &r.recette {
-                if recette.duree > max_duree {
-                    max_duree = recette.duree;
-                    max_index = Some((i, j));
-                }
-            }
-        }
-    }
-
-    // 2. On extrait la référence mutable grâce aux index trouvés
-    let (day_idx, menu_idx) = max_index.expect("Erreur : Aucune recette trouvée !");
-    &mut week.days[day_idx].menu[menu_idx]
-}
 pub fn getSumDuration(week: &Week) -> i32 {
     let mut som: i32 = 0;
     for d in &week.days {
         for r in &d.menu {
             if let Some(recette) = &r.recette {
-                som += recette.duree;
+                // un reste ne se recuisine pas : il ne compte pas dans le temps de cuisine
+                if !recette.est_reste {
+                    som += recette.duree;
+                }
             }
         }
     }
-    return som;
+    som
 }
 pub fn generateMenu(
     week: &mut Week,
@@ -92,72 +78,102 @@ pub fn generateMenu(
         .filter(|r| r.activable && (!is_recette_filtre || r.is_valable()))
         .collect();
 
-    let mut rng = rand::thread_rng();
     apply_nb_mangeur(week, list_nb_mangeur);
-
-    for d in 0..(week.days.len() as i32) {
-        let days = week.days.clone();
-        for r in 0..(week.days[d as usize].menu.len() as i32) {
-            let repas = days[d as usize].menu.clone();
-            if !recettes.is_empty() && list_nb_mangeur[(r * (days.len() as i32) + d) as usize] > 0 {
-                // 1. On filtre les recettes valides pour ce repas
-                // Une recette convient si :
-                // - r.nbPersonne % rec.nbPersonne == 0 (la recette est un diviseur du nombre de mangeurs)
-                // - OU rec.nbPersonne == r.nbPersonne (pile le même nombre)
-                let mut recettes_valides: Vec<&Recette> = recettes
-                    .iter()
-                    .filter(|rec| {
-                        rec.nbPersonne > 0
-                            && (repas[r as usize].nbPersonne % rec.nbPersonne == 0
-                                || rec.nbPersonne == repas[r as usize].nbPersonne)
-                    })
-                    .collect();
-
-                // 2. On pioche parmi les recettes éligibles (si la liste n'est pas vide)
-                if let Some(recette_choisie) = recettes_valides.choose(&mut rng) {
-                    week.days[d as usize].menu[r as usize].recette =
-                        Some((*recette_choisie).clone());
-                } else {
-                    // Repli : si aucune ne correspond aux critères de personnes, on pioche n'importe laquelle
-                    week.days[d as usize].menu[r as usize].recette =
-                        recettes.choose(&mut rng).cloned();
-                }
-            }
-        }
+    if recettes.is_empty() {
+        return;
     }
 
-    // Ajustement de la durée max avec sécurité pour éviter les boucles infinies
-    let mut tentatives = 0;
-    while getSumDuration(week) > dureeMax && tentatives < 100 {
-        let repas = getRepasByMaxDuration(week);
+    let mut rng = rand::thread_rng();
+    let mut meilleur: Option<Week> = None;
+    let mut meilleure_duree = i32::MAX;
 
-        let recettes_valides: Vec<&Recette> = recettes
-            .iter()
-            .filter(|rec| rec.nbPersonne > 0 && (repas.nbPersonne % rec.nbPersonne == 0))
-            .collect();
-
-        if let Some(recette_choisie) = recettes_valides.choose(&mut rng) {
-            repas.recette = Some((*recette_choisie).clone());
-        } else {
-            repas.recette = recettes.choose(&mut rng).cloned();
+    // On retire au sort jusqu'à respecter la durée max (100 essais), sinon on garde le plus court
+    for _ in 0..100 {
+        assigner_recettes(week, &recettes, &mut rng);
+        let duree = getSumDuration(week);
+        if duree < meilleure_duree {
+            meilleure_duree = duree;
+            meilleur = Some(week.clone());
         }
-
-        tentatives += 1;
+        if duree <= dureeMax {
+            break;
+        }
     }
-
-    // Ajustement des ingredient par rapport au nombre de mangeur
-    for d in &mut week.days {
-        for r in &mut d.menu {
-            if let Some(rec) = &mut r.recette {
-                let mult = r.nbPersonne / rec.nbPersonne;
-                rec.multNbRecette(mult);
-                println!("{}", mult);
-            }
-        }
+    if let Some(m) = meilleur {
+        *week = m;
     }
 }
 pub fn showWeek(week: &Week) {
     println!("{}", week.display());
+}
+
+/// Remplit tous les repas de la semaine (un tirage complet).
+fn assigner_recettes(week: &mut Week, recettes: &Vec<Recette>, rng: &mut rand::rngs::ThreadRng) {
+    // Repas à pourvoir, dans l'ordre chronologique (et on vide les anciennes recettes)
+    let mut ordre: Vec<(usize, usize)> = Vec::new();
+    for d in 0..week.days.len() {
+        for r in 0..week.days[d].menu.len() {
+            week.days[d].menu[r].recette = None;
+            if week.days[d].menu[r].nbPersonne > 0 {
+                ordre.push((d, r));
+            }
+        }
+    }
+
+    // Restes disponibles : (recette, portions restantes, jour de cuisson)
+    let mut restes: Vec<(Recette, i32, usize)> = Vec::new();
+
+    for (pos, &(d, r)) in ordre.iter().enumerate() {
+        let nb = week.days[d].menu[r].nbPersonne;
+
+        // 1. Y a-t-il des restes à manger ?
+        restes.retain(|(_, portions, jour)| *portions > 0 && d - *jour <= MAX_JOURS_RESTES);
+        if let Some(i) = restes.iter().position(|(_, portions, _)| *portions >= nb) {
+            let mut rec = restes[i].0.clone();
+            rec.est_reste = true;
+            restes[i].1 -= nb;
+            week.days[d].menu[r].recette = Some(rec);
+            continue;
+        }
+
+        // 2. Sinon on choisit une recette
+        let candidats: Vec<&Recette> = recettes
+            .iter()
+            .filter(|rec| {
+                if rec.nbPersonne <= 0 {
+                    return false;
+                }
+                if rec.nbPersonne <= nb {
+                    // recette plus petite : on la multiplie
+                    return nb % rec.nbPersonne == 0;
+                }
+                // recette plus grande : OK seulement si un repas suivant peut manger les restes
+                let restant = rec.nbPersonne - nb;
+                rec.nbPersonne % nb == 0
+                    && ordre[pos + 1..].iter().any(|&(d2, r2)| {
+                        d2 - d <= MAX_JOURS_RESTES && week.days[d2].menu[r2].nbPersonne <= restant
+                    })
+            })
+            .collect();
+
+        let mut rec: Recette = match candidats.choose(rng) {
+            Some(rec) => (*rec).clone(),
+            None => match recettes.choose(rng) {
+                Some(rec) => rec.clone(), // repli : n'importe laquelle
+                None => continue,
+            },
+        };
+
+        if rec.nbPersonne <= nb {
+            // multiplie la recette (arrondi au supérieur, jamais 0)
+            let mult = ((nb + rec.nbPersonne - 1) / rec.nbPersonne).max(1);
+            rec.multNbRecette(mult);
+        } else {
+            // recette cuisinée en entier, les portions en trop deviennent des restes
+            restes.push((rec.clone(), rec.nbPersonne - nb, d));
+        }
+        week.days[d].menu[r].recette = Some(rec);
+    }
 }
 
 #[derive(Debug, Deserialize, Serialize, Clone)]
@@ -291,14 +307,16 @@ pub fn add_value(b: &mut i32, v: i32) {
 }
 
 pub fn creer_liste_courses(week: &Week) -> ListIngredient {
-    let mut res: ListIngredient = ListIngredient {
+    let mut res = ListIngredient {
         ingredients: HashMap::new(),
     };
-
-    for day in week.days.clone() {
-        for repas in day.menu {
-            if let Some(r) = repas.recette {
-                res.add_list(&r.ingredients);
+    for day in &week.days {
+        for repas in &day.menu {
+            if let Some(r) = &repas.recette {
+                // les restes ont déjà été achetés avec le repas d'origine
+                if !r.est_reste {
+                    res.add_list(&r.ingredients);
+                }
             }
         }
     }

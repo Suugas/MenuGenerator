@@ -6,6 +6,72 @@ use std::{
     fmt::format,
 };
 
+#[derive(Debug, Deserialize, Serialize, Clone, Copy, PartialEq, Eq, Hash)]
+pub enum Tag {
+    Viande,
+    Boeuf,
+    Porc,
+    Poulet,
+    Poisson,
+    Vegetarien,
+    Pates,
+    Riz,
+    Patates,
+    Legumes,
+    Oeufs,
+    Fromage,
+    Rapide,
+    Mijote,
+    PetitDej,
+    Gouter,
+    Dessert,
+}
+impl Tag {
+    /// Tous les tags, dans l'ordre d'affichage (à compléter si tu ajoutes une variante)
+    pub const TOUS: [Tag; 17] = [
+        Tag::Viande,
+        Tag::Boeuf,
+        Tag::Porc,
+        Tag::Poulet,
+        Tag::Poisson,
+        Tag::Vegetarien,
+        Tag::Pates,
+        Tag::Riz,
+        Tag::Patates,
+        Tag::Legumes,
+        Tag::Oeufs,
+        Tag::Fromage,
+        Tag::Rapide,
+        Tag::Mijote,
+        Tag::PetitDej,
+        Tag::Gouter,
+        Tag::Dessert,
+    ];
+
+    /// Nom affiché dans l'interface
+    pub fn nom(&self) -> &'static str {
+        match self {
+            Tag::Viande => "Viande",
+            Tag::Boeuf => "Boeuf",
+            Tag::Porc => "Porc",
+            Tag::Poulet => "Poulet",
+            Tag::Poisson => "Poisson",
+            Tag::Vegetarien => "Végétarien",
+            Tag::Pates => "Pâtes",
+            Tag::Riz => "Riz",
+            Tag::Patates => "Patates",
+            Tag::Legumes => "Légumes",
+            Tag::Oeufs => "Œufs",
+            Tag::Fromage => "Fromage",
+            Tag::Rapide => "Rapide",
+            Tag::Mijote => "Mijoté",
+            Tag::PetitDej => "Petit-déj",
+            Tag::Gouter => "Goûter",
+            Tag::Dessert => "Dessert",
+        }
+    }
+}
+
 #[derive(Debug, Deserialize, Serialize, Clone, PartialEq, Eq, Hash)]
 pub enum Saison {
     Automne,
@@ -85,6 +151,10 @@ pub struct Recette {
     pub ingredients: ListIngredient,
     pub recette: String,
     pub activable: bool,
+    #[serde(default)]
+    pub est_reste: bool,
+    #[serde(default)]
+    pub tags: Vec<Tag>,
 }
 impl Recette {
     pub fn display(&self) -> String {

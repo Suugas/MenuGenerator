@@ -61,6 +61,7 @@ impl eframe::App for MonApp {
                     self.afficher_config(ui, &semaine);
                 }
                 Page::Recettes => self.afficher_recettes(ui),
+                Page::Edition => self.afficher_edition(ui),
             });
     }
 }
@@ -136,6 +137,8 @@ fn main() -> eframe::Result<()> {
         duree_max_config: "200".to_string(),
         envoi_en_cours: None,
         message_envoi: None,
+        filtres_tags: std::collections::HashSet::new(),
+        edition: None,
     };
     let options = eframe::NativeOptions {
         viewport: egui::ViewportBuilder::default()
