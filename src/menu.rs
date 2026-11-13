@@ -25,10 +25,11 @@ pub enum Tag {
     PetitDej,
     Gouter,
     Dessert,
+    Entree,
 }
 impl Tag {
     /// Tous les tags, dans l'ordre d'affichage (à compléter si tu ajoutes une variante)
-    pub const TOUS: [Tag; 17] = [
+    pub const TOUS: [Tag; 18] = [
         Tag::Viande,
         Tag::Boeuf,
         Tag::Porc,
@@ -46,6 +47,7 @@ impl Tag {
         Tag::PetitDej,
         Tag::Gouter,
         Tag::Dessert,
+        Tag::Entree,
     ];
 
     /// Nom affiché dans l'interface
@@ -68,6 +70,7 @@ impl Tag {
             Tag::PetitDej => "Petit-déj",
             Tag::Gouter => "Goûter",
             Tag::Dessert => "Dessert",
+            Tag::Entree => "Entrée",
         }
     }
 }
@@ -184,17 +187,12 @@ impl Recette {
     }
 
     pub fn is_valable(&self) -> bool {
-        let now: DateTime<Local> = Local::now();
-        let mut is_valable: bool = true;
-        for (nom, ing) in self.ingredients.ingredients.clone() {
-            if !(ing.ingredient.disponibilité.len() == 0
-                || ing.ingredient.disponibilité.contains(&get_saison(&now)))
-            {
-                is_valable = false;
-                break;
-            }
-        }
-        return is_valable;
+        // La saison est calculée une seule fois, et la liste d'ingrédients n'est plus clonée
+        let saison = get_saison(&Local::now());
+        self.ingredients.ingredients.values().all(|ing| {
+            ing.ingredient.disponibilité.is_empty()
+                || ing.ingredient.disponibilité.contains(&saison)
+        })
     }
 }
 
@@ -203,8 +201,24 @@ pub struct Repas {
     pub name: String,
     pub nbPersonne: i32,
     pub recette: Option<Recette>,
+    /// Entrée du repas (recette taguée « Entrée »), si le repas en comporte une
+    #[serde(default)]
+    pub entree: Option<Recette>,
+    /// Dessert du repas (recette taguée « Dessert »), si le repas en comporte un
+    #[serde(default)]
+    pub dessert: Option<Recette>,
 }
 impl Repas {
+    pub fn new(name: &str, nb_personne: i32) -> Self {
+        Repas {
+            name: name.to_string(),
+            nbPersonne: nb_personne,
+            recette: None,
+            entree: None,
+            dessert: None,
+        }
+    }
+
     pub fn display(&self) -> String {
         let recette_txt = match &self.recette {
             Some(r) => format!("{} : {}", r.name, r.ingredients.display()),

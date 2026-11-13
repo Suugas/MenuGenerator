@@ -95,13 +95,7 @@ fn main() -> eframe::Result<()> {
             tMax: tMax,
         };
         n_semaine.generate_from_weeks(&semaines);
-        generateMenu(
-            &mut n_semaine,
-            &recetteList,
-            &config.list_nb_mangeur,
-            tMax,
-            config.is_recette_filtre,
-        );
+        generateMenu(&mut n_semaine, &recetteList, &config, tMax);
         semaines.push(n_semaine.clone());
         // ENVOYE LES INGREDIENTS DANS LA LISTE DE COURSES (seulement si l'envoi auto est activé)
         //      Si le code de la room n'existe pas, on en demande un au serveur
@@ -139,6 +133,13 @@ fn main() -> eframe::Result<()> {
         message_envoi: None,
         filtres_tags: std::collections::HashSet::new(),
         edition: None,
+        filtre_duree_actif: false,
+        filtre_duree_max: 30,
+        hauteurs_recettes: HashMap::new(),
+        cache_recettes: HashMap::new(),
+        options_repas: None,
+        apercu: None,
+        message_apercu: None,
     };
     let options = eframe::NativeOptions {
         viewport: egui::ViewportBuilder::default()

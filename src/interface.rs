@@ -5,7 +5,8 @@ use std::collections::{HashMap, HashSet};
 use std::sync::mpsc::{self, Receiver, TryRecvError};
 
 use crate::fonctions::{
-    Config, add_value, creer_liste_courses, generateMenu, getSumDuration, sauvegarder_recettes,
+    Config, Partie, add_value, creer_liste_courses, generateMenu, getSumDuration, regenerer_repas,
+    sauvegarder_recettes, saveWeeks,
 };
 use crate::menu::{Ingredient, ListIngredient, Recette, Saison, Tag};
 use crate::schedule::{Day, Week};
@@ -221,6 +222,76 @@ fn choix_saisons(ui: &mut egui::Ui, saisons: &mut HashSet<Saison>) {
             }
         }
     });
+}
+
+/// Bouton de recette coloré (grille de la semaine, aperçu...)
+fn bouton_recette(
+    ui: &mut egui::Ui,
+    texte: &str,
+    couleur: Color32,
+    largeur: f32,
+    hauteur: f32,
+    taille: f32,
+    survol: String,
+) -> egui::Response {
+    let bouton = egui::Button::new(RichText::new(texte).size(taille).color(Color32::WHITE))
+        .fill(couleur.linear_multiply(0.16))
+        .stroke(Stroke::new(1.0, couleur.linear_multiply(0.5)));
+    ui.add_sized([largeur, hauteur], bouton)
+        .on_hover_text(survol)
+}
+
+/// Une ligne de l'aperçu : [nom de la recette] [🔄]. Retourne true si « recharger » a été cliqué.
+fn ligne_apercu(
+    ui: &mut egui::Ui,
+    prefixe: &str,
+    rec: Option<&Recette>,
+    couleur: Color32,
+    largeur: f32,
+    survol_reload: &str,
+) -> bool {
+    let mut recharge = false;
+    ui.horizontal(|ui| {
+        ui.spacing_mut().item_spacing.x = 3.0;
+        let largeur_nom = largeur - 30.0;
+        let max_car = ((largeur_nom - 14.0) / 6.2).max(6.0) as usize;
+        match rec {
+            Some(r) => {
+                let mut nom = r.name.clone();
+                if r.est_reste {
+                    nom = format!("(reste) {}", nom);
+                }
+                let texte = if prefixe.is_empty() {
+                    tronquer(&nom, max_car)
+                } else {
+                    tronquer(&format!("{} · {}", prefixe, nom), max_car)
+                };
+                bouton_recette(
+                    ui,
+                    &texte,
+                    couleur,
+                    largeur_nom,
+                    24.0,
+                    12.0,
+                    format!("{} - {} min", r.name, r.duree),
+                );
+            }
+            None => {
+                ui.add_sized(
+                    [largeur_nom, 24.0],
+                    egui::Label::new(RichText::new("—").color(TEXTE_DISCRET)),
+                );
+            }
+        }
+        if ui
+            .add_sized([26.0, 24.0], egui::Button::new("🔄"))
+            .on_hover_text(survol_reload)
+            .clicked()
+        {
+            recharge = true;
+        }
+    });
+    recharge
 }
 
 // =====================================================================
@@ -546,9 +617,310 @@ pub struct MonApp {
     pub filtres_tags: HashSet<Tag>,
     /// Formulaire de création / modification d'une recette (page Edition)
     pub edition: Option<EtatEdition>,
+    /// Filtre de la page Recettes : durée de préparation maximale
+    pub filtre_duree_actif: bool,
+    pub filtre_duree_max: i32,
+    /// Hauteur mesurée de chaque carte de recette (sert à n'afficher que celles qui sont à l'écran)
+    pub hauteurs_recettes: HashMap<usize, f32>,
+    /// Résumé des ingrédients et étapes déjà calculés pour chaque recette (vidé à chaque modification)
+    pub cache_recettes: HashMap<usize, (String, Vec<String>)>,
+    /// Repas (index du repas, index du jour) dont la fenêtre d'options est ouverte
+    pub options_repas: Option<(usize, usize)>,
+    /// Semaine générée en attente d'acceptation (affichée dans la barre du bas des Réglages)
+    pub apercu: Option<Week>,
+    pub message_apercu: Option<String>,
 }
 
 impl MonApp {
+    /// Durée max de cuisine saisie dans les réglages (sinon celle de la config)
+    fn duree_max(&self) -> i32 {
+        self.duree_max_config
+            .parse()
+            .unwrap_or(self.config.duree_max)
+    }
+
+    /// Structure (dates, nombre de mangeurs) de la semaine à générer : la semaine prochaine
+    fn base_semaine_prochaine(&self) -> Week {
+        if let Some(w) = self.semaines.get(1) {
+            w.clone()
+        } else {
+            let mut w = Week {
+                days: vec![],
+                tMax: 200,
+            };
+            w.generate_from_weeks(&self.semaines);
+            w
+        }
+    }
+
+    /// Mini fenêtre d'options d'un repas : entrée, dessert et tag imposé
+    fn fenetre_options(&mut self, ctx: &egui::Context, semaine: &Week) {
+        let Some((r, d)) = self.options_repas else {
+            return;
+        };
+        let nb_jours = semaine.days.len().max(1);
+        let index = Config::indice(r, d, nb_jours);
+        if r > 3 || index >= self.config.list_nb_mangeur.len() {
+            self.options_repas = None;
+            return;
+        }
+        self.config.normaliser();
+
+        let jour = semaine
+            .days
+            .get(d)
+            .map(|x| JOURS[index_jour(&x.date)])
+            .unwrap_or("");
+        let titre = format!("{} · {}", jour, REPAS_NOMS[r]);
+        let mut ouverte = true;
+        let mut fermer = false;
+
+        egui::Window::new(titre)
+            .id(egui::Id::new("fenetre_options_repas"))
+            .open(&mut ouverte)
+            .collapsible(false)
+            .resizable(false)
+            .show(ctx, |ui| {
+                ui.set_min_width(230.0);
+                ui.checkbox(&mut self.config.list_entree[index], "Ajouter une entrée");
+                ui.checkbox(&mut self.config.list_dessert[index], "Ajouter un dessert");
+                ui.add_space(6.0);
+                ui.label(RichText::new("Tag imposé au plat").color(TEXTE_DISCRET));
+
+                let actuel: Option<Tag> = self.config.list_tag_force[index];
+                let texte_tag = match actuel {
+                    Some(t) => t.nom(),
+                    None => "Aucun",
+                };
+                egui::ComboBox::from_id_source("tag_force_fenetre")
+                    .width(200.0)
+                    .selected_text(texte_tag)
+                    .show_ui(ui, |ui| {
+                        if ui.selectable_label(actuel.is_none(), "Aucun").clicked() {
+                            self.config.list_tag_force[index] = None;
+                        }
+                        for &t in Tag::TOUS.iter() {
+                            // forcer « Dessert » / « Entrée » n'a pas de sens pour un plat
+                            if t == Tag::Dessert || t == Tag::Entree {
+                                continue;
+                            }
+                            if ui.selectable_label(actuel == Some(t), t.nom()).clicked() {
+                                self.config.list_tag_force[index] = Some(t);
+                            }
+                        }
+                    });
+
+                ui.add_space(8.0);
+                if ui.button("Fermer").clicked() {
+                    fermer = true;
+                }
+            });
+
+        if !ouverte || fermer {
+            self.options_repas = None;
+        }
+    }
+
+    /// Génère la semaine prochaine dans `apercu` (sans toucher au planning tant qu'elle n'est pas acceptée)
+    pub fn generer_apercu(&mut self) {
+        let mut w = self.base_semaine_prochaine();
+        generateMenu(&mut w, &self.recettes, &self.config, self.duree_max());
+        self.apercu = Some(w);
+        self.message_apercu = None;
+    }
+
+    /// Aperçu de la semaine générée : bouton 🔄 par repas, puis Accepter / Annuler
+    fn afficher_apercu(&mut self, ui: &mut egui::Ui) {
+        let Some(mut w) = self.apercu.take() else {
+            return;
+        };
+        let numero = w.numero();
+        let mut accepter = false;
+        let mut annuler = false;
+        let mut tout = false;
+        let mut recharge: Option<(usize, usize, Partie)> = None;
+
+        ui.horizontal(|ui| {
+            ui.label(
+                RichText::new(format!("Aperçu : semaine {}", numero))
+                    .size(17.0)
+                    .strong()
+                    .color(ACCENT),
+            );
+            pastille(ui, &format!("Cuisine : {} min", getSumDuration(&w)), ACCENT);
+            let bouton =
+                egui::Button::new(RichText::new("Accepter").strong().color(SUR_OK)).fill(OK);
+            if ui
+                .add(bouton)
+                .on_hover_text(format!(
+                    "Remplace la semaine {} du planning par cet aperçu",
+                    numero
+                ))
+                .clicked()
+            {
+                accepter = true;
+            }
+            if ui
+                .button("Tout regénérer")
+                .on_hover_text(format!("Nouveau tirage pour la semaine {}", numero))
+                .clicked()
+            {
+                tout = true;
+            }
+            if ui.button("Annuler").clicked() {
+                annuler = true;
+            }
+        });
+        ui.add_space(4.0);
+
+        let nb_jours = w.days.len().max(1);
+        let largeur_col = ((ui.available_width() - 80.0 - 6.0 * (nb_jours as f32 + 1.0))
+            / nb_jours as f32)
+            .clamp(120.0, 230.0);
+
+        egui::ScrollArea::vertical()
+            .max_height(220.0)
+            .show(ui, |ui| {
+                egui::Grid::new("apercu_semaine")
+                    .spacing([6.0, 4.0])
+                    .show(ui, |ui| {
+                        ui.label(
+                            RichText::new(format!("S{}", numero))
+                                .size(13.0)
+                                .strong()
+                                .color(TEXTE_DISCRET),
+                        );
+                        for day in &w.days {
+                            let couleur = if est_aujourdhui(&day.date) {
+                                ACCENT
+                            } else {
+                                TEXTE_DISCRET
+                            };
+                            ui.vertical_centered(|ui| {
+                                ui.set_width(largeur_col);
+                                ui.label(
+                                    RichText::new(format!(
+                                        "{} {}",
+                                        jour_court(&day.date),
+                                        nombre(&day.date, "%d")
+                                    ))
+                                    .strong()
+                                    .color(couleur),
+                                );
+                            });
+                        }
+                        ui.end_row();
+
+                        for i in 0..4 {
+                            ui.label(
+                                RichText::new(REPAS_NOMS[i])
+                                    .size(12.5)
+                                    .strong()
+                                    .color(REPAS_COULEURS[i]),
+                            );
+                            for (d, day) in w.days.iter().enumerate() {
+                                ui.vertical(|ui| {
+                                    ui.set_width(largeur_col);
+                                    ui.spacing_mut().item_spacing.y = 2.0;
+                                    let couleur = REPAS_COULEURS[i];
+                                    let idx = Config::indice(i, d, nb_jours);
+                                    match day.menu.get(i) {
+                                        Some(repas) if repas.nbPersonne > 0 => {
+                                            if let Some(e) = &repas.entree {
+                                                if ligne_apercu(
+                                                    ui,
+                                                    "E",
+                                                    Some(e),
+                                                    couleur,
+                                                    largeur_col,
+                                                    &format!(
+                                                        "Recharger l'entrée (semaine {})",
+                                                        numero
+                                                    ),
+                                                ) {
+                                                    recharge = Some((d, i, Partie::Entree));
+                                                }
+                                            } else if self.config.entree_prevue(idx) {
+                                                ui.label(
+                                                    RichText::new("Entrée : aucune recette taguée")
+                                                        .size(11.5)
+                                                        .color(KO),
+                                                );
+                                            }
+
+                                            if ligne_apercu(
+                                                ui,
+                                                "",
+                                                repas.recette.as_ref(),
+                                                couleur,
+                                                largeur_col,
+                                                &format!("Recharger ce repas (semaine {})", numero),
+                                            ) {
+                                                recharge = Some((d, i, Partie::Plat));
+                                            }
+
+                                            if let Some(x) = &repas.dessert {
+                                                if ligne_apercu(
+                                                    ui,
+                                                    "D",
+                                                    Some(x),
+                                                    couleur,
+                                                    largeur_col,
+                                                    &format!(
+                                                        "Recharger le dessert (semaine {})",
+                                                        numero
+                                                    ),
+                                                ) {
+                                                    recharge = Some((d, i, Partie::Dessert));
+                                                }
+                                            } else if self.config.dessert_prevu(idx) {
+                                                ui.label(
+                                                    RichText::new(
+                                                        "Dessert : aucune recette taguée",
+                                                    )
+                                                    .size(11.5)
+                                                    .color(KO),
+                                                );
+                                            }
+                                        }
+                                        _ => {
+                                            ui.add_sized(
+                                                [largeur_col, 24.0],
+                                                egui::Label::new(
+                                                    RichText::new("—").color(TEXTE_DISCRET),
+                                                ),
+                                            );
+                                        }
+                                    }
+                                });
+                            }
+                            ui.end_row();
+                        }
+                    });
+            });
+
+        if accepter {
+            if self.semaines.len() > 1 {
+                self.semaines[1] = w;
+            } else {
+                self.semaines.push(w);
+            }
+            saveWeeks("schedule.json", &self.semaines);
+            self.message_apercu = Some(format!("Semaine {} enregistrée dans le planning.", numero));
+            return;
+        }
+        if annuler {
+            return;
+        }
+        if let Some((d, r, partie)) = recharge {
+            regenerer_repas(&mut w, d, r, partie, &self.recettes, &self.config);
+        }
+        if tout {
+            generateMenu(&mut w, &self.recettes, &self.config, self.duree_max());
+        }
+        self.apercu = Some(w);
+    }
+
     /// Semaine sélectionnée (ou une semaine vide si aucune n'existe)
     pub fn semaine_affichee(&self) -> Week {
         if let Some(semaine) = self.semaines.get(self.id_week) {
@@ -662,6 +1034,12 @@ impl MonApp {
     }
 
     pub fn pied_de_page(&mut self, ui: &mut egui::Ui) {
+        // Réglages : aperçu de la semaine générée (à accepter)
+        if matches!(self.page, Page::Config) && self.apercu.is_some() {
+            self.afficher_apercu(ui);
+            ui.add_space(4.0);
+        }
+
         ui.horizontal(|ui| {
             let bouton = egui::Button::new(RichText::new("Enregistrer").strong().color(SUR_ACCENT))
                 .fill(ACCENT);
@@ -729,6 +1107,16 @@ impl MonApp {
                         }
                     });
 
+                    if let Some(e) = &repas.entree {
+                        ui.horizontal(|ui| {
+                            ui.label(RichText::new("Entrée :").color(TEXTE_DISCRET));
+                            ui.label(RichText::new(&e.name).strong());
+                            if ui.small_button("Voir").clicked() {
+                                a_ouvrir = Some(e.clone());
+                            }
+                        });
+                    }
+
                     match &repas.recette {
                         Some(r) => {
                             ui.label(RichText::new(&r.name).size(20.0).strong());
@@ -751,6 +1139,16 @@ impl MonApp {
                         None => {
                             ui.label(RichText::new("Pas de repas prévu").color(TEXTE_DISCRET));
                         }
+                    }
+
+                    if let Some(x) = &repas.dessert {
+                        ui.horizontal(|ui| {
+                            ui.label(RichText::new("Dessert :").color(TEXTE_DISCRET));
+                            ui.label(RichText::new(&x.name).strong());
+                            if ui.small_button("Voir").clicked() {
+                                a_ouvrir = Some(x.clone());
+                            }
+                        });
                     }
                 });
                 ui.add_space(8.0);
@@ -873,7 +1271,8 @@ impl MonApp {
 
             let titre = match (semaine.days.first(), semaine.days.last()) {
                 (Some(debut), Some(fin)) => format!(
-                    "Semaine du {} au {}",
+                    "Semaine {} · du {} au {}",
+                    semaine.numero(),
                     date_courte(&debut.date),
                     date_courte(&fin.date)
                 ),
@@ -947,18 +1346,23 @@ impl MonApp {
     }
 
     /// Grille compacte d'une semaine.
-    /// - page Semaine : une pastille cliquable par repas
-    /// - page Réglages : boutons -/+ du nombre de mangeurs
+    /// - page Semaine : une pastille cliquable par repas (+ entrée / dessert s'il y en a)
+    /// - page Réglages : nombre de mangeurs, entrée / dessert à cocher et tag forcé pour chaque repas
     pub fn afficher_grille_semaine(&mut self, ui: &mut egui::Ui, week: &Week) {
+        let mode_config = matches!(self.page, Page::Config);
+        if mode_config {
+            self.config.normaliser();
+        }
         let nb_jours = week.days.len().max(1);
         let espacement = 6.0;
         let largeur_libelle = 78.0;
+        let min_col = if mode_config { 112.0 } else { 96.0 };
         let largeur_col =
             ((ui.available_width() - largeur_libelle - espacement * (nb_jours as f32 + 1.0))
                 / nb_jours as f32)
-                .clamp(96.0, 200.0);
+                .clamp(min_col, 200.0);
         let max_caracteres = ((largeur_col - 18.0) / 6.6).max(6.0) as usize;
-        let mode_config = matches!(self.page, Page::Config);
+        let numero = week.numero();
 
         let mut recette_cliquee: Option<Recette> = None;
 
@@ -966,25 +1370,29 @@ impl MonApp {
             egui::Grid::new("grille_semaine")
                 .spacing([espacement, espacement])
                 .show(ui, |ui| {
-                    // --- EN-TÊTE : jours de la semaine ---
-                    ui.label("");
+                    // --- EN-TÊTE : numéro de semaine + jours ---
+                    ui.label(
+                        RichText::new(format!("S{}", numero))
+                            .size(13.0)
+                            .strong()
+                            .color(TEXTE_DISCRET),
+                    )
+                    .on_hover_text(format!("Semaine {}", numero));
                     for day in &week.days {
                         let couleur = if est_aujourdhui(&day.date) {
                             ACCENT
                         } else {
                             TEXTE_DISCRET
                         };
+                        // Dans les réglages on n'affiche que le jour (pas la date)
+                        let titre = if mode_config {
+                            jour_court(&day.date).to_string()
+                        } else {
+                            format!("{} {}", jour_court(&day.date), nombre(&day.date, "%d"))
+                        };
                         ui.vertical_centered(|ui| {
                             ui.set_width(largeur_col);
-                            ui.label(
-                                RichText::new(format!(
-                                    "{} {}",
-                                    jour_court(&day.date),
-                                    nombre(&day.date, "%d")
-                                ))
-                                .strong()
-                                .color(couleur),
-                            );
+                            ui.label(RichText::new(titre).strong().color(couleur));
                         });
                     }
                     ui.end_row();
@@ -1004,8 +1412,8 @@ impl MonApp {
                                 if index < self.config.list_nb_mangeur.len() {
                                     ui.horizontal(|ui| {
                                         ui.spacing_mut().item_spacing.x = 3.0;
-                                        // Centre le bloc [-] [n] [+] (82 px de large) dans la colonne
-                                        ui.add_space(((largeur_col - 82.0) / 2.0).max(0.0));
+                                        // Centre le bloc [-] [n] [+] [⚙] (112 px de large) dans la colonne
+                                        ui.add_space(((largeur_col - 112.0) / 2.0).max(0.0));
                                         if ui
                                             .add_sized([22.0, 24.0], egui::Button::new("-"))
                                             .clicked()
@@ -1031,48 +1439,122 @@ impl MonApp {
                                         {
                                             add_value(&mut self.config.list_nb_mangeur[index], 1);
                                         }
+
+                                        // Options du repas (entrée, dessert, tag) dans une mini fenêtre
+                                        let mut options: Vec<&str> = Vec::new();
+                                        if self.config.list_entree[index] {
+                                            options.push("Entrée");
+                                        }
+                                        if self.config.list_dessert[index] {
+                                            options.push("Dessert");
+                                        }
+                                        if let Some(t) = self.config.list_tag_force[index] {
+                                            options.push(t.nom());
+                                        }
+                                        let survol = if options.is_empty() {
+                                            "Options du repas (entrée, dessert, tag)".to_string()
+                                        } else {
+                                            format!("Options : {}", options.join(", "))
+                                        };
+                                        let bouton_options = if options.is_empty() {
+                                            egui::Button::new("⚙")
+                                        } else {
+                                            egui::Button::new(RichText::new("⚙").color(TEXTE))
+                                                .fill(CARD_HOVER)
+                                        };
+                                        if ui
+                                            .add_sized([26.0, 24.0], bouton_options)
+                                            .on_hover_text(survol)
+                                            .clicked()
+                                        {
+                                            self.options_repas =
+                                                if self.options_repas == Some((i, d)) {
+                                                    None
+                                                } else {
+                                                    Some((i, d))
+                                                };
+                                        }
                                     });
                                 } else {
                                     ui.label("?");
                                 }
                             } else {
-                                match day.menu.get(i).and_then(|repas| repas.recette.as_ref()) {
-                                    Some(recette) => {
-                                        let couleur = REPAS_COULEURS[i];
+                                let repas = day.menu.get(i);
+                                let couleur = REPAS_COULEURS[i];
+                                ui.vertical(|ui| {
+                                    ui.set_width(largeur_col);
+                                    ui.spacing_mut().item_spacing.y = 3.0;
 
-                                        let nom = if recette.est_reste {
-                                            format!("(reste) {}", recette.name)
-                                        } else {
-                                            recette.name.clone()
-                                        };
-
-                                        let bouton = egui::Button::new(
-                                            RichText::new(tronquer(&nom, max_caracteres))
-                                                .size(12.5)
-                                                .color(Color32::WHITE),
+                                    // Entrée
+                                    if let Some(e) = repas.and_then(|x| x.entree.as_ref()) {
+                                        let texte =
+                                            tronquer(&format!("E · {}", e.name), max_caracteres);
+                                        if bouton_recette(
+                                            ui,
+                                            &texte,
+                                            couleur,
+                                            largeur_col,
+                                            22.0,
+                                            11.5,
+                                            format!("Entrée : {} - {} min", e.name, e.duree),
                                         )
-                                        .fill(couleur.linear_multiply(0.16))
-                                        .stroke(Stroke::new(1.0, couleur.linear_multiply(0.5)));
-
-                                        let reponse = ui
-                                            .add_sized([largeur_col, 28.0], bouton)
-                                            .on_hover_text(format!(
-                                                "{} - {} min",
-                                                recette.name, recette.duree
-                                            ));
-                                        if reponse.clicked() {
-                                            recette_cliquee = Some(recette.clone());
+                                        .clicked()
+                                        {
+                                            recette_cliquee = Some(e.clone());
                                         }
                                     }
-                                    None => {
-                                        ui.add_sized(
-                                            [largeur_col, 28.0],
-                                            egui::Label::new(
-                                                RichText::new("—").color(TEXTE_DISCRET),
-                                            ),
-                                        );
+
+                                    // Plat principal
+                                    match repas.and_then(|x| x.recette.as_ref()) {
+                                        Some(recette) => {
+                                            let nom = if recette.est_reste {
+                                                format!("(reste) {}", recette.name)
+                                            } else {
+                                                recette.name.clone()
+                                            };
+                                            if bouton_recette(
+                                                ui,
+                                                &tronquer(&nom, max_caracteres),
+                                                couleur,
+                                                largeur_col,
+                                                28.0,
+                                                12.5,
+                                                format!("{} - {} min", recette.name, recette.duree),
+                                            )
+                                            .clicked()
+                                            {
+                                                recette_cliquee = Some(recette.clone());
+                                            }
+                                        }
+                                        None => {
+                                            ui.add_sized(
+                                                [largeur_col, 28.0],
+                                                egui::Label::new(
+                                                    RichText::new("—").color(TEXTE_DISCRET),
+                                                ),
+                                            );
+                                        }
                                     }
-                                }
+
+                                    // Dessert
+                                    if let Some(x) = repas.and_then(|x| x.dessert.as_ref()) {
+                                        let texte =
+                                            tronquer(&format!("D · {}", x.name), max_caracteres);
+                                        if bouton_recette(
+                                            ui,
+                                            &texte,
+                                            couleur,
+                                            largeur_col,
+                                            22.0,
+                                            11.5,
+                                            format!("Dessert : {} - {} min", x.name, x.duree),
+                                        )
+                                        .clicked()
+                                        {
+                                            recette_cliquee = Some(x.clone());
+                                        }
+                                    }
+                                });
                             }
                         }
                         ui.end_row();
@@ -1091,114 +1573,114 @@ impl MonApp {
     //  PAGE : REGLAGES
     // -----------------------------------------------------------------
     pub fn afficher_config(&mut self, ui: &mut egui::Ui, semaine: &Week) {
+        let mut generer = false;
+
         egui::ScrollArea::vertical().show(ui, |ui| {
             ui.add_space(4.0);
             ui.label(RichText::new("Réglages").size(26.0).strong());
             ui.add_space(8.0);
 
-            // ---- Nombre de mangeurs ----
+            // ---- Repas de la semaine ----
             carte(CARD).show(ui, |ui| {
                 ui.set_width(ui.available_width());
+                titre_section(ui, "Repas de la semaine");
                 ui.label(
-                    RichText::new("Nombre de mangeurs par repas")
-                        .size(17.0)
-                        .strong()
-                        .color(ACCENT),
-                );
-                ui.label(
-                    RichText::new("0 (rouge) = pas de repas prévu")
-                        .size(12.5)
-                        .color(TEXTE_DISCRET),
+                    RichText::new(format!(
+                        "0 (rouge) = pas de repas prévu. Bouton ⚙ : entrée, dessert et tag imposé pour ce repas. (affichage : semaine {})",
+                        semaine.numero()
+                    ))
+                    .size(12.5)
+                    .color(TEXTE_DISCRET),
                 );
                 ui.add_space(6.0);
                 self.afficher_grille_semaine(ui, semaine);
             });
             ui.add_space(10.0);
 
-            // ---- Génération des menus ----
-            carte(CARD).show(ui, |ui| {
-                ui.set_width(ui.available_width());
-                ui.label(
-                    RichText::new("Génération des menus")
-                        .size(17.0)
-                        .strong()
-                        .color(ACCENT),
-                );
-                ui.add_space(6.0);
+            // ---- Génération des menus (gauche) | Liste de courses (droite) ----
+            ui.columns(2, |cols| {
+                carte(CARD).show(&mut cols[0], |ui| {
+                    ui.set_width(ui.available_width());
+                    titre_section(ui, "Génération des menus");
 
-                ui.horizontal(|ui| {
-                    ui.label("Durée maximale de cuisine par semaine :");
-                    ui.add(
-                        egui::TextEdit::singleline(&mut self.duree_max_config).desired_width(60.0),
-                    );
-                    ui.label("min");
-                });
-
-                ui.horizontal(|ui| {
-                    interrupteur(ui, &mut self.config.is_recette_filtre);
-                    ui.label("Exclure automatiquement les recettes hors saison");
-                });
-
-                ui.add_space(6.0);
-                if ui.button("Régénérer la semaine prochaine").clicked() && self.semaines.len() > 1
-                {
-                    generateMenu(
-                        &mut self.semaines[1],
-                        &self.recettes,
-                        &self.config.list_nb_mangeur,
-                        self.duree_max_config
-                            .parse()
-                            .unwrap_or(self.config.duree_max),
-                        self.config.is_recette_filtre,
-                    );
-                }
-            });
-            ui.add_space(10.0);
-
-            // ---- Liste de courses ----
-            carte(CARD).show(ui, |ui| {
-                ui.set_width(ui.available_width());
-                ui.label(
-                    RichText::new("Liste de courses partagée")
-                        .size(17.0)
-                        .strong()
-                        .color(ACCENT),
-                );
-                ui.add_space(6.0);
-
-                ui.horizontal(|ui| {
-                    interrupteur(ui, &mut self.config.auto_send_sl);
-                    ui.label("Envoyer automatiquement le menu dans la liste de courses");
-                });
-
-                if self.config.auto_send_sl {
-                    ui.add_space(4.0);
-                    ui.horizontal(|ui| {
-                        let a_un_code = self.config.c_liste.len() == 6;
-                        if a_un_code {
-                            ui.label("Code :");
-                            ui.label(
-                                RichText::new(&self.config.c_liste)
-                                    .size(20.0)
-                                    .strong()
-                                    .color(ACCENT),
-                            );
-                        }
-                        let texte = if a_un_code {
-                            "Régénérer un code"
-                        } else {
-                            "Générer un code"
-                        };
-                        if ui.button(texte).clicked() {
-                            if let Err(e) = self.config.ensure_room_code() {
-                                eprintln!("[ROOM ERREUR] {}", e);
-                            }
-                        }
+                    ui.horizontal_wrapped(|ui| {
+                        ui.label("Durée maximale de cuisine par semaine :");
+                        ui.add(
+                            egui::TextEdit::singleline(&mut self.duree_max_config)
+                                .desired_width(60.0),
+                        );
+                        ui.label("min");
                     });
-                }
+
+                    ui.horizontal_wrapped(|ui| {
+                        interrupteur(ui, &mut self.config.is_recette_filtre);
+                        ui.label("Exclure les recettes hors saison");
+                    });
+
+                    ui.add_space(6.0);
+                    let texte = match self.semaines.get(1) {
+                        Some(w) => format!("Générer un aperçu de la semaine {}", w.numero()),
+                        None => "Générer un aperçu de la semaine prochaine".to_string(),
+                    };
+                    if ui.button(texte).clicked() {
+                        generer = true;
+                    }
+                    ui.label(
+                        RichText::new(
+                            "L'aperçu s'affiche en bas de la page : il ne remplace la semaine qu'une fois accepté.",
+                        )
+                        .size(12.5)
+                        .color(TEXTE_DISCRET),
+                    );
+                    if let Some(message) = &self.message_apercu {
+                        ui.label(RichText::new(message).color(OK));
+                    }
+                });
+
+                carte(CARD).show(&mut cols[1], |ui| {
+                    ui.set_width(ui.available_width());
+                    titre_section(ui, "Liste de courses partagée");
+
+                    ui.horizontal_wrapped(|ui| {
+                        interrupteur(ui, &mut self.config.auto_send_sl);
+                        ui.label("Envoyer automatiquement le menu dans la liste de courses");
+                    });
+
+                    if self.config.auto_send_sl {
+                        ui.add_space(4.0);
+                        ui.horizontal(|ui| {
+                            let a_un_code = self.config.c_liste.len() == 6;
+                            if a_un_code {
+                                ui.label("Code :");
+                                ui.label(
+                                    RichText::new(&self.config.c_liste)
+                                        .size(20.0)
+                                        .strong()
+                                        .color(ACCENT),
+                                );
+                            }
+                            let texte = if a_un_code {
+                                "Régénérer un code"
+                            } else {
+                                "Générer un code"
+                            };
+                            if ui.button(texte).clicked() {
+                                if let Err(e) = self.config.ensure_room_code() {
+                                    eprintln!("[ROOM ERREUR] {}", e);
+                                }
+                            }
+                        });
+                    }
+                });
             });
             ui.add_space(10.0);
         });
+
+        self.fenetre_options(ui.ctx(), semaine);
+
+        if generer {
+            self.generer_apercu();
+        }
     }
 
     // -----------------------------------------------------------------
@@ -1229,14 +1711,14 @@ impl MonApp {
         });
         ui.label(
             RichText::new(
-                "Seules les recettes actives servent à générer les menus. Pense à enregistrer.",
+                "Seules les recettes actives (encadrées en vert) servent à générer les menus. Pense à enregistrer.",
             )
             .size(12.5)
             .color(TEXTE_DISCRET),
         );
         ui.add_space(6.0);
 
-        // ---- Filtres : bouton déroulant + puces des filtres actifs ----
+        // ---- Filtres : tags + durée de préparation ----
         ui.horizontal_wrapped(|ui| {
             ui.menu_button("Filtrer", |ui| {
                 for &tag in Tag::TOUS.iter() {
@@ -1251,6 +1733,23 @@ impl MonApp {
                 }
             });
 
+            ui.separator();
+            ui.checkbox(&mut self.filtre_duree_actif, "Durée ≤");
+            ui.add_enabled(
+                self.filtre_duree_actif,
+                egui::DragValue::new(&mut self.filtre_duree_max)
+                    .clamp_range(5..=600)
+                    .speed(1.0)
+                    .suffix(" min"),
+            );
+            for minutes in [15, 30, 60] {
+                if ui.small_button(format!("{} min", minutes)).clicked() {
+                    self.filtre_duree_actif = true;
+                    self.filtre_duree_max = minutes;
+                }
+            }
+            ui.separator();
+
             let mut a_retirer: Option<Tag> = None;
             for &tag in Tag::TOUS.iter() {
                 if self.filtres_tags.contains(&tag) && puce_supprimable(ui, tag.nom(), ACCENT) {
@@ -1261,103 +1760,143 @@ impl MonApp {
                 self.filtres_tags.remove(&tag);
             }
 
-            if self.filtres_tags.len() > 1 && ui.small_button("Tout effacer").clicked() {
+            let nb_filtres = self.filtres_tags.len() + self.filtre_duree_actif as usize;
+            if nb_filtres > 1 && ui.small_button("Tout effacer").clicked() {
                 self.filtres_tags.clear();
+                self.filtre_duree_actif = false;
             }
         });
         ui.add_space(8.0);
 
+        // Recettes qui passent les filtres (tous les tags + durée)
+        let indices: Vec<usize> = (0..self.recettes.len())
+            .filter(|&r| {
+                let rec = &self.recettes[r];
+                self.filtres_tags.iter().all(|t| rec.tags.contains(t))
+                    && (!self.filtre_duree_actif || rec.duree <= self.filtre_duree_max)
+            })
+            .collect();
+        let filtre_actif = !self.filtres_tags.is_empty() || self.filtre_duree_actif;
+        if filtre_actif {
+            ui.label(
+                RichText::new(format!("{} recette(s) affichée(s)", indices.len()))
+                    .size(12.5)
+                    .color(TEXTE_DISCRET),
+            );
+        }
+
         let mut a_ouvrir: Option<Recette> = None;
         let mut a_modifier: Option<usize> = None;
-        let mut affichees = 0;
 
         egui::ScrollArea::vertical().show(ui, |ui| {
-            for r in 0..self.recettes.len() {
-                // La recette doit avoir tous les tags sélectionnés
-                if !self
-                    .filtres_tags
-                    .iter()
-                    .all(|t| self.recettes[r].tags.contains(t))
-                {
+            let largeur = ui.available_width();
+
+            for &r in indices.iter() {
+                // Les cartes hors de l'écran ne sont pas dessinées : on réserve juste leur place
+                // (hauteur mesurée la dernière fois qu'elles ont été affichées).
+                let hauteur_estimee = self.hauteurs_recettes.get(&r).copied().unwrap_or(120.0);
+                let zone = egui::Rect::from_min_size(
+                    ui.next_widget_position(),
+                    egui::vec2(largeur, hauteur_estimee),
+                );
+                if !ui.is_rect_visible(zone) {
+                    ui.allocate_space(egui::vec2(largeur, hauteur_estimee));
+                    ui.add_space(6.0);
                     continue;
                 }
-                affichees += 1;
 
                 let hors_saison = !self.recettes[r].is_valable();
-                let resume = ingredients_tries(&self.recettes[r].ingredients)
-                    .iter()
-                    .map(|(nom, quantite)| format!("{} ({})", nom, quantite))
-                    .collect::<Vec<String>>()
-                    .join("  ·  ");
-                let liste_etapes = etapes(&self.recettes[r].recette);
+                if !self.cache_recettes.contains_key(&r) {
+                    let resume = ingredients_tries(&self.recettes[r].ingredients)
+                        .iter()
+                        .map(|(nom, quantite)| format!("{} ({})", nom, quantite))
+                        .collect::<Vec<String>>()
+                        .join("  ·  ");
+                    let liste = etapes(&self.recettes[r].recette);
+                    self.cache_recettes.insert(r, (resume, liste));
+                }
+                let (resume, liste_etapes) = self.cache_recettes[&r].clone();
 
-                ui.push_id(r, |ui| {
-                    carte(CARD).show(ui, |ui| {
-                        ui.set_width(ui.available_width());
+                // Recette active = encadré vert
+                let bordure = if self.recettes[r].activable {
+                    Stroke::new(1.5, OK)
+                } else {
+                    Stroke::new(0.0, Color32::TRANSPARENT)
+                };
 
-                        ui.horizontal(|ui| {
-                            if ui
-                                .button("✏")
-                                .on_hover_text("Modifier la recette")
-                                .clicked()
-                            {
-                                a_modifier = Some(r);
-                            }
+                let rep = ui.push_id(r, |ui| {
+                    carte(CARD)
+                        .stroke(bordure)
+                        .show(ui, |ui| {
+                            ui.set_width(ui.available_width());
 
-                            interrupteur(ui, &mut self.recettes[r].activable);
+                            ui.horizontal(|ui| {
+                                if ui
+                                    .button("✏")
+                                    .on_hover_text("Modifier la recette")
+                                    .clicked()
+                                {
+                                    a_modifier = Some(r);
+                                }
 
-                            let couleur_nom = if self.recettes[r].activable {
-                                TEXTE
-                            } else {
-                                TEXTE_DISCRET
-                            };
-                            ui.label(
-                                RichText::new(&self.recettes[r].name)
-                                    .size(18.0)
-                                    .strong()
-                                    .color(couleur_nom),
-                            );
-                            pastille(
-                                ui,
-                                &format!("{} pers.", self.recettes[r].nbPersonne),
-                                TEXTE_DISCRET,
-                            );
-                            pastille(
-                                ui,
-                                &format!("{} min", self.recettes[r].duree),
-                                TEXTE_DISCRET,
-                            );
-                            if hors_saison {
-                                pastille(ui, "hors saison", ACCENT);
-                            }
-                            if ui.small_button("Voir la fiche").clicked() {
-                                a_ouvrir = Some(self.recettes[r].clone());
-                            }
-                        });
+                                interrupteur(ui, &mut self.recettes[r].activable);
 
-                        ui.add_space(2.0);
-                        ui.label(RichText::new(resume).size(13.0).color(TEXTE_DISCRET));
-
-                        // Tags de la recette (modifiables via le crayon)
-                        if !self.recettes[r].tags.is_empty() {
-                            ui.horizontal_wrapped(|ui| {
-                                for tag in self.recettes[r].tags.iter() {
-                                    pastille(ui, tag.nom(), ACCENT);
+                                let couleur_nom = if self.recettes[r].activable {
+                                    TEXTE
+                                } else {
+                                    TEXTE_DISCRET
+                                };
+                                ui.label(
+                                    RichText::new(&self.recettes[r].name)
+                                        .size(18.0)
+                                        .strong()
+                                        .color(couleur_nom),
+                                );
+                                pastille(
+                                    ui,
+                                    &format!("{} pers.", self.recettes[r].nbPersonne),
+                                    TEXTE_DISCRET,
+                                );
+                                pastille(
+                                    ui,
+                                    &format!("{} min", self.recettes[r].duree),
+                                    TEXTE_DISCRET,
+                                );
+                                if hors_saison {
+                                    pastille(ui, "hors saison", ACCENT);
+                                }
+                                if ui.small_button("Voir la fiche").clicked() {
+                                    a_ouvrir = Some(self.recettes[r].clone());
                                 }
                             });
-                        }
 
-                        egui::CollapsingHeader::new("Voir la préparation").show(ui, |ui| {
-                            for (n, texte) in liste_etapes.iter().enumerate() {
-                                ui.label(format!("{}. {}", n + 1, texte));
+                            ui.add_space(2.0);
+                            ui.label(RichText::new(resume).size(13.0).color(TEXTE_DISCRET));
+
+                            // Tags de la recette (modifiables via le crayon)
+                            if !self.recettes[r].tags.is_empty() {
+                                ui.horizontal_wrapped(|ui| {
+                                    for tag in self.recettes[r].tags.iter() {
+                                        pastille(ui, tag.nom(), ACCENT);
+                                    }
+                                });
                             }
-                        });
-                    });
+
+                            egui::CollapsingHeader::new("Voir la préparation").show(ui, |ui| {
+                                for (n, texte) in liste_etapes.iter().enumerate() {
+                                    ui.label(format!("{}. {}", n + 1, texte));
+                                }
+                            });
+                        })
+                        .response
+                        .rect
+                        .height()
                 });
+                self.hauteurs_recettes.insert(r, rep.inner);
                 ui.add_space(6.0);
             }
 
-            if affichees == 0 {
+            if indices.is_empty() {
                 let message = if self.recettes.is_empty() {
                     "Aucune recette pour l'instant : clique sur + pour en ajouter."
                 } else {
@@ -1607,6 +2146,7 @@ impl MonApp {
                 tags: e.tags.clone(),
             }),
         }
+        self.cache_recettes.clear();
         self.sauvegarder_recettes();
     }
 
