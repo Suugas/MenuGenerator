@@ -82,6 +82,18 @@ impl Week {
     pub fn generate_this_week(&mut self) {
         self.days = jours_depuis(getNextMonday() - Duration::days(7));
     }
+    /// La semaine est terminée dès le lendemain de son dernier jour (le dimanche compte en entier).
+    /// On compare uniquement les dates (pas l'heure) : les dates du planning gardent l'heure de
+    /// création, ce qui faisait passer à la semaine suivante le dimanche soir.
+    pub fn est_terminee(&self, maintenant: DateTime<Local>) -> bool {
+        match self.days.last() {
+            Some(dernier) => {
+                maintenant.format("%Y-%m-%d").to_string()
+                    > dernier.date.format("%Y-%m-%d").to_string()
+            }
+            None => true,
+        }
+    }
     /// Numéro de la semaine (norme ISO) d'après le premier jour
     pub fn numero(&self) -> u32 {
         self.days

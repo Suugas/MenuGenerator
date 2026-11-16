@@ -14,6 +14,7 @@ pub enum Tag {
     Poulet,
     Poisson,
     Vegetarien,
+    Halal,
     Pates,
     Riz,
     Patates,
@@ -29,13 +30,14 @@ pub enum Tag {
 }
 impl Tag {
     /// Tous les tags, dans l'ordre d'affichage (à compléter si tu ajoutes une variante)
-    pub const TOUS: [Tag; 18] = [
+    pub const TOUS: [Tag; 19] = [
         Tag::Viande,
         Tag::Boeuf,
         Tag::Porc,
         Tag::Poulet,
         Tag::Poisson,
         Tag::Vegetarien,
+        Tag::Halal,
         Tag::Pates,
         Tag::Riz,
         Tag::Patates,
@@ -59,6 +61,7 @@ impl Tag {
             Tag::Poulet => "Poulet",
             Tag::Poisson => "Poisson",
             Tag::Vegetarien => "Végétarien",
+            Tag::Halal => "Halal",
             Tag::Pates => "Pâtes",
             Tag::Riz => "Riz",
             Tag::Patates => "Patates",

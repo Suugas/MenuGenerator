@@ -125,6 +125,46 @@ pub fn generateMenu(week: &mut Week, recettes: &Vec<Recette>, config: &Config, d
         *week = m;
     }
 }
+/// Retire les semaines terminées puis complète le planning (semaine en cours + semaine suivante).
+/// Utilisée au lancement ET pendant que l'appli tourne (changement de semaine).
+/// Retourne (nombre de semaines retirées, semaines nouvellement générées).
+pub fn mettre_a_jour_semaines(
+    semaines: &mut Vec<Week>,
+    recettes: &Vec<Recette>,
+    config: &Config,
+    duree_max: i32,
+) -> (usize, Vec<Week>) {
+    let maintenant = Local::now();
+
+    let mut retirees = 0;
+    while semaines.first().map_or(false, |s| s.est_terminee(maintenant)) {
+        semaines.remove(0);
+        retirees += 1;
+    }
+
+    let mut nouvelles: Vec<Week> = Vec::new();
+    while semaines.len() <= 1 {
+        if semaines.is_empty() {
+            println!("on genere la semaine actuel vide");
+            let mut courante = Week {
+                days: vec![],
+                tMax: duree_max,
+            };
+            courante.generate_this_week();
+            semaines.push(courante);
+        }
+        let mut suivante = Week {
+            days: vec![],
+            tMax: duree_max,
+        };
+        suivante.generate_from_weeks(semaines);
+        generateMenu(&mut suivante, recettes, config, duree_max);
+        semaines.push(suivante.clone());
+        nouvelles.push(suivante);
+    }
+
+    (retirees, nouvelles)
+}
 pub fn showWeek(week: &Week) {
     println!("{}", week.display());
 }

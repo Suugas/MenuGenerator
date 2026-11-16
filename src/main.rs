@@ -7,7 +7,8 @@ mod menu;
 mod schedule;
 
 use crate::fonctions::{
-    Config, charger_recettes, creer_liste_courses, generateMenu, loadConfig, loadWeeks, saveWeeks,
+    Config, charger_recettes, creer_liste_courses, loadConfig, loadWeeks, mettre_a_jour_semaines,
+    saveWeeks,
 };
 use eframe::egui;
 use interface::{MonApp, Page, appliquer_theme, cadre_barre, cadre_central};
@@ -19,6 +20,9 @@ impl eframe::App for MonApp {
     fn update(&mut self, ctx: &egui::Context, _frame: &mut eframe::Frame) {
         // Récupère le résultat d'un éventuel envoi manuel des ingrédients
         self.verifier_envoi(ctx);
+
+        // Détecte le changement de semaine quand l'appli reste ouverte (génère la suivante)
+        self.verifier_changement_semaine(ctx);
 
         let now = Local::now();
 
@@ -66,37 +70,33 @@ impl eframe::App for MonApp {
     }
 }
 
+fn charger_icone() -> Option<egui::IconData> {
+    let image = image::load_from_memory(include_bytes!("../assets/icon.png"))
+        .ok()?
+        .into_rgba8();
+    let (largeur, hauteur) = image.dimensions();
+    Some(egui::IconData {
+        rgba: image.into_raw(),
+        width: largeur,
+        height: hauteur,
+    })
+}
+
 fn main() -> eframe::Result<()> {
     let mut config: Config = loadConfig("config.json");
     let recetteList: Vec<Recette> = charger_recettes("recettes.json");
     let today = Local::now();
-    let tMax: i32 = 200;
+    let tMax: i32 = config.duree_max;
 
     let mut semaines: Vec<Week> = loadWeeks("schedule.json");
 
-    while !semaines.is_empty() && today > semaines[0].days[6].date {
-        print!("Suppression d'une semaine périmée...");
-        semaines.remove(0);
-        saveWeeks("schedule.json", &semaines);
-    }
+    // Retire les semaines terminées et complète le planning (semaine en cours + suivante).
+    // La même vérification est refaite pendant que l'appli tourne
+    // (voir MonApp::verifier_changement_semaine).
+    let (retirees, nouvelles) = mettre_a_jour_semaines(&mut semaines, &recetteList, &config, tMax);
 
-    while semaines.len() <= 1 {
-        if semaines.len() == 0 {
-            println!("on genere la semaine actuel vide");
-            let mut n_semaine_len_0: Week = Week {
-                days: vec![],
-                tMax: tMax,
-            };
-            n_semaine_len_0.generate_this_week();
-            semaines.push(n_semaine_len_0);
-        }
-        let mut n_semaine: Week = Week {
-            days: vec![],
-            tMax: tMax,
-        };
-        n_semaine.generate_from_weeks(&semaines);
-        generateMenu(&mut n_semaine, &recetteList, &config, tMax);
-        semaines.push(n_semaine.clone());
+    let code_avant = config.c_liste.clone();
+    for nouvelle in &nouvelles {
         // ENVOYE LES INGREDIENTS DANS LA LISTE DE COURSES (seulement si l'envoi auto est activé)
         //      Si le code de la room n'existe pas, on en demande un au serveur
         if config.auto_send_sl {
@@ -106,12 +106,17 @@ fn main() -> eframe::Result<()> {
                     Err(e) => eprintln!("[ROOM ERREUR] {}", e),
                 }
             }
-            match config.send_ingredients_to_room(&creer_liste_courses(&n_semaine)) {
+            match config.send_ingredients_to_room(&creer_liste_courses(nouvelle)) {
                 Ok(()) => println!("[WEBSOCKET] Ingrédients envoyés au salon !"),
                 Err(e) => eprintln!("[WEBSOCKET ERREUR] {}", e),
             }
         }
-
+    }
+    // Un nouveau code de salon vient peut-être d'être généré : on le garde
+    if config.c_liste != code_avant {
+        config.save("config.json");
+    }
+    if retirees > 0 || !nouvelles.is_empty() {
         saveWeeks("schedule.json", &semaines);
     }
     let date_str = today.format("%Y-%m-%d").to_string();
@@ -140,11 +145,17 @@ fn main() -> eframe::Result<()> {
         options_repas: None,
         apercu: None,
         message_apercu: None,
+        recherche: String::new(),
+        suppression_en_attente: None,
     };
+    let mut viewport = egui::ViewportBuilder::default()
+        .with_inner_size([1100.0, 720.0])
+        .with_min_inner_size([760.0, 480.0]);
+    if let Some(icone) = charger_icone() {
+        viewport = viewport.with_icon(icone);
+    }
     let options = eframe::NativeOptions {
-        viewport: egui::ViewportBuilder::default()
-            .with_inner_size([1100.0, 720.0])
-            .with_min_inner_size([760.0, 480.0]),
+        viewport,
         ..Default::default()
     };
     eframe::run_native(

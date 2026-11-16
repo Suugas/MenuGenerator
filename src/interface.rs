@@ -5,8 +5,8 @@ use std::collections::{HashMap, HashSet};
 use std::sync::mpsc::{self, Receiver, TryRecvError};
 
 use crate::fonctions::{
-    Config, Partie, add_value, creer_liste_courses, generateMenu, getSumDuration, regenerer_repas,
-    sauvegarder_recettes, saveWeeks,
+    Config, Partie, add_value, creer_liste_courses, generateMenu, getSumDuration,
+    mettre_a_jour_semaines, regenerer_repas, sauvegarder_recettes, saveWeeks,
 };
 use crate::menu::{Ingredient, ListIngredient, Recette, Saison, Tag};
 use crate::schedule::{Day, Week};
@@ -401,6 +401,77 @@ fn personnes(n: i32) -> String {
     }
 }
 
+/// Minuscules, sans accents : "Pâtes" et "pates" se retrouvent
+fn normaliser(texte: &str) -> String {
+    texte
+        .to_lowercase()
+        .replace('œ', "oe")
+        .replace('æ', "ae")
+        .chars()
+        .map(|c| match c {
+            'à' | 'â' | 'ä' => 'a',
+            'é' | 'è' | 'ê' | 'ë' => 'e',
+            'î' | 'ï' => 'i',
+            'ô' | 'ö' => 'o',
+            'ù' | 'û' | 'ü' => 'u',
+            'ç' => 'c',
+            _ => c,
+        })
+        .collect()
+}
+
+/// La recette correspond-elle à la recherche ? Chaque mot doit se trouver dans le nom,
+/// un ingrédient ou un tag (sans tenir compte des majuscules ni des accents).
+fn correspond_recherche(rec: &Recette, mots: &[String]) -> bool {
+    if mots.is_empty() {
+        return true;
+    }
+    let mut texte = normaliser(&rec.name);
+    for nom in rec.ingredients.ingredients.keys() {
+        texte.push(' ');
+        texte.push_str(&normaliser(nom));
+    }
+    for tag in rec.tags.iter() {
+        texte.push(' ');
+        texte.push_str(&normaliser(tag.nom()));
+    }
+    mots.iter().all(|mot| texte.contains(mot.as_str()))
+}
+
+/// Bouton avec une icône de poubelle dessinée à la main (aucune police d'icônes nécessaire)
+fn bouton_poubelle(ui: &mut egui::Ui) -> egui::Response {
+    let (rect, reponse) = ui.allocate_exact_size(egui::vec2(28.0, 26.0), egui::Sense::click());
+    if ui.is_rect_visible(rect) {
+        let visuels = ui.style().interact(&reponse);
+        ui.painter().rect(
+            rect,
+            visuels.rounding,
+            visuels.weak_bg_fill,
+            visuels.bg_stroke,
+        );
+
+        let couleur = if reponse.hovered() { KO } else { TEXTE_DISCRET };
+        let trait_ = Stroke::new(1.6, couleur);
+        let c = rect.center();
+        let pt = |dx: f32, dy: f32| egui::pos2(c.x + dx, c.y + dy);
+        let p = ui.painter();
+
+        // couvercle et poignée
+        p.line_segment([pt(-7.0, -5.0), pt(7.0, -5.0)], trait_);
+        p.line_segment([pt(-2.5, -5.0), pt(-2.5, -8.0)], trait_);
+        p.line_segment([pt(-2.5, -8.0), pt(2.5, -8.0)], trait_);
+        p.line_segment([pt(2.5, -8.0), pt(2.5, -5.0)], trait_);
+        // corps de la poubelle
+        p.line_segment([pt(-5.5, -3.0), pt(-4.5, 8.0)], trait_);
+        p.line_segment([pt(-4.5, 8.0), pt(4.5, 8.0)], trait_);
+        p.line_segment([pt(4.5, 8.0), pt(5.5, -3.0)], trait_);
+        // traits intérieurs
+        p.line_segment([pt(-1.5, -1.0), pt(-1.5, 5.5)], trait_);
+        p.line_segment([pt(1.5, -1.0), pt(1.5, 5.5)], trait_);
+    }
+    reponse.on_hover_text("Supprimer la recette")
+}
+
 /// Enlève un éventuel numéro de début d'étape ("2. Faire cuire" -> "Faire cuire")
 fn retirer_numero(texte: &str) -> &str {
     let sans_chiffres = texte.trim_start_matches(|c: char| c.is_ascii_digit());
@@ -629,6 +700,10 @@ pub struct MonApp {
     /// Semaine générée en attente d'acceptation (affichée dans la barre du bas des Réglages)
     pub apercu: Option<Week>,
     pub message_apercu: Option<String>,
+    /// Texte de la barre de recherche de la page Recettes
+    pub recherche: String,
+    /// Recette (index) dont la suppression attend une confirmation
+    pub suppression_en_attente: Option<usize>,
 }
 
 impl MonApp {
@@ -655,7 +730,12 @@ impl MonApp {
 
     /// Mini fenêtre d'options d'un repas : entrée, dessert et tag imposé
     fn fenetre_options(&mut self, ctx: &egui::Context, semaine: &Week) {
+        // Identifiant de l'animation d'ouverture
+        let id_anim = egui::Id::new("anim_fenetre_options");
+
         let Some((r, d)) = self.options_repas else {
+            // Fenêtre fermée : on remet l'animation à zéro pour la prochaine ouverture
+            ctx.animate_bool_with_time(id_anim, false, 0.0);
             return;
         };
         let nb_jours = semaine.days.len().max(1);
@@ -675,8 +755,32 @@ impl MonApp {
         let mut ouverte = true;
         let mut fermer = false;
 
+        // Animation : la fenêtre descend du haut de l'écran jusqu'au centre (0 -> 1 en 0,3 s)
+        let progression = ctx.animate_bool_with_time(id_anim, true, 0.3);
+        let facile = 1.0 - (1.0 - progression).powi(3); // ralentit en fin de course
+        let decalage = -(1.0 - facile) * (ctx.screen_rect().height() * 0.5 + 180.0);
+
+        // Fond assombri sur tout l'écran (s'estompe en même temps) ; un clic dessus ferme la fenêtre
+        let mut clic_fond = false;
+        egui::Area::new(egui::Id::new("fond_fenetre_options"))
+            .order(egui::Order::Middle)
+            .fixed_pos(egui::Pos2::ZERO)
+            .show(ctx, |ui| {
+                let ecran = ctx.screen_rect();
+                ui.painter().rect_filled(
+                    ecran,
+                    0.0,
+                    Color32::from_black_alpha((progression * 160.0) as u8),
+                );
+                if ui.allocate_rect(ecran, egui::Sense::click()).clicked() {
+                    clic_fond = true;
+                }
+            });
+
+        // (le fond est créé avant la fenêtre, donc la fenêtre est dessinée par-dessus)
         egui::Window::new(titre)
             .id(egui::Id::new("fenetre_options_repas"))
+            .anchor(egui::Align2::CENTER_CENTER, [0.0, decalage])
             .open(&mut ouverte)
             .collapsible(false)
             .resizable(false)
@@ -716,7 +820,15 @@ impl MonApp {
                 }
             });
 
-        if !ouverte || fermer {
+        // Le fond sombre peut avoir été remonté au premier plan par le clic qui a fermé la fenêtre
+        // précédente (egui garde l'ordre des calques d'une ouverture à l'autre) : on remet la
+        // fenêtre explicitement au-dessus, sinon elle apparaît cachée sous le fond et inutilisable.
+        ctx.move_to_top(egui::LayerId::new(
+            egui::Order::Middle,
+            egui::Id::new("fenetre_options_repas"),
+        ));
+
+        if !ouverte || fermer || clic_fond {
             self.options_repas = None;
         }
     }
@@ -919,6 +1031,104 @@ impl MonApp {
             generateMenu(&mut w, &self.recettes, &self.config, self.duree_max());
         }
         self.apercu = Some(w);
+    }
+
+    /// Détecte le changement de semaine quand l'appli reste ouverte : retire la semaine terminée,
+    /// génère la suivante (et l'envoie dans la liste de courses si l'envoi auto est activé).
+    /// Appelée à chaque frame : tant que la semaine n'est pas finie, le test ne coûte presque rien.
+    pub fn verifier_changement_semaine(&mut self, ctx: &egui::Context) {
+        // Réveil régulier même si l'utilisateur ne touche à rien (sinon egui ne redessine pas
+        // et on ne verrait ni minuit ni la fin de la semaine)
+        ctx.request_repaint_after(std::time::Duration::from_secs(60));
+
+        let maintenant = Local::now();
+        if !self
+            .semaines
+            .first()
+            .map_or(false, |s| s.est_terminee(maintenant))
+        {
+            return;
+        }
+
+        let duree_max = self.config.duree_max;
+        let (retirees, nouvelles) =
+            mettre_a_jour_semaines(&mut self.semaines, &self.recettes, &self.config, duree_max);
+        saveWeeks("schedule.json", &self.semaines);
+        println!(
+            "[SEMAINE] {} semaine(s) terminée(s) retirée(s), {} nouvelle(s) générée(s)",
+            retirees,
+            nouvelles.len()
+        );
+
+        // On suit la semaine que l'utilisateur regardait (elle a avancé d'un cran)
+        self.id_week = self
+            .id_week
+            .saturating_sub(retirees)
+            .min(self.semaines.len().saturating_sub(1));
+
+        // L'aperçu et la fenêtre d'options concernaient l'ancienne « semaine prochaine »
+        self.apercu = None;
+        self.message_apercu = None;
+        self.options_repas = None;
+
+        if self.config.auto_send_sl && self.envoi_en_cours.is_none() {
+            if let Some(derniere) = nouvelles.last() {
+                self.envoyer_ingredients(derniere);
+            }
+        }
+    }
+
+    /// Fenêtre de confirmation avant de supprimer une recette
+    fn fenetre_suppression(&mut self, ctx: &egui::Context) {
+        let Some(i) = self.suppression_en_attente else {
+            return;
+        };
+        if i >= self.recettes.len() {
+            self.suppression_en_attente = None;
+            return;
+        }
+        let nom = self.recettes[i].name.clone();
+        let mut confirmer = false;
+        let mut annuler = false;
+
+        egui::Window::new("Supprimer la recette")
+            .id(egui::Id::new("fenetre_suppression_recette"))
+            .collapsible(false)
+            .resizable(false)
+            .anchor(egui::Align2::CENTER_CENTER, [0.0, 0.0])
+            .show(ctx, |ui| {
+                ui.set_min_width(260.0);
+                ui.label(format!("Supprimer définitivement « {} » ?", nom));
+                ui.label(
+                    RichText::new("Les menus déjà générés ne sont pas modifiés.")
+                        .size(12.5)
+                        .color(TEXTE_DISCRET),
+                );
+                ui.add_space(8.0);
+                ui.horizontal(|ui| {
+                    let bouton = egui::Button::new(
+                        RichText::new("Supprimer").strong().color(Color32::WHITE),
+                    )
+                    .fill(KO);
+                    if ui.add(bouton).clicked() {
+                        confirmer = true;
+                    }
+                    if ui.button("Annuler").clicked() {
+                        annuler = true;
+                    }
+                });
+            });
+
+        if confirmer {
+            self.recettes.remove(i);
+            // les index des recettes ont changé : on vide ce qui en dépend
+            self.cache_recettes.clear();
+            self.hauteurs_recettes.clear();
+            self.sauvegarder_recettes();
+        }
+        if confirmer || annuler {
+            self.suppression_en_attente = None;
+        }
     }
 
     /// Semaine sélectionnée (ou une semaine vide si aucune n'existe)
@@ -1689,6 +1899,10 @@ impl MonApp {
     pub fn afficher_recettes(&mut self, ui: &mut egui::Ui) {
         let mut ajouter = false;
 
+        // Confirmation de suppression (fenêtre flottante)
+        let ctx = ui.ctx().clone();
+        self.fenetre_suppression(&ctx);
+
         ui.add_space(4.0);
         ui.horizontal(|ui| {
             ui.label(RichText::new("Mes recettes").size(26.0).strong());
@@ -1717,6 +1931,24 @@ impl MonApp {
             .color(TEXTE_DISCRET),
         );
         ui.add_space(6.0);
+
+        // ---- Recherche : nom, ingrédient ou tag ----
+        ui.horizontal(|ui| {
+            ui.add(
+                egui::TextEdit::singleline(&mut self.recherche)
+                    .hint_text("Rechercher une recette, un ingrédient, un tag...")
+                    .desired_width(320.0),
+            );
+            if !self.recherche.is_empty()
+                && ui
+                    .small_button("x")
+                    .on_hover_text("Effacer la recherche")
+                    .clicked()
+            {
+                self.recherche.clear();
+            }
+        });
+        ui.add_space(4.0);
 
         // ---- Filtres : tags + durée de préparation ----
         ui.horizontal_wrapped(|ui| {
@@ -1760,33 +1992,75 @@ impl MonApp {
                 self.filtres_tags.remove(&tag);
             }
 
-            let nb_filtres = self.filtres_tags.len() + self.filtre_duree_actif as usize;
+            let nb_filtres = self.filtres_tags.len()
+                + self.filtre_duree_actif as usize
+                + !self.recherche.trim().is_empty() as usize;
             if nb_filtres > 1 && ui.small_button("Tout effacer").clicked() {
                 self.filtres_tags.clear();
                 self.filtre_duree_actif = false;
+                self.recherche.clear();
             }
         });
         ui.add_space(8.0);
 
-        // Recettes qui passent les filtres (tous les tags + durée)
+        // Recettes qui passent les filtres (tous les tags + durée + recherche)
+        let mots: Vec<String> = normaliser(&self.recherche)
+            .split_whitespace()
+            .map(|m| m.to_string())
+            .collect();
         let indices: Vec<usize> = (0..self.recettes.len())
             .filter(|&r| {
                 let rec = &self.recettes[r];
                 self.filtres_tags.iter().all(|t| rec.tags.contains(t))
                     && (!self.filtre_duree_actif || rec.duree <= self.filtre_duree_max)
+                    && correspond_recherche(rec, &mots)
             })
             .collect();
-        let filtre_actif = !self.filtres_tags.is_empty() || self.filtre_duree_actif;
-        if filtre_actif {
-            ui.label(
-                RichText::new(format!("{} recette(s) affichée(s)", indices.len()))
+        let filtre_actif =
+            !self.filtres_tags.is_empty() || self.filtre_duree_actif || !mots.is_empty();
+
+        // "Tout cocher / décocher" : agit uniquement sur les recettes affichées
+        // (donc sur le résultat des filtres, de la durée et de la recherche en cours)
+        let toutes_cochees =
+            !indices.is_empty() && indices.iter().all(|&r| self.recettes[r].activable);
+        ui.horizontal(|ui| {
+            let texte = if toutes_cochees {
+                "Tout décocher"
+            } else {
+                "Tout cocher"
+            };
+            let aide = if filtre_actif {
+                "Agit uniquement sur les recettes affichées (filtres et recherche en cours)"
+            } else {
+                "Agit sur toutes les recettes"
+            };
+            let bouton = egui::Button::new(format!("{} ({})", texte, indices.len()));
+            if ui
+                .add_enabled(!indices.is_empty(), bouton)
+                .on_hover_text(aide)
+                .clicked()
+            {
+                for &r in indices.iter() {
+                    self.recettes[r].activable = !toutes_cochees;
+                }
+            }
+            if filtre_actif {
+                ui.label(
+                    RichText::new(format!(
+                        "{} recette(s) affichée(s) sur {}",
+                        indices.len(),
+                        self.recettes.len()
+                    ))
                     .size(12.5)
                     .color(TEXTE_DISCRET),
-            );
-        }
+                );
+            }
+        });
+        ui.add_space(4.0);
 
         let mut a_ouvrir: Option<Recette> = None;
         let mut a_modifier: Option<usize> = None;
+        let mut a_supprimer: Option<usize> = None;
 
         egui::ScrollArea::vertical().show(ui, |ui| {
             let largeur = ui.available_width();
@@ -1837,6 +2111,10 @@ impl MonApp {
                                     .clicked()
                                 {
                                     a_modifier = Some(r);
+                                }
+
+                                if bouton_poubelle(ui).clicked() {
+                                    a_supprimer = Some(r);
                                 }
 
                                 interrupteur(ui, &mut self.recettes[r].activable);
@@ -1900,7 +2178,7 @@ impl MonApp {
                 let message = if self.recettes.is_empty() {
                     "Aucune recette pour l'instant : clique sur + pour en ajouter."
                 } else {
-                    "Aucune recette ne correspond aux filtres."
+                    "Aucune recette ne correspond à la recherche ou aux filtres."
                 };
                 ui.label(RichText::new(message).color(TEXTE_DISCRET));
             }
@@ -1914,6 +2192,8 @@ impl MonApp {
             self.edition = Some(EtatEdition::depuis(i, &self.recettes[i]));
             self.page_precedente = Page::Recettes;
             self.page = Page::Edition;
+        } else if let Some(i) = a_supprimer {
+            self.suppression_en_attente = Some(i);
         } else if ajouter {
             self.edition = Some(EtatEdition::nouvelle());
             self.page_precedente = Page::Recettes;

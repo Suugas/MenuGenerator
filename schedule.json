@@ -12,20 +12,6 @@
               "duree": 10,
               "ingredients": {
                 "ingredients": {
-                  "Œufs": {
-                    "ingredient": {
-                      "nom": "Œufs",
-                      "disponibilité": []
-                    },
-                    "quantite": 3
-                  },
-                  "Persil": {
-                    "ingredient": {
-                      "nom": "Persil",
-                      "disponibilité": []
-                    },
-                    "quantite": 1
-                  },
                   "Beurre (g)": {
                     "ingredient": {
                       "nom": "Beurre (g)",
@@ -33,735 +19,6 @@
                     },
                     "quantite": 15
                   },
-                  "Champignons de paris (g)": {
-                    "ingredient": {
-                      "nom": "Champignons de paris (g)",
-                      "disponibilité": []
-                    },
-                    "quantite": 100
-                  }
-                }
-              },
-              "recette": "1. Couper et faire poêler les champignons dans le beurre.\n2. Battre les œufs en omelette avec du sel et du poivre.\n3. Verser les œufs battus sur les champignons et cuire 3 à 4 minutes.",
-              "activable": false
-            }
-          },
-          {
-            "name": "dej",
-            "nbPersonne": 2,
-            "recette": {
-              "name": "Pâtes Carbonara",
-              "nbPersonne": 2,
-              "duree": 15,
-              "ingredients": {
-                "ingredients": {
-                  "Pâtes (g)": {
-                    "ingredient": {
-                      "nom": "Pâtes (g)",
-                      "disponibilité": []
-                    },
-                    "quantite": 200
-                  },
-                  "Jaunes d'œuf": {
-                    "ingredient": {
-                      "nom": "Jaunes d'œuf",
-                      "disponibilité": []
-                    },
-                    "quantite": 3
-                  },
-                  "Guanciale (g)": {
-                    "ingredient": {
-                      "nom": "Guanciale (g)",
-                      "disponibilité": []
-                    },
-                    "quantite": 100
-                  },
-                  "Pecorino (g)": {
-                    "ingredient": {
-                      "nom": "Pecorino (g)",
-                      "disponibilité": []
-                    },
-                    "quantite": 50
-                  }
-                }
-              },
-              "recette": "1. Cuire les pâtes.\n2. Faire dorér le guanciale à la poêle.\n3. Mélanger les jaunes d'œuf avec le pecorino râpé.\n4. Hors du feu, mélanger les pâtes avec la crème d'œuf et le guanciale.",
-              "activable": false
-            }
-          },
-          {
-            "name": "gouter",
-            "nbPersonne": 0,
-            "recette": null
-          },
-          {
-            "name": "diner",
-            "nbPersonne": 3,
-            "recette": {
-              "name": "Omelette aux Champignons",
-              "nbPersonne": 3,
-              "duree": 10,
-              "ingredients": {
-                "ingredients": {
-                  "Beurre (g)": {
-                    "ingredient": {
-                      "nom": "Beurre (g)",
-                      "disponibilité": []
-                    },
-                    "quantite": 45
-                  },
-                  "Champignons de paris (g)": {
-                    "ingredient": {
-                      "nom": "Champignons de paris (g)",
-                      "disponibilité": []
-                    },
-                    "quantite": 300
-                  },
-                  "Persil": {
-                    "ingredient": {
-                      "nom": "Persil",
-                      "disponibilité": []
-                    },
-                    "quantite": 3
-                  },
-                  "Œufs": {
-                    "ingredient": {
-                      "nom": "Œufs",
-                      "disponibilité": []
-                    },
-                    "quantite": 9
-                  }
-                }
-              },
-              "recette": "1. Couper et faire poêler les champignons dans le beurre.\n2. Battre les œufs en omelette avec du sel et du poivre.\n3. Verser les œufs battus sur les champignons et cuire 3 à 4 minutes.",
-              "activable": false
-            }
-          }
-        ],
-        "date": "2026-11-09T20:17:35.620739300+01:00"
-      },
-      {
-        "menu": [
-          {
-            "name": "petit-dej",
-            "nbPersonne": 0,
-            "recette": null
-          },
-          {
-            "name": "dej",
-            "nbPersonne": 2,
-            "recette": {
-              "name": "Pâtes Carbonara",
-              "nbPersonne": 2,
-              "duree": 15,
-              "ingredients": {
-                "ingredients": {
-                  "Jaunes d'œuf": {
-                    "ingredient": {
-                      "nom": "Jaunes d'œuf",
-                      "disponibilité": []
-                    },
-                    "quantite": 3
-                  },
-                  "Pecorino (g)": {
-                    "ingredient": {
-                      "nom": "Pecorino (g)",
-                      "disponibilité": []
-                    },
-                    "quantite": 50
-                  },
-                  "Guanciale (g)": {
-                    "ingredient": {
-                      "nom": "Guanciale (g)",
-                      "disponibilité": []
-                    },
-                    "quantite": 100
-                  },
-                  "Pâtes (g)": {
-                    "ingredient": {
-                      "nom": "Pâtes (g)",
-                      "disponibilité": []
-                    },
-                    "quantite": 200
-                  }
-                }
-              },
-              "recette": "1. Cuire les pâtes.\n2. Faire dorér le guanciale à la poêle.\n3. Mélanger les jaunes d'œuf avec le pecorino râpé.\n4. Hors du feu, mélanger les pâtes avec la crème d'œuf et le guanciale.",
-              "activable": false
-            }
-          },
-          {
-            "name": "gouter",
-            "nbPersonne": 0,
-            "recette": null
-          },
-          {
-            "name": "diner",
-            "nbPersonne": 3,
-            "recette": {
-              "name": "Omelette aux Champignons",
-              "nbPersonne": 3,
-              "duree": 10,
-              "ingredients": {
-                "ingredients": {
-                  "Champignons de paris (g)": {
-                    "ingredient": {
-                      "nom": "Champignons de paris (g)",
-                      "disponibilité": []
-                    },
-                    "quantite": 300
-                  },
-                  "Œufs": {
-                    "ingredient": {
-                      "nom": "Œufs",
-                      "disponibilité": []
-                    },
-                    "quantite": 9
-                  },
-                  "Persil": {
-                    "ingredient": {
-                      "nom": "Persil",
-                      "disponibilité": []
-                    },
-                    "quantite": 3
-                  },
-                  "Beurre (g)": {
-                    "ingredient": {
-                      "nom": "Beurre (g)",
-                      "disponibilité": []
-                    },
-                    "quantite": 45
-                  }
-                }
-              },
-              "recette": "1. Couper et faire poêler les champignons dans le beurre.\n2. Battre les œufs en omelette avec du sel et du poivre.\n3. Verser les œufs battus sur les champignons et cuire 3 à 4 minutes.",
-              "activable": false
-            }
-          }
-        ],
-        "date": "2026-11-10T20:17:35.620739300+01:00"
-      },
-      {
-        "menu": [
-          {
-            "name": "petit-dej",
-            "nbPersonne": 0,
-            "recette": null
-          },
-          {
-            "name": "dej",
-            "nbPersonne": 2,
-            "recette": {
-              "name": "Pâtes Carbonara",
-              "nbPersonne": 2,
-              "duree": 15,
-              "ingredients": {
-                "ingredients": {
-                  "Pâtes (g)": {
-                    "ingredient": {
-                      "nom": "Pâtes (g)",
-                      "disponibilité": []
-                    },
-                    "quantite": 200
-                  },
-                  "Jaunes d'œuf": {
-                    "ingredient": {
-                      "nom": "Jaunes d'œuf",
-                      "disponibilité": []
-                    },
-                    "quantite": 3
-                  },
-                  "Pecorino (g)": {
-                    "ingredient": {
-                      "nom": "Pecorino (g)",
-                      "disponibilité": []
-                    },
-                    "quantite": 50
-                  },
-                  "Guanciale (g)": {
-                    "ingredient": {
-                      "nom": "Guanciale (g)",
-                      "disponibilité": []
-                    },
-                    "quantite": 100
-                  }
-                }
-              },
-              "recette": "1. Cuire les pâtes.\n2. Faire dorér le guanciale à la poêle.\n3. Mélanger les jaunes d'œuf avec le pecorino râpé.\n4. Hors du feu, mélanger les pâtes avec la crème d'œuf et le guanciale.",
-              "activable": false
-            }
-          },
-          {
-            "name": "gouter",
-            "nbPersonne": 0,
-            "recette": null
-          },
-          {
-            "name": "diner",
-            "nbPersonne": 3,
-            "recette": {
-              "name": "Omelette aux Champignons",
-              "nbPersonne": 3,
-              "duree": 10,
-              "ingredients": {
-                "ingredients": {
-                  "Œufs": {
-                    "ingredient": {
-                      "nom": "Œufs",
-                      "disponibilité": []
-                    },
-                    "quantite": 9
-                  },
-                  "Beurre (g)": {
-                    "ingredient": {
-                      "nom": "Beurre (g)",
-                      "disponibilité": []
-                    },
-                    "quantite": 45
-                  },
-                  "Champignons de paris (g)": {
-                    "ingredient": {
-                      "nom": "Champignons de paris (g)",
-                      "disponibilité": []
-                    },
-                    "quantite": 300
-                  },
-                  "Persil": {
-                    "ingredient": {
-                      "nom": "Persil",
-                      "disponibilité": []
-                    },
-                    "quantite": 3
-                  }
-                }
-              },
-              "recette": "1. Couper et faire poêler les champignons dans le beurre.\n2. Battre les œufs en omelette avec du sel et du poivre.\n3. Verser les œufs battus sur les champignons et cuire 3 à 4 minutes.",
-              "activable": false
-            }
-          }
-        ],
-        "date": "2026-11-11T20:17:35.620739300+01:00"
-      },
-      {
-        "menu": [
-          {
-            "name": "petit-dej",
-            "nbPersonne": 0,
-            "recette": null
-          },
-          {
-            "name": "dej",
-            "nbPersonne": 2,
-            "recette": {
-              "name": "Pâtes Carbonara",
-              "nbPersonne": 2,
-              "duree": 15,
-              "ingredients": {
-                "ingredients": {
-                  "Pecorino (g)": {
-                    "ingredient": {
-                      "nom": "Pecorino (g)",
-                      "disponibilité": []
-                    },
-                    "quantite": 50
-                  },
-                  "Guanciale (g)": {
-                    "ingredient": {
-                      "nom": "Guanciale (g)",
-                      "disponibilité": []
-                    },
-                    "quantite": 100
-                  },
-                  "Jaunes d'œuf": {
-                    "ingredient": {
-                      "nom": "Jaunes d'œuf",
-                      "disponibilité": []
-                    },
-                    "quantite": 3
-                  },
-                  "Pâtes (g)": {
-                    "ingredient": {
-                      "nom": "Pâtes (g)",
-                      "disponibilité": []
-                    },
-                    "quantite": 200
-                  }
-                }
-              },
-              "recette": "1. Cuire les pâtes.\n2. Faire dorér le guanciale à la poêle.\n3. Mélanger les jaunes d'œuf avec le pecorino râpé.\n4. Hors du feu, mélanger les pâtes avec la crème d'œuf et le guanciale.",
-              "activable": false
-            }
-          },
-          {
-            "name": "gouter",
-            "nbPersonne": 0,
-            "recette": null
-          },
-          {
-            "name": "diner",
-            "nbPersonne": 3,
-            "recette": {
-              "name": "Omelette aux Champignons",
-              "nbPersonne": 3,
-              "duree": 10,
-              "ingredients": {
-                "ingredients": {
-                  "Beurre (g)": {
-                    "ingredient": {
-                      "nom": "Beurre (g)",
-                      "disponibilité": []
-                    },
-                    "quantite": 45
-                  },
-                  "Champignons de paris (g)": {
-                    "ingredient": {
-                      "nom": "Champignons de paris (g)",
-                      "disponibilité": []
-                    },
-                    "quantite": 300
-                  },
-                  "Œufs": {
-                    "ingredient": {
-                      "nom": "Œufs",
-                      "disponibilité": []
-                    },
-                    "quantite": 9
-                  },
-                  "Persil": {
-                    "ingredient": {
-                      "nom": "Persil",
-                      "disponibilité": []
-                    },
-                    "quantite": 3
-                  }
-                }
-              },
-              "recette": "1. Couper et faire poêler les champignons dans le beurre.\n2. Battre les œufs en omelette avec du sel et du poivre.\n3. Verser les œufs battus sur les champignons et cuire 3 à 4 minutes.",
-              "activable": false
-            }
-          }
-        ],
-        "date": "2026-11-12T20:17:35.620739300+01:00"
-      },
-      {
-        "menu": [
-          {
-            "name": "petit-dej",
-            "nbPersonne": 0,
-            "recette": null
-          },
-          {
-            "name": "dej",
-            "nbPersonne": 2,
-            "recette": {
-              "name": "Omelette aux Champignons",
-              "nbPersonne": 2,
-              "duree": 10,
-              "ingredients": {
-                "ingredients": {
-                  "Champignons de paris (g)": {
-                    "ingredient": {
-                      "nom": "Champignons de paris (g)",
-                      "disponibilité": []
-                    },
-                    "quantite": 200
-                  },
-                  "Persil": {
-                    "ingredient": {
-                      "nom": "Persil",
-                      "disponibilité": []
-                    },
-                    "quantite": 2
-                  },
-                  "Beurre (g)": {
-                    "ingredient": {
-                      "nom": "Beurre (g)",
-                      "disponibilité": []
-                    },
-                    "quantite": 30
-                  },
-                  "Œufs": {
-                    "ingredient": {
-                      "nom": "Œufs",
-                      "disponibilité": []
-                    },
-                    "quantite": 6
-                  }
-                }
-              },
-              "recette": "1. Couper et faire poêler les champignons dans le beurre.\n2. Battre les œufs en omelette avec du sel et du poivre.\n3. Verser les œufs battus sur les champignons et cuire 3 à 4 minutes.",
-              "activable": false
-            }
-          },
-          {
-            "name": "gouter",
-            "nbPersonne": 0,
-            "recette": null
-          },
-          {
-            "name": "diner",
-            "nbPersonne": 3,
-            "recette": {
-              "name": "Omelette aux Champignons",
-              "nbPersonne": 3,
-              "duree": 10,
-              "ingredients": {
-                "ingredients": {
-                  "Persil": {
-                    "ingredient": {
-                      "nom": "Persil",
-                      "disponibilité": []
-                    },
-                    "quantite": 3
-                  },
-                  "Champignons de paris (g)": {
-                    "ingredient": {
-                      "nom": "Champignons de paris (g)",
-                      "disponibilité": []
-                    },
-                    "quantite": 300
-                  },
-                  "Œufs": {
-                    "ingredient": {
-                      "nom": "Œufs",
-                      "disponibilité": []
-                    },
-                    "quantite": 9
-                  },
-                  "Beurre (g)": {
-                    "ingredient": {
-                      "nom": "Beurre (g)",
-                      "disponibilité": []
-                    },
-                    "quantite": 45
-                  }
-                }
-              },
-              "recette": "1. Couper et faire poêler les champignons dans le beurre.\n2. Battre les œufs en omelette avec du sel et du poivre.\n3. Verser les œufs battus sur les champignons et cuire 3 à 4 minutes.",
-              "activable": false
-            }
-          }
-        ],
-        "date": "2026-11-13T20:17:35.620739300+01:00"
-      },
-      {
-        "menu": [
-          {
-            "name": "petit-dej",
-            "nbPersonne": 0,
-            "recette": null
-          },
-          {
-            "name": "dej",
-            "nbPersonne": 2,
-            "recette": {
-              "name": "Pâtes Carbonara",
-              "nbPersonne": 2,
-              "duree": 15,
-              "ingredients": {
-                "ingredients": {
-                  "Pâtes (g)": {
-                    "ingredient": {
-                      "nom": "Pâtes (g)",
-                      "disponibilité": []
-                    },
-                    "quantite": 200
-                  },
-                  "Jaunes d'œuf": {
-                    "ingredient": {
-                      "nom": "Jaunes d'œuf",
-                      "disponibilité": []
-                    },
-                    "quantite": 3
-                  },
-                  "Guanciale (g)": {
-                    "ingredient": {
-                      "nom": "Guanciale (g)",
-                      "disponibilité": []
-                    },
-                    "quantite": 100
-                  },
-                  "Pecorino (g)": {
-                    "ingredient": {
-                      "nom": "Pecorino (g)",
-                      "disponibilité": []
-                    },
-                    "quantite": 50
-                  }
-                }
-              },
-              "recette": "1. Cuire les pâtes.\n2. Faire dorér le guanciale à la poêle.\n3. Mélanger les jaunes d'œuf avec le pecorino râpé.\n4. Hors du feu, mélanger les pâtes avec la crème d'œuf et le guanciale.",
-              "activable": false
-            }
-          },
-          {
-            "name": "gouter",
-            "nbPersonne": 0,
-            "recette": null
-          },
-          {
-            "name": "diner",
-            "nbPersonne": 3,
-            "recette": {
-              "name": "Omelette aux Champignons",
-              "nbPersonne": 3,
-              "duree": 10,
-              "ingredients": {
-                "ingredients": {
-                  "Œufs": {
-                    "ingredient": {
-                      "nom": "Œufs",
-                      "disponibilité": []
-                    },
-                    "quantite": 9
-                  },
-                  "Persil": {
-                    "ingredient": {
-                      "nom": "Persil",
-                      "disponibilité": []
-                    },
-                    "quantite": 3
-                  },
-                  "Beurre (g)": {
-                    "ingredient": {
-                      "nom": "Beurre (g)",
-                      "disponibilité": []
-                    },
-                    "quantite": 45
-                  },
-                  "Champignons de paris (g)": {
-                    "ingredient": {
-                      "nom": "Champignons de paris (g)",
-                      "disponibilité": []
-                    },
-                    "quantite": 300
-                  }
-                }
-              },
-              "recette": "1. Couper et faire poêler les champignons dans le beurre.\n2. Battre les œufs en omelette avec du sel et du poivre.\n3. Verser les œufs battus sur les champignons et cuire 3 à 4 minutes.",
-              "activable": false
-            }
-          }
-        ],
-        "date": "2026-11-14T20:17:35.620739300+01:00"
-      },
-      {
-        "menu": [
-          {
-            "name": "petit-dej",
-            "nbPersonne": 0,
-            "recette": null
-          },
-          {
-            "name": "dej",
-            "nbPersonne": 2,
-            "recette": {
-              "name": "Omelette aux Champignons",
-              "nbPersonne": 2,
-              "duree": 10,
-              "ingredients": {
-                "ingredients": {
-                  "Champignons de paris (g)": {
-                    "ingredient": {
-                      "nom": "Champignons de paris (g)",
-                      "disponibilité": []
-                    },
-                    "quantite": 200
-                  },
-                  "Beurre (g)": {
-                    "ingredient": {
-                      "nom": "Beurre (g)",
-                      "disponibilité": []
-                    },
-                    "quantite": 30
-                  },
-                  "Persil": {
-                    "ingredient": {
-                      "nom": "Persil",
-                      "disponibilité": []
-                    },
-                    "quantite": 2
-                  },
-                  "Œufs": {
-                    "ingredient": {
-                      "nom": "Œufs",
-                      "disponibilité": []
-                    },
-                    "quantite": 6
-                  }
-                }
-              },
-              "recette": "1. Couper et faire poêler les champignons dans le beurre.\n2. Battre les œufs en omelette avec du sel et du poivre.\n3. Verser les œufs battus sur les champignons et cuire 3 à 4 minutes.",
-              "activable": false
-            }
-          },
-          {
-            "name": "gouter",
-            "nbPersonne": 0,
-            "recette": null
-          },
-          {
-            "name": "diner",
-            "nbPersonne": 4,
-            "recette": {
-              "name": "Omelette aux Champignons",
-              "nbPersonne": 4,
-              "duree": 10,
-              "ingredients": {
-                "ingredients": {
-                  "Champignons de paris (g)": {
-                    "ingredient": {
-                      "nom": "Champignons de paris (g)",
-                      "disponibilité": []
-                    },
-                    "quantite": 400
-                  },
-                  "Persil": {
-                    "ingredient": {
-                      "nom": "Persil",
-                      "disponibilité": []
-                    },
-                    "quantite": 4
-                  },
-                  "Œufs": {
-                    "ingredient": {
-                      "nom": "Œufs",
-                      "disponibilité": []
-                    },
-                    "quantite": 12
-                  },
-                  "Beurre (g)": {
-                    "ingredient": {
-                      "nom": "Beurre (g)",
-                      "disponibilité": []
-                    },
-                    "quantite": 60
-                  }
-                }
-              },
-              "recette": "1. Couper et faire poêler les champignons dans le beurre.\n2. Battre les œufs en omelette avec du sel et du poivre.\n3. Verser les œufs battus sur les champignons et cuire 3 à 4 minutes.",
-              "activable": false
-            }
-          }
-        ],
-        "date": "2026-11-15T20:17:35.620739300+01:00"
-      }
-    ],
-    "tMax": 200
-  },
-  {
-    "days": [
-      {
-        "menu": [
-          {
-            "name": "petit-dej",
-            "nbPersonne": 1,
-            "recette": {
-              "name": "Omelette aux Champignons",
-              "nbPersonne": 1,
-              "duree": 10,
-              "ingredients": {
-                "ingredients": {
                   "Champignons de paris (g)": {
                     "ingredient": {
                       "nom": "Champignons de paris (g)",
@@ -776,13 +33,6 @@
                     },
                     "quantite": 1
                   },
-                  "Beurre (g)": {
-                    "ingredient": {
-                      "nom": "Beurre (g)",
-                      "disponibilité": []
-                    },
-                    "quantite": 15
-                  },
                   "Œufs": {
                     "ingredient": {
                       "nom": "Œufs",
@@ -793,8 +43,12 @@
                 }
               },
               "recette": "1. Couper et faire poêler les champignons dans le beurre.\n2. Battre les œufs en omelette avec du sel et du poivre.\n3. Verser les œufs battus sur les champignons et cuire 3 à 4 minutes.",
-              "activable": true
-            }
+              "activable": true,
+              "est_reste": false,
+              "tags": []
+            },
+            "entree": null,
+            "dessert": null
           },
           {
             "name": "dej",
@@ -805,12 +59,12 @@
               "duree": 15,
               "ingredients": {
                 "ingredients": {
-                  "Pecorino (g)": {
+                  "Pâtes (g)": {
                     "ingredient": {
-                      "nom": "Pecorino (g)",
+                      "nom": "Pâtes (g)",
                       "disponibilité": []
                     },
-                    "quantite": 50
+                    "quantite": 200
                   },
                   "Guanciale (g)": {
                     "ingredient": {
@@ -819,30 +73,36 @@
                     },
                     "quantite": 100
                   },
-                  "Pâtes (g)": {
-                    "ingredient": {
-                      "nom": "Pâtes (g)",
-                      "disponibilité": []
-                    },
-                    "quantite": 200
-                  },
                   "Jaunes d'œuf": {
                     "ingredient": {
                       "nom": "Jaunes d'œuf",
                       "disponibilité": []
                     },
                     "quantite": 3
+                  },
+                  "Pecorino (g)": {
+                    "ingredient": {
+                      "nom": "Pecorino (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 50
                   }
                 }
               },
               "recette": "1. Cuire les pâtes.\n2. Faire dorér le guanciale à la poêle.\n3. Mélanger les jaunes d'œuf avec le pecorino râpé.\n4. Hors du feu, mélanger les pâtes avec la crème d'œuf et le guanciale.",
-              "activable": true
-            }
+              "activable": true,
+              "est_reste": false,
+              "tags": []
+            },
+            "entree": null,
+            "dessert": null
           },
           {
             "name": "gouter",
             "nbPersonne": 0,
-            "recette": null
+            "recette": null,
+            "entree": null,
+            "dessert": null
           },
           {
             "name": "diner",
@@ -853,13 +113,6 @@
               "duree": 10,
               "ingredients": {
                 "ingredients": {
-                  "Champignons de paris (g)": {
-                    "ingredient": {
-                      "nom": "Champignons de paris (g)",
-                      "disponibilité": []
-                    },
-                    "quantite": 300
-                  },
                   "Persil": {
                     "ingredient": {
                       "nom": "Persil",
@@ -874,6 +127,13 @@
                     },
                     "quantite": 45
                   },
+                  "Champignons de paris (g)": {
+                    "ingredient": {
+                      "nom": "Champignons de paris (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 300
+                  },
                   "Œufs": {
                     "ingredient": {
                       "nom": "Œufs",
@@ -884,8 +144,12 @@
                 }
               },
               "recette": "1. Couper et faire poêler les champignons dans le beurre.\n2. Battre les œufs en omelette avec du sel et du poivre.\n3. Verser les œufs battus sur les champignons et cuire 3 à 4 minutes.",
-              "activable": true
-            }
+              "activable": true,
+              "est_reste": false,
+              "tags": []
+            },
+            "entree": null,
+            "dessert": null
           }
         ],
         "date": "2026-11-16T20:17:35.620739300+01:00"
@@ -895,7 +159,9 @@
           {
             "name": "petit-dej",
             "nbPersonne": 0,
-            "recette": null
+            "recette": null,
+            "entree": null,
+            "dessert": null
           },
           {
             "name": "dej",
@@ -913,6 +179,13 @@
                     },
                     "quantite": 200
                   },
+                  "Œufs": {
+                    "ingredient": {
+                      "nom": "Œufs",
+                      "disponibilité": []
+                    },
+                    "quantite": 6
+                  },
                   "Persil": {
                     "ingredient": {
                       "nom": "Persil",
@@ -926,24 +199,23 @@
                       "disponibilité": []
                     },
                     "quantite": 30
-                  },
-                  "Œufs": {
-                    "ingredient": {
-                      "nom": "Œufs",
-                      "disponibilité": []
-                    },
-                    "quantite": 6
                   }
                 }
               },
               "recette": "1. Couper et faire poêler les champignons dans le beurre.\n2. Battre les œufs en omelette avec du sel et du poivre.\n3. Verser les œufs battus sur les champignons et cuire 3 à 4 minutes.",
-              "activable": true
-            }
+              "activable": true,
+              "est_reste": false,
+              "tags": []
+            },
+            "entree": null,
+            "dessert": null
           },
           {
             "name": "gouter",
             "nbPersonne": 0,
-            "recette": null
+            "recette": null,
+            "entree": null,
+            "dessert": null
           },
           {
             "name": "diner",
@@ -954,12 +226,12 @@
               "duree": 10,
               "ingredients": {
                 "ingredients": {
-                  "Champignons de paris (g)": {
+                  "Beurre (g)": {
                     "ingredient": {
-                      "nom": "Champignons de paris (g)",
+                      "nom": "Beurre (g)",
                       "disponibilité": []
                     },
-                    "quantite": 300
+                    "quantite": 45
                   },
                   "Persil": {
                     "ingredient": {
@@ -968,12 +240,12 @@
                     },
                     "quantite": 3
                   },
-                  "Beurre (g)": {
+                  "Champignons de paris (g)": {
                     "ingredient": {
-                      "nom": "Beurre (g)",
+                      "nom": "Champignons de paris (g)",
                       "disponibilité": []
                     },
-                    "quantite": 45
+                    "quantite": 300
                   },
                   "Œufs": {
                     "ingredient": {
@@ -985,8 +257,12 @@
                 }
               },
               "recette": "1. Couper et faire poêler les champignons dans le beurre.\n2. Battre les œufs en omelette avec du sel et du poivre.\n3. Verser les œufs battus sur les champignons et cuire 3 à 4 minutes.",
-              "activable": true
-            }
+              "activable": true,
+              "est_reste": false,
+              "tags": []
+            },
+            "entree": null,
+            "dessert": null
           }
         ],
         "date": "2026-11-17T20:17:35.620739300+01:00"
@@ -996,7 +272,9 @@
           {
             "name": "petit-dej",
             "nbPersonne": 0,
-            "recette": null
+            "recette": null,
+            "entree": null,
+            "dessert": null
           },
           {
             "name": "dej",
@@ -1007,12 +285,12 @@
               "duree": 10,
               "ingredients": {
                 "ingredients": {
-                  "Champignons de paris (g)": {
+                  "Beurre (g)": {
                     "ingredient": {
-                      "nom": "Champignons de paris (g)",
+                      "nom": "Beurre (g)",
                       "disponibilité": []
                     },
-                    "quantite": 200
+                    "quantite": 30
                   },
                   "Persil": {
                     "ingredient": {
@@ -1021,30 +299,36 @@
                     },
                     "quantite": 2
                   },
-                  "Beurre (g)": {
-                    "ingredient": {
-                      "nom": "Beurre (g)",
-                      "disponibilité": []
-                    },
-                    "quantite": 30
-                  },
                   "Œufs": {
                     "ingredient": {
                       "nom": "Œufs",
                       "disponibilité": []
                     },
                     "quantite": 6
+                  },
+                  "Champignons de paris (g)": {
+                    "ingredient": {
+                      "nom": "Champignons de paris (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 200
                   }
                 }
               },
               "recette": "1. Couper et faire poêler les champignons dans le beurre.\n2. Battre les œufs en omelette avec du sel et du poivre.\n3. Verser les œufs battus sur les champignons et cuire 3 à 4 minutes.",
-              "activable": true
-            }
+              "activable": true,
+              "est_reste": false,
+              "tags": []
+            },
+            "entree": null,
+            "dessert": null
           },
           {
             "name": "gouter",
             "nbPersonne": 0,
-            "recette": null
+            "recette": null,
+            "entree": null,
+            "dessert": null
           },
           {
             "name": "diner",
@@ -1055,6 +339,13 @@
               "duree": 10,
               "ingredients": {
                 "ingredients": {
+                  "Œufs": {
+                    "ingredient": {
+                      "nom": "Œufs",
+                      "disponibilité": []
+                    },
+                    "quantite": 9
+                  },
                   "Champignons de paris (g)": {
                     "ingredient": {
                       "nom": "Champignons de paris (g)",
@@ -1075,19 +366,16 @@
                       "disponibilité": []
                     },
                     "quantite": 45
-                  },
-                  "Œufs": {
-                    "ingredient": {
-                      "nom": "Œufs",
-                      "disponibilité": []
-                    },
-                    "quantite": 9
                   }
                 }
               },
               "recette": "1. Couper et faire poêler les champignons dans le beurre.\n2. Battre les œufs en omelette avec du sel et du poivre.\n3. Verser les œufs battus sur les champignons et cuire 3 à 4 minutes.",
-              "activable": true
-            }
+              "activable": true,
+              "est_reste": false,
+              "tags": []
+            },
+            "entree": null,
+            "dessert": null
           }
         ],
         "date": "2026-11-18T20:17:35.620739300+01:00"
@@ -1097,7 +385,9 @@
           {
             "name": "petit-dej",
             "nbPersonne": 0,
-            "recette": null
+            "recette": null,
+            "entree": null,
+            "dessert": null
           },
           {
             "name": "dej",
@@ -1108,12 +398,12 @@
               "duree": 15,
               "ingredients": {
                 "ingredients": {
-                  "Pecorino (g)": {
+                  "Pâtes (g)": {
                     "ingredient": {
-                      "nom": "Pecorino (g)",
+                      "nom": "Pâtes (g)",
                       "disponibilité": []
                     },
-                    "quantite": 50
+                    "quantite": 200
                   },
                   "Guanciale (g)": {
                     "ingredient": {
@@ -1122,12 +412,12 @@
                     },
                     "quantite": 100
                   },
-                  "Pâtes (g)": {
+                  "Pecorino (g)": {
                     "ingredient": {
-                      "nom": "Pâtes (g)",
+                      "nom": "Pecorino (g)",
                       "disponibilité": []
                     },
-                    "quantite": 200
+                    "quantite": 50
                   },
                   "Jaunes d'œuf": {
                     "ingredient": {
@@ -1139,13 +429,19 @@
                 }
               },
               "recette": "1. Cuire les pâtes.\n2. Faire dorér le guanciale à la poêle.\n3. Mélanger les jaunes d'œuf avec le pecorino râpé.\n4. Hors du feu, mélanger les pâtes avec la crème d'œuf et le guanciale.",
-              "activable": true
-            }
+              "activable": true,
+              "est_reste": false,
+              "tags": []
+            },
+            "entree": null,
+            "dessert": null
           },
           {
             "name": "gouter",
             "nbPersonne": 0,
-            "recette": null
+            "recette": null,
+            "entree": null,
+            "dessert": null
           },
           {
             "name": "diner",
@@ -1163,19 +459,19 @@
                     },
                     "quantite": 300
                   },
-                  "Persil": {
-                    "ingredient": {
-                      "nom": "Persil",
-                      "disponibilité": []
-                    },
-                    "quantite": 3
-                  },
                   "Beurre (g)": {
                     "ingredient": {
                       "nom": "Beurre (g)",
                       "disponibilité": []
                     },
                     "quantite": 45
+                  },
+                  "Persil": {
+                    "ingredient": {
+                      "nom": "Persil",
+                      "disponibilité": []
+                    },
+                    "quantite": 3
                   },
                   "Œufs": {
                     "ingredient": {
@@ -1187,8 +483,12 @@
                 }
               },
               "recette": "1. Couper et faire poêler les champignons dans le beurre.\n2. Battre les œufs en omelette avec du sel et du poivre.\n3. Verser les œufs battus sur les champignons et cuire 3 à 4 minutes.",
-              "activable": true
-            }
+              "activable": true,
+              "est_reste": false,
+              "tags": []
+            },
+            "entree": null,
+            "dessert": null
           }
         ],
         "date": "2026-11-19T20:17:35.620739300+01:00"
@@ -1198,7 +498,9 @@
           {
             "name": "petit-dej",
             "nbPersonne": 0,
-            "recette": null
+            "recette": null,
+            "entree": null,
+            "dessert": null
           },
           {
             "name": "dej",
@@ -1209,12 +511,12 @@
               "duree": 15,
               "ingredients": {
                 "ingredients": {
-                  "Pecorino (g)": {
+                  "Pâtes (g)": {
                     "ingredient": {
-                      "nom": "Pecorino (g)",
+                      "nom": "Pâtes (g)",
                       "disponibilité": []
                     },
-                    "quantite": 50
+                    "quantite": 200
                   },
                   "Guanciale (g)": {
                     "ingredient": {
@@ -1223,30 +525,36 @@
                     },
                     "quantite": 100
                   },
-                  "Pâtes (g)": {
-                    "ingredient": {
-                      "nom": "Pâtes (g)",
-                      "disponibilité": []
-                    },
-                    "quantite": 200
-                  },
                   "Jaunes d'œuf": {
                     "ingredient": {
                       "nom": "Jaunes d'œuf",
                       "disponibilité": []
                     },
                     "quantite": 3
+                  },
+                  "Pecorino (g)": {
+                    "ingredient": {
+                      "nom": "Pecorino (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 50
                   }
                 }
               },
               "recette": "1. Cuire les pâtes.\n2. Faire dorér le guanciale à la poêle.\n3. Mélanger les jaunes d'œuf avec le pecorino râpé.\n4. Hors du feu, mélanger les pâtes avec la crème d'œuf et le guanciale.",
-              "activable": true
-            }
+              "activable": true,
+              "est_reste": false,
+              "tags": []
+            },
+            "entree": null,
+            "dessert": null
           },
           {
             "name": "gouter",
             "nbPersonne": 0,
-            "recette": null
+            "recette": null,
+            "entree": null,
+            "dessert": null
           },
           {
             "name": "diner",
@@ -1257,6 +565,13 @@
               "duree": 10,
               "ingredients": {
                 "ingredients": {
+                  "Œufs": {
+                    "ingredient": {
+                      "nom": "Œufs",
+                      "disponibilité": []
+                    },
+                    "quantite": 9
+                  },
                   "Champignons de paris (g)": {
                     "ingredient": {
                       "nom": "Champignons de paris (g)",
@@ -1277,19 +592,16 @@
                       "disponibilité": []
                     },
                     "quantite": 45
-                  },
-                  "Œufs": {
-                    "ingredient": {
-                      "nom": "Œufs",
-                      "disponibilité": []
-                    },
-                    "quantite": 9
                   }
                 }
               },
               "recette": "1. Couper et faire poêler les champignons dans le beurre.\n2. Battre les œufs en omelette avec du sel et du poivre.\n3. Verser les œufs battus sur les champignons et cuire 3 à 4 minutes.",
-              "activable": true
-            }
+              "activable": true,
+              "est_reste": false,
+              "tags": []
+            },
+            "entree": null,
+            "dessert": null
           }
         ],
         "date": "2026-11-20T20:17:35.620739300+01:00"
@@ -1299,7 +611,9 @@
           {
             "name": "petit-dej",
             "nbPersonne": 0,
-            "recette": null
+            "recette": null,
+            "entree": null,
+            "dessert": null
           },
           {
             "name": "dej",
@@ -1341,13 +655,19 @@
                 }
               },
               "recette": "1. Cuire les pâtes.\n2. Faire dorér le guanciale à la poêle.\n3. Mélanger les jaunes d'œuf avec le pecorino râpé.\n4. Hors du feu, mélanger les pâtes avec la crème d'œuf et le guanciale.",
-              "activable": true
-            }
+              "activable": true,
+              "est_reste": false,
+              "tags": []
+            },
+            "entree": null,
+            "dessert": null
           },
           {
             "name": "gouter",
             "nbPersonne": 0,
-            "recette": null
+            "recette": null,
+            "entree": null,
+            "dessert": null
           },
           {
             "name": "diner",
@@ -1358,13 +678,6 @@
               "duree": 10,
               "ingredients": {
                 "ingredients": {
-                  "Champignons de paris (g)": {
-                    "ingredient": {
-                      "nom": "Champignons de paris (g)",
-                      "disponibilité": []
-                    },
-                    "quantite": 300
-                  },
                   "Persil": {
                     "ingredient": {
                       "nom": "Persil",
@@ -1379,6 +692,13 @@
                     },
                     "quantite": 45
                   },
+                  "Champignons de paris (g)": {
+                    "ingredient": {
+                      "nom": "Champignons de paris (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 300
+                  },
                   "Œufs": {
                     "ingredient": {
                       "nom": "Œufs",
@@ -1389,8 +709,12 @@
                 }
               },
               "recette": "1. Couper et faire poêler les champignons dans le beurre.\n2. Battre les œufs en omelette avec du sel et du poivre.\n3. Verser les œufs battus sur les champignons et cuire 3 à 4 minutes.",
-              "activable": true
-            }
+              "activable": true,
+              "est_reste": false,
+              "tags": []
+            },
+            "entree": null,
+            "dessert": null
           }
         ],
         "date": "2026-11-21T20:17:35.620739300+01:00"
@@ -1400,7 +724,9 @@
           {
             "name": "petit-dej",
             "nbPersonne": 0,
-            "recette": null
+            "recette": null,
+            "entree": null,
+            "dessert": null
           },
           {
             "name": "dej",
@@ -1442,13 +768,19 @@
                 }
               },
               "recette": "1. Cuire les pâtes.\n2. Faire dorér le guanciale à la poêle.\n3. Mélanger les jaunes d'œuf avec le pecorino râpé.\n4. Hors du feu, mélanger les pâtes avec la crème d'œuf et le guanciale.",
-              "activable": true
-            }
+              "activable": true,
+              "est_reste": false,
+              "tags": []
+            },
+            "entree": null,
+            "dessert": null
           },
           {
             "name": "gouter",
             "nbPersonne": 0,
-            "recette": null
+            "recette": null,
+            "entree": null,
+            "dessert": null
           },
           {
             "name": "diner",
@@ -1465,13 +797,6 @@
                       "disponibilité": []
                     },
                     "quantite": 2
-                  },
-                  "Blancs de poulet": {
-                    "ingredient": {
-                      "nom": "Blancs de poulet",
-                      "disponibilité": []
-                    },
-                    "quantite": 4
                   },
                   "Riz basmati (g)": {
                     "ingredient": {
@@ -1493,15 +818,1198 @@
                       "disponibilité": []
                     },
                     "quantite": 1
+                  },
+                  "Blancs de poulet": {
+                    "ingredient": {
+                      "nom": "Blancs de poulet",
+                      "disponibilité": []
+                    },
+                    "quantite": 4
                   }
                 }
               },
               "recette": "1. Faire cuire le riz basmati.\n2. Émincer l'oignon et le poulet, puis les faire revenir dans une sauteuse.\n3. Ajouter la poudre de curry, puis verser le lait de coco.\n4. Laisser mijoter 10 minutes à feu doux.",
-              "activable": true
-            }
+              "activable": true,
+              "est_reste": false,
+              "tags": []
+            },
+            "entree": null,
+            "dessert": null
           }
         ],
         "date": "2026-11-22T20:17:35.620739300+01:00"
+      }
+    ],
+    "tMax": 200
+  },
+  {
+    "days": [
+      {
+        "menu": [
+          {
+            "name": "petit-dej",
+            "nbPersonne": 0,
+            "recette": null,
+            "entree": null,
+            "dessert": null
+          },
+          {
+            "name": "dej",
+            "nbPersonne": 0,
+            "recette": null,
+            "entree": null,
+            "dessert": null
+          },
+          {
+            "name": "gouter",
+            "nbPersonne": 0,
+            "recette": null,
+            "entree": null,
+            "dessert": null
+          },
+          {
+            "name": "diner",
+            "nbPersonne": 2,
+            "recette": {
+              "name": "Champignons farcis",
+              "nbPersonne": 6,
+              "duree": 40,
+              "ingredients": {
+                "ingredients": {
+                  "Beurre (g)": {
+                    "ingredient": {
+                      "nom": "Beurre (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 90
+                  },
+                  "Crème fraîche (cl)": {
+                    "ingredient": {
+                      "nom": "Crème fraîche (cl)",
+                      "disponibilité": []
+                    },
+                    "quantite": 80
+                  },
+                  "Echalotes": {
+                    "ingredient": {
+                      "nom": "Echalotes",
+                      "disponibilité": []
+                    },
+                    "quantite": 6
+                  },
+                  "Mie de pain rassis (g)": {
+                    "ingredient": {
+                      "nom": "Mie de pain rassis (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 50
+                  },
+                  "Lait (cl)": {
+                    "ingredient": {
+                      "nom": "Lait (cl)",
+                      "disponibilité": []
+                    },
+                    "quantite": 5
+                  },
+                  "Champignons de paris": {
+                    "ingredient": {
+                      "nom": "Champignons de paris",
+                      "disponibilité": []
+                    },
+                    "quantite": 12
+                  },
+                  "Gousse d'ail": {
+                    "ingredient": {
+                      "nom": "Gousse d'ail",
+                      "disponibilité": []
+                    },
+                    "quantite": 2
+                  },
+                  "Sel": {
+                    "ingredient": {
+                      "nom": "Sel",
+                      "disponibilité": []
+                    },
+                    "quantite": 1
+                  },
+                  "Lard de poitrine (g)": {
+                    "ingredient": {
+                      "nom": "Lard de poitrine (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 150
+                  },
+                  "Poivre": {
+                    "ingredient": {
+                      "nom": "Poivre",
+                      "disponibilité": []
+                    },
+                    "quantite": 1
+                  },
+                  "Persil": {
+                    "ingredient": {
+                      "nom": "Persil",
+                      "disponibilité": []
+                    },
+                    "quantite": 1
+                  },
+                  "Oeuf": {
+                    "ingredient": {
+                      "nom": "Oeuf",
+                      "disponibilité": []
+                    },
+                    "quantite": 1
+                  }
+                }
+              },
+              "recette": "1. Enlevez la partie terreuse du pied des champignons, épluchez-les, passez-les rapidement sous l'eau, épongez-les et détachez les pieds des chapeaux.\n\n2. Faites tremper la mie de pain dans la tasse de lait. Egouttes-la, essorez-la en la pressant entre les doigts.\n\n3. Epluchez les échalotes et les gousses d'ail. Enlevez la couene du lard, hachez-le finement. Hachez séparément les pieds des champignons, les échalotes, l'ail et le persil. Dans une assiette creuse, battez l'oeuf en omelette, mélangez-y la crème fraîche. Allumez le four Th.7.\n\n4. Dans une poêl, fates fondre 30g de beurre. Faites fondre les échalotes et le lard. Laissez-les revenir doucement pendant 5min. Ajoutez l'ail et les pieds de champignons. Au bout d'une minute, ajoutez la mie de pain, l'oeuf à la crème. Assaisonnez, saupoudrez de persil haché. mélangez cette farce.\n\n5. Dans un moule à gratin beurré, déposez les chapeaux des champignons, garnissez-les de farce, déposez des noissettes de beurre sur le dessus. Mettez au four 20min, servez aussitôt à la sortie du four.\n\nBonus : Faites griller à la poêle dans le beurre et des 2 côtés des demi-tranches de pain de mie, déposez-les dans le plat à gratin et les champignons dessus.",
+              "activable": true,
+              "est_reste": false,
+              "tags": [
+                "Viande",
+                "Oeufs",
+                "Legumes",
+                "Porc"
+              ]
+            },
+            "entree": null,
+            "dessert": null
+          }
+        ],
+        "date": "2026-11-23T20:17:35.620739300+01:00"
+      },
+      {
+        "menu": [
+          {
+            "name": "petit-dej",
+            "nbPersonne": 0,
+            "recette": null,
+            "entree": null,
+            "dessert": null
+          },
+          {
+            "name": "dej",
+            "nbPersonne": 0,
+            "recette": null,
+            "entree": null,
+            "dessert": null
+          },
+          {
+            "name": "gouter",
+            "nbPersonne": 0,
+            "recette": null,
+            "entree": null,
+            "dessert": null
+          },
+          {
+            "name": "diner",
+            "nbPersonne": 2,
+            "recette": {
+              "name": "Champignons farcis",
+              "nbPersonne": 6,
+              "duree": 40,
+              "ingredients": {
+                "ingredients": {
+                  "Beurre (g)": {
+                    "ingredient": {
+                      "nom": "Beurre (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 90
+                  },
+                  "Crème fraîche (cl)": {
+                    "ingredient": {
+                      "nom": "Crème fraîche (cl)",
+                      "disponibilité": []
+                    },
+                    "quantite": 80
+                  },
+                  "Echalotes": {
+                    "ingredient": {
+                      "nom": "Echalotes",
+                      "disponibilité": []
+                    },
+                    "quantite": 6
+                  },
+                  "Mie de pain rassis (g)": {
+                    "ingredient": {
+                      "nom": "Mie de pain rassis (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 50
+                  },
+                  "Lait (cl)": {
+                    "ingredient": {
+                      "nom": "Lait (cl)",
+                      "disponibilité": []
+                    },
+                    "quantite": 5
+                  },
+                  "Champignons de paris": {
+                    "ingredient": {
+                      "nom": "Champignons de paris",
+                      "disponibilité": []
+                    },
+                    "quantite": 12
+                  },
+                  "Gousse d'ail": {
+                    "ingredient": {
+                      "nom": "Gousse d'ail",
+                      "disponibilité": []
+                    },
+                    "quantite": 2
+                  },
+                  "Sel": {
+                    "ingredient": {
+                      "nom": "Sel",
+                      "disponibilité": []
+                    },
+                    "quantite": 1
+                  },
+                  "Lard de poitrine (g)": {
+                    "ingredient": {
+                      "nom": "Lard de poitrine (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 150
+                  },
+                  "Poivre": {
+                    "ingredient": {
+                      "nom": "Poivre",
+                      "disponibilité": []
+                    },
+                    "quantite": 1
+                  },
+                  "Persil": {
+                    "ingredient": {
+                      "nom": "Persil",
+                      "disponibilité": []
+                    },
+                    "quantite": 1
+                  },
+                  "Oeuf": {
+                    "ingredient": {
+                      "nom": "Oeuf",
+                      "disponibilité": []
+                    },
+                    "quantite": 1
+                  }
+                }
+              },
+              "recette": "1. Enlevez la partie terreuse du pied des champignons, épluchez-les, passez-les rapidement sous l'eau, épongez-les et détachez les pieds des chapeaux.\n\n2. Faites tremper la mie de pain dans la tasse de lait. Egouttes-la, essorez-la en la pressant entre les doigts.\n\n3. Epluchez les échalotes et les gousses d'ail. Enlevez la couene du lard, hachez-le finement. Hachez séparément les pieds des champignons, les échalotes, l'ail et le persil. Dans une assiette creuse, battez l'oeuf en omelette, mélangez-y la crème fraîche. Allumez le four Th.7.\n\n4. Dans une poêl, fates fondre 30g de beurre. Faites fondre les échalotes et le lard. Laissez-les revenir doucement pendant 5min. Ajoutez l'ail et les pieds de champignons. Au bout d'une minute, ajoutez la mie de pain, l'oeuf à la crème. Assaisonnez, saupoudrez de persil haché. mélangez cette farce.\n\n5. Dans un moule à gratin beurré, déposez les chapeaux des champignons, garnissez-les de farce, déposez des noissettes de beurre sur le dessus. Mettez au four 20min, servez aussitôt à la sortie du four.\n\nBonus : Faites griller à la poêle dans le beurre et des 2 côtés des demi-tranches de pain de mie, déposez-les dans le plat à gratin et les champignons dessus.",
+              "activable": true,
+              "est_reste": true,
+              "tags": [
+                "Viande",
+                "Oeufs",
+                "Legumes",
+                "Porc"
+              ]
+            },
+            "entree": null,
+            "dessert": null
+          }
+        ],
+        "date": "2026-11-24T20:17:35.620739300+01:00"
+      },
+      {
+        "menu": [
+          {
+            "name": "petit-dej",
+            "nbPersonne": 0,
+            "recette": null,
+            "entree": null,
+            "dessert": null
+          },
+          {
+            "name": "dej",
+            "nbPersonne": 0,
+            "recette": null,
+            "entree": null,
+            "dessert": null
+          },
+          {
+            "name": "gouter",
+            "nbPersonne": 0,
+            "recette": null,
+            "entree": null,
+            "dessert": null
+          },
+          {
+            "name": "diner",
+            "nbPersonne": 2,
+            "recette": {
+              "name": "Champignons farcis",
+              "nbPersonne": 6,
+              "duree": 40,
+              "ingredients": {
+                "ingredients": {
+                  "Beurre (g)": {
+                    "ingredient": {
+                      "nom": "Beurre (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 90
+                  },
+                  "Crème fraîche (cl)": {
+                    "ingredient": {
+                      "nom": "Crème fraîche (cl)",
+                      "disponibilité": []
+                    },
+                    "quantite": 80
+                  },
+                  "Echalotes": {
+                    "ingredient": {
+                      "nom": "Echalotes",
+                      "disponibilité": []
+                    },
+                    "quantite": 6
+                  },
+                  "Mie de pain rassis (g)": {
+                    "ingredient": {
+                      "nom": "Mie de pain rassis (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 50
+                  },
+                  "Lait (cl)": {
+                    "ingredient": {
+                      "nom": "Lait (cl)",
+                      "disponibilité": []
+                    },
+                    "quantite": 5
+                  },
+                  "Champignons de paris": {
+                    "ingredient": {
+                      "nom": "Champignons de paris",
+                      "disponibilité": []
+                    },
+                    "quantite": 12
+                  },
+                  "Gousse d'ail": {
+                    "ingredient": {
+                      "nom": "Gousse d'ail",
+                      "disponibilité": []
+                    },
+                    "quantite": 2
+                  },
+                  "Sel": {
+                    "ingredient": {
+                      "nom": "Sel",
+                      "disponibilité": []
+                    },
+                    "quantite": 1
+                  },
+                  "Lard de poitrine (g)": {
+                    "ingredient": {
+                      "nom": "Lard de poitrine (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 150
+                  },
+                  "Poivre": {
+                    "ingredient": {
+                      "nom": "Poivre",
+                      "disponibilité": []
+                    },
+                    "quantite": 1
+                  },
+                  "Persil": {
+                    "ingredient": {
+                      "nom": "Persil",
+                      "disponibilité": []
+                    },
+                    "quantite": 1
+                  },
+                  "Oeuf": {
+                    "ingredient": {
+                      "nom": "Oeuf",
+                      "disponibilité": []
+                    },
+                    "quantite": 1
+                  }
+                }
+              },
+              "recette": "1. Enlevez la partie terreuse du pied des champignons, épluchez-les, passez-les rapidement sous l'eau, épongez-les et détachez les pieds des chapeaux.\n\n2. Faites tremper la mie de pain dans la tasse de lait. Egouttes-la, essorez-la en la pressant entre les doigts.\n\n3. Epluchez les échalotes et les gousses d'ail. Enlevez la couene du lard, hachez-le finement. Hachez séparément les pieds des champignons, les échalotes, l'ail et le persil. Dans une assiette creuse, battez l'oeuf en omelette, mélangez-y la crème fraîche. Allumez le four Th.7.\n\n4. Dans une poêl, fates fondre 30g de beurre. Faites fondre les échalotes et le lard. Laissez-les revenir doucement pendant 5min. Ajoutez l'ail et les pieds de champignons. Au bout d'une minute, ajoutez la mie de pain, l'oeuf à la crème. Assaisonnez, saupoudrez de persil haché. mélangez cette farce.\n\n5. Dans un moule à gratin beurré, déposez les chapeaux des champignons, garnissez-les de farce, déposez des noissettes de beurre sur le dessus. Mettez au four 20min, servez aussitôt à la sortie du four.\n\nBonus : Faites griller à la poêle dans le beurre et des 2 côtés des demi-tranches de pain de mie, déposez-les dans le plat à gratin et les champignons dessus.",
+              "activable": true,
+              "est_reste": true,
+              "tags": [
+                "Viande",
+                "Oeufs",
+                "Legumes",
+                "Porc"
+              ]
+            },
+            "entree": null,
+            "dessert": null
+          }
+        ],
+        "date": "2026-11-25T20:17:35.620739300+01:00"
+      },
+      {
+        "menu": [
+          {
+            "name": "petit-dej",
+            "nbPersonne": 0,
+            "recette": null,
+            "entree": null,
+            "dessert": null
+          },
+          {
+            "name": "dej",
+            "nbPersonne": 0,
+            "recette": null,
+            "entree": null,
+            "dessert": null
+          },
+          {
+            "name": "gouter",
+            "nbPersonne": 0,
+            "recette": null,
+            "entree": null,
+            "dessert": null
+          },
+          {
+            "name": "diner",
+            "nbPersonne": 2,
+            "recette": {
+              "name": "Champignons farcis",
+              "nbPersonne": 6,
+              "duree": 40,
+              "ingredients": {
+                "ingredients": {
+                  "Beurre (g)": {
+                    "ingredient": {
+                      "nom": "Beurre (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 90
+                  },
+                  "Crème fraîche (cl)": {
+                    "ingredient": {
+                      "nom": "Crème fraîche (cl)",
+                      "disponibilité": []
+                    },
+                    "quantite": 80
+                  },
+                  "Echalotes": {
+                    "ingredient": {
+                      "nom": "Echalotes",
+                      "disponibilité": []
+                    },
+                    "quantite": 6
+                  },
+                  "Mie de pain rassis (g)": {
+                    "ingredient": {
+                      "nom": "Mie de pain rassis (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 50
+                  },
+                  "Lait (cl)": {
+                    "ingredient": {
+                      "nom": "Lait (cl)",
+                      "disponibilité": []
+                    },
+                    "quantite": 5
+                  },
+                  "Champignons de paris": {
+                    "ingredient": {
+                      "nom": "Champignons de paris",
+                      "disponibilité": []
+                    },
+                    "quantite": 12
+                  },
+                  "Gousse d'ail": {
+                    "ingredient": {
+                      "nom": "Gousse d'ail",
+                      "disponibilité": []
+                    },
+                    "quantite": 2
+                  },
+                  "Sel": {
+                    "ingredient": {
+                      "nom": "Sel",
+                      "disponibilité": []
+                    },
+                    "quantite": 1
+                  },
+                  "Lard de poitrine (g)": {
+                    "ingredient": {
+                      "nom": "Lard de poitrine (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 150
+                  },
+                  "Poivre": {
+                    "ingredient": {
+                      "nom": "Poivre",
+                      "disponibilité": []
+                    },
+                    "quantite": 1
+                  },
+                  "Persil": {
+                    "ingredient": {
+                      "nom": "Persil",
+                      "disponibilité": []
+                    },
+                    "quantite": 1
+                  },
+                  "Oeuf": {
+                    "ingredient": {
+                      "nom": "Oeuf",
+                      "disponibilité": []
+                    },
+                    "quantite": 1
+                  }
+                }
+              },
+              "recette": "1. Enlevez la partie terreuse du pied des champignons, épluchez-les, passez-les rapidement sous l'eau, épongez-les et détachez les pieds des chapeaux.\n\n2. Faites tremper la mie de pain dans la tasse de lait. Egouttes-la, essorez-la en la pressant entre les doigts.\n\n3. Epluchez les échalotes et les gousses d'ail. Enlevez la couene du lard, hachez-le finement. Hachez séparément les pieds des champignons, les échalotes, l'ail et le persil. Dans une assiette creuse, battez l'oeuf en omelette, mélangez-y la crème fraîche. Allumez le four Th.7.\n\n4. Dans une poêl, fates fondre 30g de beurre. Faites fondre les échalotes et le lard. Laissez-les revenir doucement pendant 5min. Ajoutez l'ail et les pieds de champignons. Au bout d'une minute, ajoutez la mie de pain, l'oeuf à la crème. Assaisonnez, saupoudrez de persil haché. mélangez cette farce.\n\n5. Dans un moule à gratin beurré, déposez les chapeaux des champignons, garnissez-les de farce, déposez des noissettes de beurre sur le dessus. Mettez au four 20min, servez aussitôt à la sortie du four.\n\nBonus : Faites griller à la poêle dans le beurre et des 2 côtés des demi-tranches de pain de mie, déposez-les dans le plat à gratin et les champignons dessus.",
+              "activable": true,
+              "est_reste": false,
+              "tags": [
+                "Viande",
+                "Oeufs",
+                "Legumes",
+                "Porc"
+              ]
+            },
+            "entree": null,
+            "dessert": null
+          }
+        ],
+        "date": "2026-11-26T20:17:35.620739300+01:00"
+      },
+      {
+        "menu": [
+          {
+            "name": "petit-dej",
+            "nbPersonne": 0,
+            "recette": null,
+            "entree": null,
+            "dessert": null
+          },
+          {
+            "name": "dej",
+            "nbPersonne": 0,
+            "recette": null,
+            "entree": null,
+            "dessert": null
+          },
+          {
+            "name": "gouter",
+            "nbPersonne": 0,
+            "recette": null,
+            "entree": null,
+            "dessert": null
+          },
+          {
+            "name": "diner",
+            "nbPersonne": 2,
+            "recette": {
+              "name": "Champignons farcis",
+              "nbPersonne": 6,
+              "duree": 40,
+              "ingredients": {
+                "ingredients": {
+                  "Beurre (g)": {
+                    "ingredient": {
+                      "nom": "Beurre (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 90
+                  },
+                  "Crème fraîche (cl)": {
+                    "ingredient": {
+                      "nom": "Crème fraîche (cl)",
+                      "disponibilité": []
+                    },
+                    "quantite": 80
+                  },
+                  "Echalotes": {
+                    "ingredient": {
+                      "nom": "Echalotes",
+                      "disponibilité": []
+                    },
+                    "quantite": 6
+                  },
+                  "Mie de pain rassis (g)": {
+                    "ingredient": {
+                      "nom": "Mie de pain rassis (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 50
+                  },
+                  "Lait (cl)": {
+                    "ingredient": {
+                      "nom": "Lait (cl)",
+                      "disponibilité": []
+                    },
+                    "quantite": 5
+                  },
+                  "Champignons de paris": {
+                    "ingredient": {
+                      "nom": "Champignons de paris",
+                      "disponibilité": []
+                    },
+                    "quantite": 12
+                  },
+                  "Gousse d'ail": {
+                    "ingredient": {
+                      "nom": "Gousse d'ail",
+                      "disponibilité": []
+                    },
+                    "quantite": 2
+                  },
+                  "Sel": {
+                    "ingredient": {
+                      "nom": "Sel",
+                      "disponibilité": []
+                    },
+                    "quantite": 1
+                  },
+                  "Lard de poitrine (g)": {
+                    "ingredient": {
+                      "nom": "Lard de poitrine (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 150
+                  },
+                  "Poivre": {
+                    "ingredient": {
+                      "nom": "Poivre",
+                      "disponibilité": []
+                    },
+                    "quantite": 1
+                  },
+                  "Persil": {
+                    "ingredient": {
+                      "nom": "Persil",
+                      "disponibilité": []
+                    },
+                    "quantite": 1
+                  },
+                  "Oeuf": {
+                    "ingredient": {
+                      "nom": "Oeuf",
+                      "disponibilité": []
+                    },
+                    "quantite": 1
+                  }
+                }
+              },
+              "recette": "1. Enlevez la partie terreuse du pied des champignons, épluchez-les, passez-les rapidement sous l'eau, épongez-les et détachez les pieds des chapeaux.\n\n2. Faites tremper la mie de pain dans la tasse de lait. Egouttes-la, essorez-la en la pressant entre les doigts.\n\n3. Epluchez les échalotes et les gousses d'ail. Enlevez la couene du lard, hachez-le finement. Hachez séparément les pieds des champignons, les échalotes, l'ail et le persil. Dans une assiette creuse, battez l'oeuf en omelette, mélangez-y la crème fraîche. Allumez le four Th.7.\n\n4. Dans une poêl, fates fondre 30g de beurre. Faites fondre les échalotes et le lard. Laissez-les revenir doucement pendant 5min. Ajoutez l'ail et les pieds de champignons. Au bout d'une minute, ajoutez la mie de pain, l'oeuf à la crème. Assaisonnez, saupoudrez de persil haché. mélangez cette farce.\n\n5. Dans un moule à gratin beurré, déposez les chapeaux des champignons, garnissez-les de farce, déposez des noissettes de beurre sur le dessus. Mettez au four 20min, servez aussitôt à la sortie du four.\n\nBonus : Faites griller à la poêle dans le beurre et des 2 côtés des demi-tranches de pain de mie, déposez-les dans le plat à gratin et les champignons dessus.",
+              "activable": true,
+              "est_reste": true,
+              "tags": [
+                "Viande",
+                "Oeufs",
+                "Legumes",
+                "Porc"
+              ]
+            },
+            "entree": null,
+            "dessert": null
+          }
+        ],
+        "date": "2026-11-27T20:17:35.620739300+01:00"
+      },
+      {
+        "menu": [
+          {
+            "name": "petit-dej",
+            "nbPersonne": 0,
+            "recette": null,
+            "entree": null,
+            "dessert": null
+          },
+          {
+            "name": "dej",
+            "nbPersonne": 2,
+            "recette": {
+              "name": "Champignons farcis",
+              "nbPersonne": 6,
+              "duree": 40,
+              "ingredients": {
+                "ingredients": {
+                  "Beurre (g)": {
+                    "ingredient": {
+                      "nom": "Beurre (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 90
+                  },
+                  "Crème fraîche (cl)": {
+                    "ingredient": {
+                      "nom": "Crème fraîche (cl)",
+                      "disponibilité": []
+                    },
+                    "quantite": 80
+                  },
+                  "Echalotes": {
+                    "ingredient": {
+                      "nom": "Echalotes",
+                      "disponibilité": []
+                    },
+                    "quantite": 6
+                  },
+                  "Mie de pain rassis (g)": {
+                    "ingredient": {
+                      "nom": "Mie de pain rassis (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 50
+                  },
+                  "Lait (cl)": {
+                    "ingredient": {
+                      "nom": "Lait (cl)",
+                      "disponibilité": []
+                    },
+                    "quantite": 5
+                  },
+                  "Champignons de paris": {
+                    "ingredient": {
+                      "nom": "Champignons de paris",
+                      "disponibilité": []
+                    },
+                    "quantite": 12
+                  },
+                  "Gousse d'ail": {
+                    "ingredient": {
+                      "nom": "Gousse d'ail",
+                      "disponibilité": []
+                    },
+                    "quantite": 2
+                  },
+                  "Sel": {
+                    "ingredient": {
+                      "nom": "Sel",
+                      "disponibilité": []
+                    },
+                    "quantite": 1
+                  },
+                  "Lard de poitrine (g)": {
+                    "ingredient": {
+                      "nom": "Lard de poitrine (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 150
+                  },
+                  "Poivre": {
+                    "ingredient": {
+                      "nom": "Poivre",
+                      "disponibilité": []
+                    },
+                    "quantite": 1
+                  },
+                  "Persil": {
+                    "ingredient": {
+                      "nom": "Persil",
+                      "disponibilité": []
+                    },
+                    "quantite": 1
+                  },
+                  "Oeuf": {
+                    "ingredient": {
+                      "nom": "Oeuf",
+                      "disponibilité": []
+                    },
+                    "quantite": 1
+                  }
+                }
+              },
+              "recette": "1. Enlevez la partie terreuse du pied des champignons, épluchez-les, passez-les rapidement sous l'eau, épongez-les et détachez les pieds des chapeaux.\n\n2. Faites tremper la mie de pain dans la tasse de lait. Egouttes-la, essorez-la en la pressant entre les doigts.\n\n3. Epluchez les échalotes et les gousses d'ail. Enlevez la couene du lard, hachez-le finement. Hachez séparément les pieds des champignons, les échalotes, l'ail et le persil. Dans une assiette creuse, battez l'oeuf en omelette, mélangez-y la crème fraîche. Allumez le four Th.7.\n\n4. Dans une poêl, fates fondre 30g de beurre. Faites fondre les échalotes et le lard. Laissez-les revenir doucement pendant 5min. Ajoutez l'ail et les pieds de champignons. Au bout d'une minute, ajoutez la mie de pain, l'oeuf à la crème. Assaisonnez, saupoudrez de persil haché. mélangez cette farce.\n\n5. Dans un moule à gratin beurré, déposez les chapeaux des champignons, garnissez-les de farce, déposez des noissettes de beurre sur le dessus. Mettez au four 20min, servez aussitôt à la sortie du four.\n\nBonus : Faites griller à la poêle dans le beurre et des 2 côtés des demi-tranches de pain de mie, déposez-les dans le plat à gratin et les champignons dessus.",
+              "activable": true,
+              "est_reste": true,
+              "tags": [
+                "Viande",
+                "Oeufs",
+                "Legumes",
+                "Porc"
+              ]
+            },
+            "entree": null,
+            "dessert": null
+          },
+          {
+            "name": "gouter",
+            "nbPersonne": 0,
+            "recette": null,
+            "entree": null,
+            "dessert": null
+          },
+          {
+            "name": "diner",
+            "nbPersonne": 2,
+            "recette": {
+              "name": "Bœuf Bourguignon",
+              "nbPersonne": 8,
+              "duree": 75,
+              "ingredients": {
+                "ingredients": {
+                  "Bœuf paré sans os (morceaux de 0,050 kg environ) (paleron, côtes découvertes, gîte à la noix)": {
+                    "ingredient": {
+                      "nom": "Bœuf paré sans os (morceaux de 0,050 kg environ) (paleron, côtes découvertes, gîte à la noix)",
+                      "disponibilité": []
+                    },
+                    "quantite": 2
+                  },
+                  "Bouquet garni": {
+                    "ingredient": {
+                      "nom": "Bouquet garni",
+                      "disponibilité": []
+                    },
+                    "quantite": 1
+                  },
+                  "Champignons de Paris (g)": {
+                    "ingredient": {
+                      "nom": "Champignons de Paris (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 250
+                  },
+                  "Petits oignons (g)": {
+                    "ingredient": {
+                      "nom": "Petits oignons (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 250
+                  },
+                  "Oignons (g)": {
+                    "ingredient": {
+                      "nom": "Oignons (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 200
+                  },
+                  "Farine (g)": {
+                    "ingredient": {
+                      "nom": "Farine (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 60
+                  },
+                  "Huile (ml)": {
+                    "ingredient": {
+                      "nom": "Huile (ml)",
+                      "disponibilité": []
+                    },
+                    "quantite": 70
+                  },
+                  "Sucre semoule": {
+                    "ingredient": {
+                      "nom": "Sucre semoule",
+                      "disponibilité": []
+                    },
+                    "quantite": 1
+                  },
+                  "Vin rouge (passetoutgrain) (ml)": {
+                    "ingredient": {
+                      "nom": "Vin rouge (passetoutgrain) (ml)",
+                      "disponibilité": []
+                    },
+                    "quantite": 750
+                  },
+                  "Poitrine de porc demi-sel (g)": {
+                    "ingredient": {
+                      "nom": "Poitrine de porc demi-sel (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 250
+                  },
+                  "Carottes (g)": {
+                    "ingredient": {
+                      "nom": "Carottes (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 200
+                  },
+                  "Fond brun de veau clair (non lié) (ml)": {
+                    "ingredient": {
+                      "nom": "Fond brun de veau clair (non lié) (ml)",
+                      "disponibilité": []
+                    },
+                    "quantite": 800
+                  },
+                  "Ail (2 gousses) (g)": {
+                    "ingredient": {
+                      "nom": "Ail (2 gousses) (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 15
+                  },
+                  "Beurre (g)": {
+                    "ingredient": {
+                      "nom": "Beurre (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 20
+                  }
+                }
+              },
+              "recette": "1. Mettre en place le poste de travail - 5 min\n• Denrées, matériels de préparation, de cuisson et de dressage.\n\n2. Vérifier et parer la viande si nécessaire - 5 min\n• La réserver en enceinte réfrigérée.\n\n3. Préparer la garniture aromatique - 10 min\n• Eplucher et laver les carottes et les oignons.\n• Les détailler en petits dés réguliers.\n• Eplucher, laver et écraser les gousses d'ail.\n• Laver, équeuter le persil et confectionner un petit bouquet garni.\n\n4. Marquer l'estouffade en cuisson - 20 min\n• Rissoler la viande sur toutes ses faces dans une grande sauteuse avec de l'huile.\n• Ajouter la garniture aromatique et la laisser suer durant quelques minutes.\n• Dégraisser soigneusement, singer, puis torréfier (colorer) la farine en plaçant la sauteuse au four très chaud durant quelques minutes.\n• Remuer les morceaux à l'aide d'une écumoire.\n• Mouiller avec le vin rouge réduit et flambé, et le fond brun de veau.\n• Ajouter l'ail et le bouquet garni.\n• Saler et poivrer, puis cuire l'estouffade à couvert au four à 200 °C pendant 2 h à 2 h 30 min suivant la qualité de la viande (surveiller attentivement la réduction de la sauce et remuer de temps en temps pendant la cuisson).\n\n5. Préparer la garniture bourguignonne - 20 min\n• Eplucher, laver et cuire les petits oignons par glaçage à brun.\n• Eliminer la couenne et détailler la poitrine de porc en petits lardons.\n• Les blanchir (départ eau froide), puis les égoutter sans les rafraîchir.\n• Eplucher, laver soigneusement et escaloper les champignons.\n• Sauter les lardons sans les dessécher dans une petite poêle avec de l'huile, les égoutter, puis les réserver.\n• Sauter les champignons dans la graisse de cuisson des lardons, assaisonner et réserver les champignons avec les lardons.\n\n6. Décanter l'estouffade - 5 min\n• S'assurer de la cuisson de la viande.\n• Décanter les morceaux dans une autre sauteuse.\n• Dégraisser la sauce, vérifier sa liaison et son assaisonnement.\n• La faire réduire si nécessaire et la passer au chinois étamine sur les morceaux de viande.\n• Ajouter les lardons et les champignons, et laisser mijoter l'estouffade durant quelques minutes.\n\n7. Hacher et essorer le persil - 5 min\n\n8. Dresser l'estouffade - 5 min\n• Dresser la viande légèrement en dôme dans la cocotte ou dans le légumier.\n• Répartir uniformément la garniture sur le dessus.\n• Recouvrir de sauce (sans excès).\n• Disposer harmonieusement les petits oignons glacés.\n• Saupoudrer légèrement de persil haché.\n• REMARQUES :\n• Lorsque l’on dispose d’un peu plus de temps, il est préférable de mettre la veille, les mor-\n• ceaux de bœuf en marinade avec le vin, l’huile, un peu d’eau-de-vie et la garniture aro-\n• matique. Lors de la cuisson, les morceaux de viande sont soigneusement épongés avant\n• d’être rissolés. L’estouffade est mouillée avec la marinade réduite et du fond brun de\n• veau lié. L’estouffade peut être mouillée avec du fond brun de veau lié, dans ce cas elle\n• n’est pas singée.\n• Il est d'usage de détailler la poitrine de porc en lardons, de les blanchir et de les faire sau-\n• ter en premier. La viande est ensuite rissolée dans la graisse de fonte des lardons (2 h 30 min\n• plus tard, lorsque la viande est cuite, les lardons sont souvent secs ou ils ont disparu)…",
+              "activable": true,
+              "est_reste": false,
+              "tags": []
+            },
+            "entree": null,
+            "dessert": null
+          }
+        ],
+        "date": "2026-11-28T20:17:35.620739300+01:00"
+      },
+      {
+        "menu": [
+          {
+            "name": "petit-dej",
+            "nbPersonne": 0,
+            "recette": null,
+            "entree": null,
+            "dessert": null
+          },
+          {
+            "name": "dej",
+            "nbPersonne": 2,
+            "recette": {
+              "name": "Bœuf Bourguignon",
+              "nbPersonne": 8,
+              "duree": 75,
+              "ingredients": {
+                "ingredients": {
+                  "Bœuf paré sans os (morceaux de 0,050 kg environ) (paleron, côtes découvertes, gîte à la noix)": {
+                    "ingredient": {
+                      "nom": "Bœuf paré sans os (morceaux de 0,050 kg environ) (paleron, côtes découvertes, gîte à la noix)",
+                      "disponibilité": []
+                    },
+                    "quantite": 2
+                  },
+                  "Bouquet garni": {
+                    "ingredient": {
+                      "nom": "Bouquet garni",
+                      "disponibilité": []
+                    },
+                    "quantite": 1
+                  },
+                  "Champignons de Paris (g)": {
+                    "ingredient": {
+                      "nom": "Champignons de Paris (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 250
+                  },
+                  "Petits oignons (g)": {
+                    "ingredient": {
+                      "nom": "Petits oignons (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 250
+                  },
+                  "Oignons (g)": {
+                    "ingredient": {
+                      "nom": "Oignons (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 200
+                  },
+                  "Farine (g)": {
+                    "ingredient": {
+                      "nom": "Farine (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 60
+                  },
+                  "Huile (ml)": {
+                    "ingredient": {
+                      "nom": "Huile (ml)",
+                      "disponibilité": []
+                    },
+                    "quantite": 70
+                  },
+                  "Sucre semoule": {
+                    "ingredient": {
+                      "nom": "Sucre semoule",
+                      "disponibilité": []
+                    },
+                    "quantite": 1
+                  },
+                  "Vin rouge (passetoutgrain) (ml)": {
+                    "ingredient": {
+                      "nom": "Vin rouge (passetoutgrain) (ml)",
+                      "disponibilité": []
+                    },
+                    "quantite": 750
+                  },
+                  "Poitrine de porc demi-sel (g)": {
+                    "ingredient": {
+                      "nom": "Poitrine de porc demi-sel (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 250
+                  },
+                  "Carottes (g)": {
+                    "ingredient": {
+                      "nom": "Carottes (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 200
+                  },
+                  "Fond brun de veau clair (non lié) (ml)": {
+                    "ingredient": {
+                      "nom": "Fond brun de veau clair (non lié) (ml)",
+                      "disponibilité": []
+                    },
+                    "quantite": 800
+                  },
+                  "Ail (2 gousses) (g)": {
+                    "ingredient": {
+                      "nom": "Ail (2 gousses) (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 15
+                  },
+                  "Beurre (g)": {
+                    "ingredient": {
+                      "nom": "Beurre (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 20
+                  }
+                }
+              },
+              "recette": "1. Mettre en place le poste de travail - 5 min\n• Denrées, matériels de préparation, de cuisson et de dressage.\n\n2. Vérifier et parer la viande si nécessaire - 5 min\n• La réserver en enceinte réfrigérée.\n\n3. Préparer la garniture aromatique - 10 min\n• Eplucher et laver les carottes et les oignons.\n• Les détailler en petits dés réguliers.\n• Eplucher, laver et écraser les gousses d'ail.\n• Laver, équeuter le persil et confectionner un petit bouquet garni.\n\n4. Marquer l'estouffade en cuisson - 20 min\n• Rissoler la viande sur toutes ses faces dans une grande sauteuse avec de l'huile.\n• Ajouter la garniture aromatique et la laisser suer durant quelques minutes.\n• Dégraisser soigneusement, singer, puis torréfier (colorer) la farine en plaçant la sauteuse au four très chaud durant quelques minutes.\n• Remuer les morceaux à l'aide d'une écumoire.\n• Mouiller avec le vin rouge réduit et flambé, et le fond brun de veau.\n• Ajouter l'ail et le bouquet garni.\n• Saler et poivrer, puis cuire l'estouffade à couvert au four à 200 °C pendant 2 h à 2 h 30 min suivant la qualité de la viande (surveiller attentivement la réduction de la sauce et remuer de temps en temps pendant la cuisson).\n\n5. Préparer la garniture bourguignonne - 20 min\n• Eplucher, laver et cuire les petits oignons par glaçage à brun.\n• Eliminer la couenne et détailler la poitrine de porc en petits lardons.\n• Les blanchir (départ eau froide), puis les égoutter sans les rafraîchir.\n• Eplucher, laver soigneusement et escaloper les champignons.\n• Sauter les lardons sans les dessécher dans une petite poêle avec de l'huile, les égoutter, puis les réserver.\n• Sauter les champignons dans la graisse de cuisson des lardons, assaisonner et réserver les champignons avec les lardons.\n\n6. Décanter l'estouffade - 5 min\n• S'assurer de la cuisson de la viande.\n• Décanter les morceaux dans une autre sauteuse.\n• Dégraisser la sauce, vérifier sa liaison et son assaisonnement.\n• La faire réduire si nécessaire et la passer au chinois étamine sur les morceaux de viande.\n• Ajouter les lardons et les champignons, et laisser mijoter l'estouffade durant quelques minutes.\n\n7. Hacher et essorer le persil - 5 min\n\n8. Dresser l'estouffade - 5 min\n• Dresser la viande légèrement en dôme dans la cocotte ou dans le légumier.\n• Répartir uniformément la garniture sur le dessus.\n• Recouvrir de sauce (sans excès).\n• Disposer harmonieusement les petits oignons glacés.\n• Saupoudrer légèrement de persil haché.\n• REMARQUES :\n• Lorsque l’on dispose d’un peu plus de temps, il est préférable de mettre la veille, les mor-\n• ceaux de bœuf en marinade avec le vin, l’huile, un peu d’eau-de-vie et la garniture aro-\n• matique. Lors de la cuisson, les morceaux de viande sont soigneusement épongés avant\n• d’être rissolés. L’estouffade est mouillée avec la marinade réduite et du fond brun de\n• veau lié. L’estouffade peut être mouillée avec du fond brun de veau lié, dans ce cas elle\n• n’est pas singée.\n• Il est d'usage de détailler la poitrine de porc en lardons, de les blanchir et de les faire sau-\n• ter en premier. La viande est ensuite rissolée dans la graisse de fonte des lardons (2 h 30 min\n• plus tard, lorsque la viande est cuite, les lardons sont souvent secs ou ils ont disparu)…",
+              "activable": true,
+              "est_reste": true,
+              "tags": []
+            },
+            "entree": null,
+            "dessert": null
+          },
+          {
+            "name": "gouter",
+            "nbPersonne": 0,
+            "recette": null,
+            "entree": null,
+            "dessert": null
+          },
+          {
+            "name": "diner",
+            "nbPersonne": 2,
+            "recette": {
+              "name": "Bœuf Bourguignon",
+              "nbPersonne": 8,
+              "duree": 75,
+              "ingredients": {
+                "ingredients": {
+                  "Bœuf paré sans os (morceaux de 0,050 kg environ) (paleron, côtes découvertes, gîte à la noix)": {
+                    "ingredient": {
+                      "nom": "Bœuf paré sans os (morceaux de 0,050 kg environ) (paleron, côtes découvertes, gîte à la noix)",
+                      "disponibilité": []
+                    },
+                    "quantite": 2
+                  },
+                  "Bouquet garni": {
+                    "ingredient": {
+                      "nom": "Bouquet garni",
+                      "disponibilité": []
+                    },
+                    "quantite": 1
+                  },
+                  "Champignons de Paris (g)": {
+                    "ingredient": {
+                      "nom": "Champignons de Paris (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 250
+                  },
+                  "Petits oignons (g)": {
+                    "ingredient": {
+                      "nom": "Petits oignons (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 250
+                  },
+                  "Oignons (g)": {
+                    "ingredient": {
+                      "nom": "Oignons (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 200
+                  },
+                  "Farine (g)": {
+                    "ingredient": {
+                      "nom": "Farine (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 60
+                  },
+                  "Huile (ml)": {
+                    "ingredient": {
+                      "nom": "Huile (ml)",
+                      "disponibilité": []
+                    },
+                    "quantite": 70
+                  },
+                  "Sucre semoule": {
+                    "ingredient": {
+                      "nom": "Sucre semoule",
+                      "disponibilité": []
+                    },
+                    "quantite": 1
+                  },
+                  "Vin rouge (passetoutgrain) (ml)": {
+                    "ingredient": {
+                      "nom": "Vin rouge (passetoutgrain) (ml)",
+                      "disponibilité": []
+                    },
+                    "quantite": 750
+                  },
+                  "Poitrine de porc demi-sel (g)": {
+                    "ingredient": {
+                      "nom": "Poitrine de porc demi-sel (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 250
+                  },
+                  "Carottes (g)": {
+                    "ingredient": {
+                      "nom": "Carottes (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 200
+                  },
+                  "Fond brun de veau clair (non lié) (ml)": {
+                    "ingredient": {
+                      "nom": "Fond brun de veau clair (non lié) (ml)",
+                      "disponibilité": []
+                    },
+                    "quantite": 800
+                  },
+                  "Ail (2 gousses) (g)": {
+                    "ingredient": {
+                      "nom": "Ail (2 gousses) (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 15
+                  },
+                  "Beurre (g)": {
+                    "ingredient": {
+                      "nom": "Beurre (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 20
+                  }
+                }
+              },
+              "recette": "1. Mettre en place le poste de travail - 5 min\n• Denrées, matériels de préparation, de cuisson et de dressage.\n\n2. Vérifier et parer la viande si nécessaire - 5 min\n• La réserver en enceinte réfrigérée.\n\n3. Préparer la garniture aromatique - 10 min\n• Eplucher et laver les carottes et les oignons.\n• Les détailler en petits dés réguliers.\n• Eplucher, laver et écraser les gousses d'ail.\n• Laver, équeuter le persil et confectionner un petit bouquet garni.\n\n4. Marquer l'estouffade en cuisson - 20 min\n• Rissoler la viande sur toutes ses faces dans une grande sauteuse avec de l'huile.\n• Ajouter la garniture aromatique et la laisser suer durant quelques minutes.\n• Dégraisser soigneusement, singer, puis torréfier (colorer) la farine en plaçant la sauteuse au four très chaud durant quelques minutes.\n• Remuer les morceaux à l'aide d'une écumoire.\n• Mouiller avec le vin rouge réduit et flambé, et le fond brun de veau.\n• Ajouter l'ail et le bouquet garni.\n• Saler et poivrer, puis cuire l'estouffade à couvert au four à 200 °C pendant 2 h à 2 h 30 min suivant la qualité de la viande (surveiller attentivement la réduction de la sauce et remuer de temps en temps pendant la cuisson).\n\n5. Préparer la garniture bourguignonne - 20 min\n• Eplucher, laver et cuire les petits oignons par glaçage à brun.\n• Eliminer la couenne et détailler la poitrine de porc en petits lardons.\n• Les blanchir (départ eau froide), puis les égoutter sans les rafraîchir.\n• Eplucher, laver soigneusement et escaloper les champignons.\n• Sauter les lardons sans les dessécher dans une petite poêle avec de l'huile, les égoutter, puis les réserver.\n• Sauter les champignons dans la graisse de cuisson des lardons, assaisonner et réserver les champignons avec les lardons.\n\n6. Décanter l'estouffade - 5 min\n• S'assurer de la cuisson de la viande.\n• Décanter les morceaux dans une autre sauteuse.\n• Dégraisser la sauce, vérifier sa liaison et son assaisonnement.\n• La faire réduire si nécessaire et la passer au chinois étamine sur les morceaux de viande.\n• Ajouter les lardons et les champignons, et laisser mijoter l'estouffade durant quelques minutes.\n\n7. Hacher et essorer le persil - 5 min\n\n8. Dresser l'estouffade - 5 min\n• Dresser la viande légèrement en dôme dans la cocotte ou dans le légumier.\n• Répartir uniformément la garniture sur le dessus.\n• Recouvrir de sauce (sans excès).\n• Disposer harmonieusement les petits oignons glacés.\n• Saupoudrer légèrement de persil haché.\n• REMARQUES :\n• Lorsque l’on dispose d’un peu plus de temps, il est préférable de mettre la veille, les mor-\n• ceaux de bœuf en marinade avec le vin, l’huile, un peu d’eau-de-vie et la garniture aro-\n• matique. Lors de la cuisson, les morceaux de viande sont soigneusement épongés avant\n• d’être rissolés. L’estouffade est mouillée avec la marinade réduite et du fond brun de\n• veau lié. L’estouffade peut être mouillée avec du fond brun de veau lié, dans ce cas elle\n• n’est pas singée.\n• Il est d'usage de détailler la poitrine de porc en lardons, de les blanchir et de les faire sau-\n• ter en premier. La viande est ensuite rissolée dans la graisse de fonte des lardons (2 h 30 min\n• plus tard, lorsque la viande est cuite, les lardons sont souvent secs ou ils ont disparu)…",
+              "activable": true,
+              "est_reste": true,
+              "tags": []
+            },
+            "entree": null,
+            "dessert": null
+          }
+        ],
+        "date": "2026-11-29T20:17:35.620739300+01:00"
       }
     ],
     "tMax": 200

@@ -4,6 +4,7 @@ version = "0.1.0"
 edition = "2024"
 
 [dependencies]
+image = { version = "0.25", default-features = false, features = ["png"] }
 eframe = "0.27"
 tungstenite = "0.20"
 chrono = { version = "0.4", features = ["serde"] }
@@ -14,3 +15,6 @@ serde_json = "1.0"
 [[bin]]
 name = "MenuGenerator"
 path = "src/main.rs"
+
+[build-dependencies]
+winres = "0.1"
