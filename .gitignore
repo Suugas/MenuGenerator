@@ -1,8 +1,9 @@
 *.exe
 *.pdb
 *.lock
-
+*.iss
 
 # Added by cargo
 
 /target
+/Output
