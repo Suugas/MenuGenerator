@@ -6,4 +6,4 @@ Voici un projet d'application capable de remplir automatiquement votre menu de l
 
 ------------------------------------
 
-Restez a l'affut des nouvelles versions [releases page](https://github.com/Suugas/MenuGenerator/releases)
+Restez à l'affut des nouvelles versions [releases page](https://github.com/Suugas/MenuGenerator/releases)
