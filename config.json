@@ -1,7 +1,7 @@
 {
   "ip": "51.77.150.177",
   "port": 8887,
-  "c_liste": "LNZDQO",
+  "c_liste": "",
   "list_nb_mangeur": [
     0,
     0,
@@ -32,7 +32,7 @@
     2,
     2
   ],
-  "duree_max": 420,
+  "duree_max": 500,
   "is_recette_filtre": true,
-  "auto_send_sl": true
+  "auto_send_sl": false
 }

@@ -1,3 +1,4 @@
+#![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 use chrono::Local;
 use std::collections::HashMap;
 
@@ -81,8 +82,41 @@ fn charger_icone() -> Option<egui::IconData> {
         height: hauteur,
     })
 }
+/// Crée le fichier avec son contenu par défaut s'il n'existe pas encore
+fn creer_si_absent(chemin: &str, contenu_par_defaut: &str) {
+    if !std::path::Path::new(chemin).exists() {
+        if let Err(e) = std::fs::write(chemin, contenu_par_defaut) {
+            eprintln!("[ERREUR] Impossible de créer {} : {}", chemin, e);
+        }
+    }
+}
+
+/// Se place dans %APPDATA%\PlanificateurMenus (dossier toujours accessible en écriture)
+fn preparer_dossier_donnees() {
+    let base = std::env::var("APPDATA").unwrap_or_else(|_| ".".to_string());
+    let dossier = std::path::PathBuf::from(base).join("PlanificateurMenus");
+    let _ = std::fs::create_dir_all(&dossier);
+    let _ = std::env::set_current_dir(&dossier);
+}
 
 fn main() -> eframe::Result<()> {
+    // Pour éviter les erreurs d'acces au json
+    if let Ok(exe) = std::env::current_exe() {
+        if let Some(dossier) = exe.parent() {
+            let _ = std::env::set_current_dir(dossier);
+        }
+    }
+
+    // Version finale (--release) : les JSON vivent dans %APPDATA%.
+    // En développement (cargo run), on garde ceux du dossier du projet.
+    #[cfg(not(debug_assertions))]
+    {
+        preparer_dossier_donnees();
+        creer_si_absent("config.json", include_str!("../config.json"));
+        creer_si_absent("recettes.json", include_str!("../recettes.json"));
+        creer_si_absent("schedule.json", "[]");
+    }
+
     let mut config: Config = loadConfig("config.json");
     let recetteList: Vec<Recette> = charger_recettes("recettes.json");
     let today = Local::now();
