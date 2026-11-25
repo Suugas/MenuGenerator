@@ -107,6 +107,12 @@ fn main() -> eframe::Result<()> {
         }
     }
 
+    #[cfg(debug_assertions)]
+    {
+        let _ = std::env::set_current_dir(env!("CARGO_MANIFEST_DIR"));
+        creer_si_absent("schedule.json", "[]");
+    }
+
     // Version finale (--release) : les JSON vivent dans %APPDATA%.
     // En développement (cargo run), on garde ceux du dossier du projet.
     #[cfg(not(debug_assertions))]
@@ -171,6 +177,7 @@ fn main() -> eframe::Result<()> {
         envoi_en_cours: None,
         message_envoi: None,
         filtres_tags: std::collections::HashSet::new(),
+        filtres_tags_exclus: std::collections::HashSet::new(),
         edition: None,
         filtre_duree_actif: false,
         filtre_duree_max: 30,

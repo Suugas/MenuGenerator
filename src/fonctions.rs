@@ -55,7 +55,11 @@ pub fn saveWeeks(chemin_fichier: &str, weeks: &Vec<Week>) {
 /// Temps de cuisine d'un repas (plat + entrée + dessert). Un reste ne se recuisine pas.
 fn duree_repas(repas: &Repas) -> i32 {
     let mut som = 0;
-    for rec in [repas.recette.as_ref(), repas.entree.as_ref(), repas.dessert.as_ref()] {
+    for rec in [
+        repas.recette.as_ref(),
+        repas.entree.as_ref(),
+        repas.dessert.as_ref(),
+    ] {
         if let Some(r) = rec {
             if !r.est_reste {
                 som += r.duree;
@@ -91,16 +95,20 @@ fn a_tag(r: &Recette, tag: Tag) -> bool {
     r.nbPersonne > 0 && r.tags.contains(&tag)
 }
 
-fn recettes_actives(recettes: &Vec<Recette>, filtre_saison: bool) -> Vec<Recette> {
+fn recettes_actives(recettes: &Vec<Recette>, config: &Config) -> Vec<Recette> {
     recettes
         .iter()
-        .filter(|r| r.activable && (!filtre_saison || r.is_valable()))
+        .filter(|r| {
+            r.activable
+                && (!config.is_recette_filtre || r.is_valable())
+                && config.tags_exclus.iter().all(|t| !r.tags.contains(t))
+        })
         .cloned()
         .collect()
 }
 
 pub fn generateMenu(week: &mut Week, recettes: &Vec<Recette>, config: &Config, dureeMax: i32) {
-    let actives = recettes_actives(recettes, config.is_recette_filtre);
+    let actives = recettes_actives(recettes, config);
 
     apply_nb_mangeur(week, &config.list_nb_mangeur);
 
@@ -137,7 +145,10 @@ pub fn mettre_a_jour_semaines(
     let maintenant = Local::now();
 
     let mut retirees = 0;
-    while semaines.first().map_or(false, |s| s.est_terminee(maintenant)) {
+    while semaines
+        .first()
+        .map_or(false, |s| s.est_terminee(maintenant))
+    {
         semaines.remove(0);
         retirees += 1;
     }
@@ -186,8 +197,9 @@ pub fn regenerer_repas(
     if nb <= 0 {
         return;
     }
-    let actives = recettes_actives(recettes, config.is_recette_filtre);
+    let actives = recettes_actives(recettes, config);
     let mut rng = rand::thread_rng();
+    let idx = Config::indice(r, d, week.days.len());
 
     match partie {
         Partie::Entree | Partie::Dessert => {
@@ -196,11 +208,17 @@ pub fn regenerer_repas(
             } else {
                 Tag::Dessert
             };
-            let liste: Vec<&Recette> = actives.iter().filter(|x| a_tag(x, tag)).collect();
+            let liste: Vec<&Recette> = actives
+                .iter()
+                .filter(|x| a_tag(x, tag) && !config.est_tag_exclu_repas(idx, x))
+                .collect();
             let actuel: Option<String> = if partie == Partie::Entree {
                 week.days[d].menu[r].entree.as_ref().map(|x| x.name.clone())
             } else {
-                week.days[d].menu[r].dessert.as_ref().map(|x| x.name.clone())
+                week.days[d].menu[r]
+                    .dessert
+                    .as_ref()
+                    .map(|x| x.name.clone())
             };
             if let Some(nouveau) = choisir_extra(&liste, nb, &mut rng, actuel.as_deref()) {
                 if partie == Partie::Entree {
@@ -281,10 +299,20 @@ fn remplir_extras(
     garder_extras: bool,
 ) {
     if config.entree_prevue(idx) && !(garder_extras && week.days[d].menu[r].entree.is_some()) {
-        week.days[d].menu[r].entree = choisir_extra(entrees, nb, rng, None);
+        let filtrees: Vec<&Recette> = entrees
+            .iter()
+            .copied()
+            .filter(|x| !config.est_tag_exclu_repas(idx, x))
+            .collect();
+        week.days[d].menu[r].entree = choisir_extra(&filtrees, nb, rng, None);
     }
     if config.dessert_prevu(idx) && !(garder_extras && week.days[d].menu[r].dessert.is_some()) {
-        week.days[d].menu[r].dessert = choisir_extra(desserts, nb, rng, None);
+        let filtrees: Vec<&Recette> = desserts
+            .iter()
+            .copied()
+            .filter(|x| !config.est_tag_exclu_repas(idx, x))
+            .collect();
+        week.days[d].menu[r].dessert = choisir_extra(&filtrees, nb, rng, None);
     }
 }
 
@@ -332,7 +360,6 @@ fn assigner_recettes(
         let (d, r) = ordre[pos];
         let nb = week.days[d].menu[r].nbPersonne;
         let idx = Config::indice(r, d, nb_jours);
-        let tag_force: Option<Tag> = config.tag_force(idx);
 
         restes.retain(|(_, portions, jour)| *portions > 0 && d - *jour <= MAX_JOURS_RESTES);
 
@@ -353,13 +380,15 @@ fn assigner_recettes(
             continue;
         }
 
-        let tag_ok = |rec: &Recette| tag_force.map_or(true, |t| rec.tags.contains(&t));
+        let tag_ok = |rec: &Recette| {
+            config.respecte_tags_forces(idx, rec) && !config.est_tag_exclu_repas(idx, rec)
+        };
         let est_exclu = |rec: &Recette| match exclu {
             Some((ed, er, nom)) => ed == d && er == r && rec.name == nom,
             None => false,
         };
 
-        // 1. Y a-t-il des restes à manger ? (en respectant le tag forcé)
+        // 1. Y a-t-il des restes à manger ? (en respectant les tags forcés et exclus du repas)
         if let Some(i) = restes
             .iter()
             .position(|(rec, portions, _)| *portions >= nb && tag_ok(rec) && !est_exclu(rec))
@@ -369,7 +398,16 @@ fn assigner_recettes(
             restes[i].1 -= nb;
             week.days[d].menu[r].recette = Some(rec);
             remplir_extras(
-                week, d, r, nb, idx, config, &entrees, &desserts, rng, garder_extras,
+                week,
+                d,
+                r,
+                nb,
+                idx,
+                config,
+                &entrees,
+                &desserts,
+                rng,
+                garder_extras,
             );
             continue;
         }
@@ -391,14 +429,18 @@ fn assigner_recettes(
                 let restant = rec.nbPersonne - nb;
                 rec.nbPersonne % nb == 0
                     && ordre[pos + 1..].iter().any(|&(d2, r2)| {
-                        d2 - d <= MAX_JOURS_RESTES && week.days[d2].menu[r2].nbPersonne <= restant
+                        let idx2 = Config::indice(r2, d2, nb_jours);
+                        d2 - d <= MAX_JOURS_RESTES
+                            && week.days[d2].menu[r2].nbPersonne <= restant
+                            && config.respecte_tags_forces(idx2, rec)
+                            && !config.est_tag_exclu_repas(idx2, rec)
                     })
             })
             .collect();
 
         let mut choix: Option<&Recette> = candidats.choose(rng).copied();
         if choix.is_none() {
-            // repli 1 : n'importe quelle taille, mais on respecte le tag forcé
+            // repli 1 : n'importe quelle taille, mais on respecte tous les tags forcés et exclus
             let v: Vec<&Recette> = plats
                 .iter()
                 .copied()
@@ -407,7 +449,29 @@ fn assigner_recettes(
             choix = v.choose(rng).copied();
         }
         if choix.is_none() {
-            // repli 2 : n'importe quel plat
+            // repli 2 : au moins un des tags forcés + respect des tags exclus
+            let v: Vec<&Recette> = plats
+                .iter()
+                .copied()
+                .filter(|x| {
+                    config.respecte_au_moins_un_tag_force(idx, x)
+                        && !config.est_tag_exclu_repas(idx, x)
+                        && !est_exclu(*x)
+                })
+                .collect();
+            choix = v.choose(rng).copied();
+        }
+        if choix.is_none() {
+            // repli 3 : on relâche les tags forcés, mais on respecte les tags exclus du repas
+            let v: Vec<&Recette> = plats
+                .iter()
+                .copied()
+                .filter(|x| !config.est_tag_exclu_repas(idx, x) && !est_exclu(*x))
+                .collect();
+            choix = v.choose(rng).copied();
+        }
+        if choix.is_none() {
+            // repli 4 : n'importe quel plat
             let v: Vec<&Recette> = plats.iter().copied().filter(|x| !est_exclu(*x)).collect();
             choix = v.choose(rng).copied();
         }
@@ -429,9 +493,45 @@ fn assigner_recettes(
         }
         week.days[d].menu[r].recette = Some(rec);
         remplir_extras(
-            week, d, r, nb, idx, config, &entrees, &desserts, rng, garder_extras,
+            week,
+            d,
+            r,
+            nb,
+            idx,
+            config,
+            &entrees,
+            &desserts,
+            rng,
+            garder_extras,
         );
     }
+}
+
+/// Permet de relire aussi bien l'ancien format (`Option<Tag>`) que le nouveau (`HashSet<Tag>`)
+fn deserialiser_list_tag_force<'de, D>(deserializer: D) -> Result<Vec<HashSet<Tag>>, D::Error>
+where
+    D: serde::Deserializer<'de>,
+{
+    #[derive(Deserialize)]
+    #[serde(untagged)]
+    enum TagForceCompat {
+        Plusieurs(HashSet<Tag>),
+        UnSeul(Option<Tag>),
+    }
+
+    let brut: Vec<TagForceCompat> = Vec::deserialize(deserializer)?;
+    Ok(brut
+        .into_iter()
+        .map(|item| match item {
+            TagForceCompat::Plusieurs(set) => set,
+            TagForceCompat::UnSeul(Some(t)) => {
+                let mut set = HashSet::new();
+                set.insert(t);
+                set
+            }
+            TagForceCompat::UnSeul(None) => HashSet::new(),
+        })
+        .collect())
 }
 
 #[derive(Debug, Deserialize, Serialize, Clone)]
@@ -449,9 +549,15 @@ pub struct Config {
     /// Un repas comprend-il un dessert ?
     #[serde(default)]
     pub list_dessert: Vec<bool>,
-    /// Tag imposé au plat d'un repas (None = aucun)
+    /// Tags imposés au plat d'un repas (même indexation que `list_nb_mangeur`)
+    #[serde(default, deserialize_with = "deserialiser_list_tag_force")]
+    pub list_tag_force: Vec<HashSet<Tag>>,
+    /// Tags exclus pour un repas précis (même indexation que `list_nb_mangeur`)
     #[serde(default)]
-    pub list_tag_force: Vec<Option<Tag>>,
+    pub list_tags_exclus: Vec<HashSet<Tag>>,
+    /// Tags exclus lors de la génération automatique des menus
+    #[serde(default)]
+    pub tags_exclus: HashSet<Tag>,
 }
 impl Config {
     /// Index d'un repas dans les listes de réglages (repas `r`, jour `d`)
@@ -459,12 +565,13 @@ impl Config {
         r * nb_jours + d
     }
 
-    /// Met les listes entrée / dessert / tag à la même taille que `list_nb_mangeur`
+    /// Met les listes entrée / dessert / tags à la même taille que `list_nb_mangeur`
     pub fn normaliser(&mut self) {
         let n = self.list_nb_mangeur.len();
         self.list_entree.resize(n, false);
         self.list_dessert.resize(n, false);
-        self.list_tag_force.resize(n, None);
+        self.list_tag_force.resize(n, HashSet::new());
+        self.list_tags_exclus.resize(n, HashSet::new());
     }
 
     pub fn entree_prevue(&self, idx: usize) -> bool {
@@ -475,8 +582,22 @@ impl Config {
         self.list_dessert.get(idx).copied().unwrap_or(false)
     }
 
-    pub fn tag_force(&self, idx: usize) -> Option<Tag> {
-        self.list_tag_force.get(idx).copied().flatten()
+    pub fn respecte_tags_forces(&self, idx: usize, rec: &Recette) -> bool {
+        self.list_tag_force
+            .get(idx)
+            .map_or(true, |forces| forces.iter().all(|t| rec.tags.contains(t)))
+    }
+
+    pub fn respecte_au_moins_un_tag_force(&self, idx: usize, rec: &Recette) -> bool {
+        self.list_tag_force.get(idx).map_or(true, |forces| {
+            forces.is_empty() || forces.iter().any(|t| rec.tags.contains(t))
+        })
+    }
+
+    pub fn est_tag_exclu_repas(&self, idx: usize, rec: &Recette) -> bool {
+        self.list_tags_exclus
+            .get(idx)
+            .map_or(false, |exclus| exclus.iter().any(|t| rec.tags.contains(t)))
     }
 
     /// Retourne l'URL du WebSocket (ex: ws://51.77.150.177:8887)
@@ -605,7 +726,11 @@ pub fn creer_liste_courses(week: &Week) -> ListIngredient {
     };
     for day in &week.days {
         for repas in &day.menu {
-            for rec in [repas.recette.as_ref(), repas.entree.as_ref(), repas.dessert.as_ref()] {
+            for rec in [
+                repas.recette.as_ref(),
+                repas.entree.as_ref(),
+                repas.dessert.as_ref(),
+            ] {
                 if let Some(r) = rec {
                     // les restes ont déjà été achetés avec le repas d'origine
                     if !r.est_reste {

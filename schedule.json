@@ -5,849 +5,6 @@
         "menu": [
           {
             "name": "petit-dej",
-            "nbPersonne": 1,
-            "recette": {
-              "name": "Omelette aux Champignons",
-              "nbPersonne": 1,
-              "duree": 10,
-              "ingredients": {
-                "ingredients": {
-                  "Beurre (g)": {
-                    "ingredient": {
-                      "nom": "Beurre (g)",
-                      "disponibilité": []
-                    },
-                    "quantite": 15
-                  },
-                  "Champignons de paris (g)": {
-                    "ingredient": {
-                      "nom": "Champignons de paris (g)",
-                      "disponibilité": []
-                    },
-                    "quantite": 100
-                  },
-                  "Persil": {
-                    "ingredient": {
-                      "nom": "Persil",
-                      "disponibilité": []
-                    },
-                    "quantite": 1
-                  },
-                  "Œufs": {
-                    "ingredient": {
-                      "nom": "Œufs",
-                      "disponibilité": []
-                    },
-                    "quantite": 3
-                  }
-                }
-              },
-              "recette": "1. Couper et faire poêler les champignons dans le beurre.\n2. Battre les œufs en omelette avec du sel et du poivre.\n3. Verser les œufs battus sur les champignons et cuire 3 à 4 minutes.",
-              "activable": true,
-              "est_reste": false,
-              "tags": []
-            },
-            "entree": null,
-            "dessert": null
-          },
-          {
-            "name": "dej",
-            "nbPersonne": 2,
-            "recette": {
-              "name": "Pâtes Carbonara",
-              "nbPersonne": 2,
-              "duree": 15,
-              "ingredients": {
-                "ingredients": {
-                  "Pâtes (g)": {
-                    "ingredient": {
-                      "nom": "Pâtes (g)",
-                      "disponibilité": []
-                    },
-                    "quantite": 200
-                  },
-                  "Guanciale (g)": {
-                    "ingredient": {
-                      "nom": "Guanciale (g)",
-                      "disponibilité": []
-                    },
-                    "quantite": 100
-                  },
-                  "Jaunes d'œuf": {
-                    "ingredient": {
-                      "nom": "Jaunes d'œuf",
-                      "disponibilité": []
-                    },
-                    "quantite": 3
-                  },
-                  "Pecorino (g)": {
-                    "ingredient": {
-                      "nom": "Pecorino (g)",
-                      "disponibilité": []
-                    },
-                    "quantite": 50
-                  }
-                }
-              },
-              "recette": "1. Cuire les pâtes.\n2. Faire dorér le guanciale à la poêle.\n3. Mélanger les jaunes d'œuf avec le pecorino râpé.\n4. Hors du feu, mélanger les pâtes avec la crème d'œuf et le guanciale.",
-              "activable": true,
-              "est_reste": false,
-              "tags": []
-            },
-            "entree": null,
-            "dessert": null
-          },
-          {
-            "name": "gouter",
-            "nbPersonne": 0,
-            "recette": null,
-            "entree": null,
-            "dessert": null
-          },
-          {
-            "name": "diner",
-            "nbPersonne": 3,
-            "recette": {
-              "name": "Omelette aux Champignons",
-              "nbPersonne": 3,
-              "duree": 10,
-              "ingredients": {
-                "ingredients": {
-                  "Persil": {
-                    "ingredient": {
-                      "nom": "Persil",
-                      "disponibilité": []
-                    },
-                    "quantite": 3
-                  },
-                  "Beurre (g)": {
-                    "ingredient": {
-                      "nom": "Beurre (g)",
-                      "disponibilité": []
-                    },
-                    "quantite": 45
-                  },
-                  "Champignons de paris (g)": {
-                    "ingredient": {
-                      "nom": "Champignons de paris (g)",
-                      "disponibilité": []
-                    },
-                    "quantite": 300
-                  },
-                  "Œufs": {
-                    "ingredient": {
-                      "nom": "Œufs",
-                      "disponibilité": []
-                    },
-                    "quantite": 9
-                  }
-                }
-              },
-              "recette": "1. Couper et faire poêler les champignons dans le beurre.\n2. Battre les œufs en omelette avec du sel et du poivre.\n3. Verser les œufs battus sur les champignons et cuire 3 à 4 minutes.",
-              "activable": true,
-              "est_reste": false,
-              "tags": []
-            },
-            "entree": null,
-            "dessert": null
-          }
-        ],
-        "date": "2026-11-16T20:17:35.620739300+01:00"
-      },
-      {
-        "menu": [
-          {
-            "name": "petit-dej",
-            "nbPersonne": 0,
-            "recette": null,
-            "entree": null,
-            "dessert": null
-          },
-          {
-            "name": "dej",
-            "nbPersonne": 2,
-            "recette": {
-              "name": "Omelette aux Champignons",
-              "nbPersonne": 2,
-              "duree": 10,
-              "ingredients": {
-                "ingredients": {
-                  "Champignons de paris (g)": {
-                    "ingredient": {
-                      "nom": "Champignons de paris (g)",
-                      "disponibilité": []
-                    },
-                    "quantite": 200
-                  },
-                  "Œufs": {
-                    "ingredient": {
-                      "nom": "Œufs",
-                      "disponibilité": []
-                    },
-                    "quantite": 6
-                  },
-                  "Persil": {
-                    "ingredient": {
-                      "nom": "Persil",
-                      "disponibilité": []
-                    },
-                    "quantite": 2
-                  },
-                  "Beurre (g)": {
-                    "ingredient": {
-                      "nom": "Beurre (g)",
-                      "disponibilité": []
-                    },
-                    "quantite": 30
-                  }
-                }
-              },
-              "recette": "1. Couper et faire poêler les champignons dans le beurre.\n2. Battre les œufs en omelette avec du sel et du poivre.\n3. Verser les œufs battus sur les champignons et cuire 3 à 4 minutes.",
-              "activable": true,
-              "est_reste": false,
-              "tags": []
-            },
-            "entree": null,
-            "dessert": null
-          },
-          {
-            "name": "gouter",
-            "nbPersonne": 0,
-            "recette": null,
-            "entree": null,
-            "dessert": null
-          },
-          {
-            "name": "diner",
-            "nbPersonne": 3,
-            "recette": {
-              "name": "Omelette aux Champignons",
-              "nbPersonne": 3,
-              "duree": 10,
-              "ingredients": {
-                "ingredients": {
-                  "Beurre (g)": {
-                    "ingredient": {
-                      "nom": "Beurre (g)",
-                      "disponibilité": []
-                    },
-                    "quantite": 45
-                  },
-                  "Persil": {
-                    "ingredient": {
-                      "nom": "Persil",
-                      "disponibilité": []
-                    },
-                    "quantite": 3
-                  },
-                  "Champignons de paris (g)": {
-                    "ingredient": {
-                      "nom": "Champignons de paris (g)",
-                      "disponibilité": []
-                    },
-                    "quantite": 300
-                  },
-                  "Œufs": {
-                    "ingredient": {
-                      "nom": "Œufs",
-                      "disponibilité": []
-                    },
-                    "quantite": 9
-                  }
-                }
-              },
-              "recette": "1. Couper et faire poêler les champignons dans le beurre.\n2. Battre les œufs en omelette avec du sel et du poivre.\n3. Verser les œufs battus sur les champignons et cuire 3 à 4 minutes.",
-              "activable": true,
-              "est_reste": false,
-              "tags": []
-            },
-            "entree": null,
-            "dessert": null
-          }
-        ],
-        "date": "2026-11-17T20:17:35.620739300+01:00"
-      },
-      {
-        "menu": [
-          {
-            "name": "petit-dej",
-            "nbPersonne": 0,
-            "recette": null,
-            "entree": null,
-            "dessert": null
-          },
-          {
-            "name": "dej",
-            "nbPersonne": 2,
-            "recette": {
-              "name": "Omelette aux Champignons",
-              "nbPersonne": 2,
-              "duree": 10,
-              "ingredients": {
-                "ingredients": {
-                  "Beurre (g)": {
-                    "ingredient": {
-                      "nom": "Beurre (g)",
-                      "disponibilité": []
-                    },
-                    "quantite": 30
-                  },
-                  "Persil": {
-                    "ingredient": {
-                      "nom": "Persil",
-                      "disponibilité": []
-                    },
-                    "quantite": 2
-                  },
-                  "Œufs": {
-                    "ingredient": {
-                      "nom": "Œufs",
-                      "disponibilité": []
-                    },
-                    "quantite": 6
-                  },
-                  "Champignons de paris (g)": {
-                    "ingredient": {
-                      "nom": "Champignons de paris (g)",
-                      "disponibilité": []
-                    },
-                    "quantite": 200
-                  }
-                }
-              },
-              "recette": "1. Couper et faire poêler les champignons dans le beurre.\n2. Battre les œufs en omelette avec du sel et du poivre.\n3. Verser les œufs battus sur les champignons et cuire 3 à 4 minutes.",
-              "activable": true,
-              "est_reste": false,
-              "tags": []
-            },
-            "entree": null,
-            "dessert": null
-          },
-          {
-            "name": "gouter",
-            "nbPersonne": 0,
-            "recette": null,
-            "entree": null,
-            "dessert": null
-          },
-          {
-            "name": "diner",
-            "nbPersonne": 3,
-            "recette": {
-              "name": "Omelette aux Champignons",
-              "nbPersonne": 3,
-              "duree": 10,
-              "ingredients": {
-                "ingredients": {
-                  "Œufs": {
-                    "ingredient": {
-                      "nom": "Œufs",
-                      "disponibilité": []
-                    },
-                    "quantite": 9
-                  },
-                  "Champignons de paris (g)": {
-                    "ingredient": {
-                      "nom": "Champignons de paris (g)",
-                      "disponibilité": []
-                    },
-                    "quantite": 300
-                  },
-                  "Persil": {
-                    "ingredient": {
-                      "nom": "Persil",
-                      "disponibilité": []
-                    },
-                    "quantite": 3
-                  },
-                  "Beurre (g)": {
-                    "ingredient": {
-                      "nom": "Beurre (g)",
-                      "disponibilité": []
-                    },
-                    "quantite": 45
-                  }
-                }
-              },
-              "recette": "1. Couper et faire poêler les champignons dans le beurre.\n2. Battre les œufs en omelette avec du sel et du poivre.\n3. Verser les œufs battus sur les champignons et cuire 3 à 4 minutes.",
-              "activable": true,
-              "est_reste": false,
-              "tags": []
-            },
-            "entree": null,
-            "dessert": null
-          }
-        ],
-        "date": "2026-11-18T20:17:35.620739300+01:00"
-      },
-      {
-        "menu": [
-          {
-            "name": "petit-dej",
-            "nbPersonne": 0,
-            "recette": null,
-            "entree": null,
-            "dessert": null
-          },
-          {
-            "name": "dej",
-            "nbPersonne": 2,
-            "recette": {
-              "name": "Pâtes Carbonara",
-              "nbPersonne": 2,
-              "duree": 15,
-              "ingredients": {
-                "ingredients": {
-                  "Pâtes (g)": {
-                    "ingredient": {
-                      "nom": "Pâtes (g)",
-                      "disponibilité": []
-                    },
-                    "quantite": 200
-                  },
-                  "Guanciale (g)": {
-                    "ingredient": {
-                      "nom": "Guanciale (g)",
-                      "disponibilité": []
-                    },
-                    "quantite": 100
-                  },
-                  "Pecorino (g)": {
-                    "ingredient": {
-                      "nom": "Pecorino (g)",
-                      "disponibilité": []
-                    },
-                    "quantite": 50
-                  },
-                  "Jaunes d'œuf": {
-                    "ingredient": {
-                      "nom": "Jaunes d'œuf",
-                      "disponibilité": []
-                    },
-                    "quantite": 3
-                  }
-                }
-              },
-              "recette": "1. Cuire les pâtes.\n2. Faire dorér le guanciale à la poêle.\n3. Mélanger les jaunes d'œuf avec le pecorino râpé.\n4. Hors du feu, mélanger les pâtes avec la crème d'œuf et le guanciale.",
-              "activable": true,
-              "est_reste": false,
-              "tags": []
-            },
-            "entree": null,
-            "dessert": null
-          },
-          {
-            "name": "gouter",
-            "nbPersonne": 0,
-            "recette": null,
-            "entree": null,
-            "dessert": null
-          },
-          {
-            "name": "diner",
-            "nbPersonne": 3,
-            "recette": {
-              "name": "Omelette aux Champignons",
-              "nbPersonne": 3,
-              "duree": 10,
-              "ingredients": {
-                "ingredients": {
-                  "Champignons de paris (g)": {
-                    "ingredient": {
-                      "nom": "Champignons de paris (g)",
-                      "disponibilité": []
-                    },
-                    "quantite": 300
-                  },
-                  "Beurre (g)": {
-                    "ingredient": {
-                      "nom": "Beurre (g)",
-                      "disponibilité": []
-                    },
-                    "quantite": 45
-                  },
-                  "Persil": {
-                    "ingredient": {
-                      "nom": "Persil",
-                      "disponibilité": []
-                    },
-                    "quantite": 3
-                  },
-                  "Œufs": {
-                    "ingredient": {
-                      "nom": "Œufs",
-                      "disponibilité": []
-                    },
-                    "quantite": 9
-                  }
-                }
-              },
-              "recette": "1. Couper et faire poêler les champignons dans le beurre.\n2. Battre les œufs en omelette avec du sel et du poivre.\n3. Verser les œufs battus sur les champignons et cuire 3 à 4 minutes.",
-              "activable": true,
-              "est_reste": false,
-              "tags": []
-            },
-            "entree": null,
-            "dessert": null
-          }
-        ],
-        "date": "2026-11-19T20:17:35.620739300+01:00"
-      },
-      {
-        "menu": [
-          {
-            "name": "petit-dej",
-            "nbPersonne": 0,
-            "recette": null,
-            "entree": null,
-            "dessert": null
-          },
-          {
-            "name": "dej",
-            "nbPersonne": 2,
-            "recette": {
-              "name": "Pâtes Carbonara",
-              "nbPersonne": 2,
-              "duree": 15,
-              "ingredients": {
-                "ingredients": {
-                  "Pâtes (g)": {
-                    "ingredient": {
-                      "nom": "Pâtes (g)",
-                      "disponibilité": []
-                    },
-                    "quantite": 200
-                  },
-                  "Guanciale (g)": {
-                    "ingredient": {
-                      "nom": "Guanciale (g)",
-                      "disponibilité": []
-                    },
-                    "quantite": 100
-                  },
-                  "Jaunes d'œuf": {
-                    "ingredient": {
-                      "nom": "Jaunes d'œuf",
-                      "disponibilité": []
-                    },
-                    "quantite": 3
-                  },
-                  "Pecorino (g)": {
-                    "ingredient": {
-                      "nom": "Pecorino (g)",
-                      "disponibilité": []
-                    },
-                    "quantite": 50
-                  }
-                }
-              },
-              "recette": "1. Cuire les pâtes.\n2. Faire dorér le guanciale à la poêle.\n3. Mélanger les jaunes d'œuf avec le pecorino râpé.\n4. Hors du feu, mélanger les pâtes avec la crème d'œuf et le guanciale.",
-              "activable": true,
-              "est_reste": false,
-              "tags": []
-            },
-            "entree": null,
-            "dessert": null
-          },
-          {
-            "name": "gouter",
-            "nbPersonne": 0,
-            "recette": null,
-            "entree": null,
-            "dessert": null
-          },
-          {
-            "name": "diner",
-            "nbPersonne": 3,
-            "recette": {
-              "name": "Omelette aux Champignons",
-              "nbPersonne": 3,
-              "duree": 10,
-              "ingredients": {
-                "ingredients": {
-                  "Œufs": {
-                    "ingredient": {
-                      "nom": "Œufs",
-                      "disponibilité": []
-                    },
-                    "quantite": 9
-                  },
-                  "Champignons de paris (g)": {
-                    "ingredient": {
-                      "nom": "Champignons de paris (g)",
-                      "disponibilité": []
-                    },
-                    "quantite": 300
-                  },
-                  "Persil": {
-                    "ingredient": {
-                      "nom": "Persil",
-                      "disponibilité": []
-                    },
-                    "quantite": 3
-                  },
-                  "Beurre (g)": {
-                    "ingredient": {
-                      "nom": "Beurre (g)",
-                      "disponibilité": []
-                    },
-                    "quantite": 45
-                  }
-                }
-              },
-              "recette": "1. Couper et faire poêler les champignons dans le beurre.\n2. Battre les œufs en omelette avec du sel et du poivre.\n3. Verser les œufs battus sur les champignons et cuire 3 à 4 minutes.",
-              "activable": true,
-              "est_reste": false,
-              "tags": []
-            },
-            "entree": null,
-            "dessert": null
-          }
-        ],
-        "date": "2026-11-20T20:17:35.620739300+01:00"
-      },
-      {
-        "menu": [
-          {
-            "name": "petit-dej",
-            "nbPersonne": 0,
-            "recette": null,
-            "entree": null,
-            "dessert": null
-          },
-          {
-            "name": "dej",
-            "nbPersonne": 2,
-            "recette": {
-              "name": "Pâtes Carbonara",
-              "nbPersonne": 2,
-              "duree": 15,
-              "ingredients": {
-                "ingredients": {
-                  "Pecorino (g)": {
-                    "ingredient": {
-                      "nom": "Pecorino (g)",
-                      "disponibilité": []
-                    },
-                    "quantite": 50
-                  },
-                  "Guanciale (g)": {
-                    "ingredient": {
-                      "nom": "Guanciale (g)",
-                      "disponibilité": []
-                    },
-                    "quantite": 100
-                  },
-                  "Pâtes (g)": {
-                    "ingredient": {
-                      "nom": "Pâtes (g)",
-                      "disponibilité": []
-                    },
-                    "quantite": 200
-                  },
-                  "Jaunes d'œuf": {
-                    "ingredient": {
-                      "nom": "Jaunes d'œuf",
-                      "disponibilité": []
-                    },
-                    "quantite": 3
-                  }
-                }
-              },
-              "recette": "1. Cuire les pâtes.\n2. Faire dorér le guanciale à la poêle.\n3. Mélanger les jaunes d'œuf avec le pecorino râpé.\n4. Hors du feu, mélanger les pâtes avec la crème d'œuf et le guanciale.",
-              "activable": true,
-              "est_reste": false,
-              "tags": []
-            },
-            "entree": null,
-            "dessert": null
-          },
-          {
-            "name": "gouter",
-            "nbPersonne": 0,
-            "recette": null,
-            "entree": null,
-            "dessert": null
-          },
-          {
-            "name": "diner",
-            "nbPersonne": 3,
-            "recette": {
-              "name": "Omelette aux Champignons",
-              "nbPersonne": 3,
-              "duree": 10,
-              "ingredients": {
-                "ingredients": {
-                  "Persil": {
-                    "ingredient": {
-                      "nom": "Persil",
-                      "disponibilité": []
-                    },
-                    "quantite": 3
-                  },
-                  "Beurre (g)": {
-                    "ingredient": {
-                      "nom": "Beurre (g)",
-                      "disponibilité": []
-                    },
-                    "quantite": 45
-                  },
-                  "Champignons de paris (g)": {
-                    "ingredient": {
-                      "nom": "Champignons de paris (g)",
-                      "disponibilité": []
-                    },
-                    "quantite": 300
-                  },
-                  "Œufs": {
-                    "ingredient": {
-                      "nom": "Œufs",
-                      "disponibilité": []
-                    },
-                    "quantite": 9
-                  }
-                }
-              },
-              "recette": "1. Couper et faire poêler les champignons dans le beurre.\n2. Battre les œufs en omelette avec du sel et du poivre.\n3. Verser les œufs battus sur les champignons et cuire 3 à 4 minutes.",
-              "activable": true,
-              "est_reste": false,
-              "tags": []
-            },
-            "entree": null,
-            "dessert": null
-          }
-        ],
-        "date": "2026-11-21T20:17:35.620739300+01:00"
-      },
-      {
-        "menu": [
-          {
-            "name": "petit-dej",
-            "nbPersonne": 0,
-            "recette": null,
-            "entree": null,
-            "dessert": null
-          },
-          {
-            "name": "dej",
-            "nbPersonne": 2,
-            "recette": {
-              "name": "Pâtes Carbonara",
-              "nbPersonne": 2,
-              "duree": 15,
-              "ingredients": {
-                "ingredients": {
-                  "Pecorino (g)": {
-                    "ingredient": {
-                      "nom": "Pecorino (g)",
-                      "disponibilité": []
-                    },
-                    "quantite": 50
-                  },
-                  "Guanciale (g)": {
-                    "ingredient": {
-                      "nom": "Guanciale (g)",
-                      "disponibilité": []
-                    },
-                    "quantite": 100
-                  },
-                  "Pâtes (g)": {
-                    "ingredient": {
-                      "nom": "Pâtes (g)",
-                      "disponibilité": []
-                    },
-                    "quantite": 200
-                  },
-                  "Jaunes d'œuf": {
-                    "ingredient": {
-                      "nom": "Jaunes d'œuf",
-                      "disponibilité": []
-                    },
-                    "quantite": 3
-                  }
-                }
-              },
-              "recette": "1. Cuire les pâtes.\n2. Faire dorér le guanciale à la poêle.\n3. Mélanger les jaunes d'œuf avec le pecorino râpé.\n4. Hors du feu, mélanger les pâtes avec la crème d'œuf et le guanciale.",
-              "activable": true,
-              "est_reste": false,
-              "tags": []
-            },
-            "entree": null,
-            "dessert": null
-          },
-          {
-            "name": "gouter",
-            "nbPersonne": 0,
-            "recette": null,
-            "entree": null,
-            "dessert": null
-          },
-          {
-            "name": "diner",
-            "nbPersonne": 4,
-            "recette": {
-              "name": "Poulet au Curry et Riz",
-              "nbPersonne": 4,
-              "duree": 25,
-              "ingredients": {
-                "ingredients": {
-                  "Poudre de curry (cuillères)": {
-                    "ingredient": {
-                      "nom": "Poudre de curry (cuillères)",
-                      "disponibilité": []
-                    },
-                    "quantite": 2
-                  },
-                  "Riz basmati (g)": {
-                    "ingredient": {
-                      "nom": "Riz basmati (g)",
-                      "disponibilité": []
-                    },
-                    "quantite": 300
-                  },
-                  "Lait de coco (ml)": {
-                    "ingredient": {
-                      "nom": "Lait de coco (ml)",
-                      "disponibilité": []
-                    },
-                    "quantite": 200
-                  },
-                  "Oignon": {
-                    "ingredient": {
-                      "nom": "Oignon",
-                      "disponibilité": []
-                    },
-                    "quantite": 1
-                  },
-                  "Blancs de poulet": {
-                    "ingredient": {
-                      "nom": "Blancs de poulet",
-                      "disponibilité": []
-                    },
-                    "quantite": 4
-                  }
-                }
-              },
-              "recette": "1. Faire cuire le riz basmati.\n2. Émincer l'oignon et le poulet, puis les faire revenir dans une sauteuse.\n3. Ajouter la poudre de curry, puis verser le lait de coco.\n4. Laisser mijoter 10 minutes à feu doux.",
-              "activable": true,
-              "est_reste": false,
-              "tags": []
-            },
-            "entree": null,
-            "dessert": null
-          }
-        ],
-        "date": "2026-11-22T20:17:35.620739300+01:00"
-      }
-    ],
-    "tMax": 200
-  },
-  {
-    "days": [
-      {
-        "menu": [
-          {
-            "name": "petit-dej",
             "nbPersonne": 0,
             "recette": null,
             "entree": null,
@@ -876,26 +33,26 @@
               "duree": 40,
               "ingredients": {
                 "ingredients": {
-                  "Beurre (g)": {
+                  "Persil": {
                     "ingredient": {
-                      "nom": "Beurre (g)",
+                      "nom": "Persil",
                       "disponibilité": []
                     },
-                    "quantite": 90
+                    "quantite": 1
                   },
-                  "Crème fraîche (cl)": {
+                  "Oeuf": {
                     "ingredient": {
-                      "nom": "Crème fraîche (cl)",
+                      "nom": "Oeuf",
                       "disponibilité": []
                     },
-                    "quantite": 80
+                    "quantite": 1
                   },
-                  "Echalotes": {
+                  "Gousse d'ail": {
                     "ingredient": {
-                      "nom": "Echalotes",
+                      "nom": "Gousse d'ail",
                       "disponibilité": []
                     },
-                    "quantite": 6
+                    "quantite": 2
                   },
                   "Mie de pain rassis (g)": {
                     "ingredient": {
@@ -904,12 +61,12 @@
                     },
                     "quantite": 50
                   },
-                  "Lait (cl)": {
+                  "Beurre (g)": {
                     "ingredient": {
-                      "nom": "Lait (cl)",
+                      "nom": "Beurre (g)",
                       "disponibilité": []
                     },
-                    "quantite": 5
+                    "quantite": 90
                   },
                   "Champignons de paris": {
                     "ingredient": {
@@ -917,13 +74,6 @@
                       "disponibilité": []
                     },
                     "quantite": 12
-                  },
-                  "Gousse d'ail": {
-                    "ingredient": {
-                      "nom": "Gousse d'ail",
-                      "disponibilité": []
-                    },
-                    "quantite": 2
                   },
                   "Sel": {
                     "ingredient": {
@@ -939,23 +89,30 @@
                     },
                     "quantite": 150
                   },
+                  "Crème fraîche (cl)": {
+                    "ingredient": {
+                      "nom": "Crème fraîche (cl)",
+                      "disponibilité": []
+                    },
+                    "quantite": 80
+                  },
+                  "Lait (cl)": {
+                    "ingredient": {
+                      "nom": "Lait (cl)",
+                      "disponibilité": []
+                    },
+                    "quantite": 5
+                  },
+                  "Echalotes": {
+                    "ingredient": {
+                      "nom": "Echalotes",
+                      "disponibilité": []
+                    },
+                    "quantite": 6
+                  },
                   "Poivre": {
                     "ingredient": {
                       "nom": "Poivre",
-                      "disponibilité": []
-                    },
-                    "quantite": 1
-                  },
-                  "Persil": {
-                    "ingredient": {
-                      "nom": "Persil",
-                      "disponibilité": []
-                    },
-                    "quantite": 1
-                  },
-                  "Oeuf": {
-                    "ingredient": {
-                      "nom": "Oeuf",
                       "disponibilité": []
                     },
                     "quantite": 1
@@ -1010,26 +167,12 @@
               "duree": 40,
               "ingredients": {
                 "ingredients": {
-                  "Beurre (g)": {
+                  "Oeuf": {
                     "ingredient": {
-                      "nom": "Beurre (g)",
+                      "nom": "Oeuf",
                       "disponibilité": []
                     },
-                    "quantite": 90
-                  },
-                  "Crème fraîche (cl)": {
-                    "ingredient": {
-                      "nom": "Crème fraîche (cl)",
-                      "disponibilité": []
-                    },
-                    "quantite": 80
-                  },
-                  "Echalotes": {
-                    "ingredient": {
-                      "nom": "Echalotes",
-                      "disponibilité": []
-                    },
-                    "quantite": 6
+                    "quantite": 1
                   },
                   "Mie de pain rassis (g)": {
                     "ingredient": {
@@ -1038,12 +181,26 @@
                     },
                     "quantite": 50
                   },
-                  "Lait (cl)": {
+                  "Poivre": {
                     "ingredient": {
-                      "nom": "Lait (cl)",
+                      "nom": "Poivre",
                       "disponibilité": []
                     },
-                    "quantite": 5
+                    "quantite": 1
+                  },
+                  "Echalotes": {
+                    "ingredient": {
+                      "nom": "Echalotes",
+                      "disponibilité": []
+                    },
+                    "quantite": 6
+                  },
+                  "Gousse d'ail": {
+                    "ingredient": {
+                      "nom": "Gousse d'ail",
+                      "disponibilité": []
+                    },
+                    "quantite": 2
                   },
                   "Champignons de paris": {
                     "ingredient": {
@@ -1052,12 +209,33 @@
                     },
                     "quantite": 12
                   },
-                  "Gousse d'ail": {
+                  "Persil": {
                     "ingredient": {
-                      "nom": "Gousse d'ail",
+                      "nom": "Persil",
                       "disponibilité": []
                     },
-                    "quantite": 2
+                    "quantite": 1
+                  },
+                  "Lait (cl)": {
+                    "ingredient": {
+                      "nom": "Lait (cl)",
+                      "disponibilité": []
+                    },
+                    "quantite": 5
+                  },
+                  "Crème fraîche (cl)": {
+                    "ingredient": {
+                      "nom": "Crème fraîche (cl)",
+                      "disponibilité": []
+                    },
+                    "quantite": 80
+                  },
+                  "Beurre (g)": {
+                    "ingredient": {
+                      "nom": "Beurre (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 90
                   },
                   "Sel": {
                     "ingredient": {
@@ -1072,27 +250,6 @@
                       "disponibilité": []
                     },
                     "quantite": 150
-                  },
-                  "Poivre": {
-                    "ingredient": {
-                      "nom": "Poivre",
-                      "disponibilité": []
-                    },
-                    "quantite": 1
-                  },
-                  "Persil": {
-                    "ingredient": {
-                      "nom": "Persil",
-                      "disponibilité": []
-                    },
-                    "quantite": 1
-                  },
-                  "Oeuf": {
-                    "ingredient": {
-                      "nom": "Oeuf",
-                      "disponibilité": []
-                    },
-                    "quantite": 1
                   }
                 }
               },
@@ -1151,62 +308,6 @@
                     },
                     "quantite": 90
                   },
-                  "Crème fraîche (cl)": {
-                    "ingredient": {
-                      "nom": "Crème fraîche (cl)",
-                      "disponibilité": []
-                    },
-                    "quantite": 80
-                  },
-                  "Echalotes": {
-                    "ingredient": {
-                      "nom": "Echalotes",
-                      "disponibilité": []
-                    },
-                    "quantite": 6
-                  },
-                  "Mie de pain rassis (g)": {
-                    "ingredient": {
-                      "nom": "Mie de pain rassis (g)",
-                      "disponibilité": []
-                    },
-                    "quantite": 50
-                  },
-                  "Lait (cl)": {
-                    "ingredient": {
-                      "nom": "Lait (cl)",
-                      "disponibilité": []
-                    },
-                    "quantite": 5
-                  },
-                  "Champignons de paris": {
-                    "ingredient": {
-                      "nom": "Champignons de paris",
-                      "disponibilité": []
-                    },
-                    "quantite": 12
-                  },
-                  "Gousse d'ail": {
-                    "ingredient": {
-                      "nom": "Gousse d'ail",
-                      "disponibilité": []
-                    },
-                    "quantite": 2
-                  },
-                  "Sel": {
-                    "ingredient": {
-                      "nom": "Sel",
-                      "disponibilité": []
-                    },
-                    "quantite": 1
-                  },
-                  "Lard de poitrine (g)": {
-                    "ingredient": {
-                      "nom": "Lard de poitrine (g)",
-                      "disponibilité": []
-                    },
-                    "quantite": 150
-                  },
                   "Poivre": {
                     "ingredient": {
                       "nom": "Poivre",
@@ -1227,6 +328,62 @@
                       "disponibilité": []
                     },
                     "quantite": 1
+                  },
+                  "Echalotes": {
+                    "ingredient": {
+                      "nom": "Echalotes",
+                      "disponibilité": []
+                    },
+                    "quantite": 6
+                  },
+                  "Champignons de paris": {
+                    "ingredient": {
+                      "nom": "Champignons de paris",
+                      "disponibilité": []
+                    },
+                    "quantite": 12
+                  },
+                  "Gousse d'ail": {
+                    "ingredient": {
+                      "nom": "Gousse d'ail",
+                      "disponibilité": []
+                    },
+                    "quantite": 2
+                  },
+                  "Crème fraîche (cl)": {
+                    "ingredient": {
+                      "nom": "Crème fraîche (cl)",
+                      "disponibilité": []
+                    },
+                    "quantite": 80
+                  },
+                  "Sel": {
+                    "ingredient": {
+                      "nom": "Sel",
+                      "disponibilité": []
+                    },
+                    "quantite": 1
+                  },
+                  "Mie de pain rassis (g)": {
+                    "ingredient": {
+                      "nom": "Mie de pain rassis (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 50
+                  },
+                  "Lait (cl)": {
+                    "ingredient": {
+                      "nom": "Lait (cl)",
+                      "disponibilité": []
+                    },
+                    "quantite": 5
+                  },
+                  "Lard de poitrine (g)": {
+                    "ingredient": {
+                      "nom": "Lard de poitrine (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 150
                   }
                 }
               },
@@ -1278,12 +435,47 @@
               "duree": 40,
               "ingredients": {
                 "ingredients": {
+                  "Lard de poitrine (g)": {
+                    "ingredient": {
+                      "nom": "Lard de poitrine (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 150
+                  },
+                  "Lait (cl)": {
+                    "ingredient": {
+                      "nom": "Lait (cl)",
+                      "disponibilité": []
+                    },
+                    "quantite": 5
+                  },
+                  "Mie de pain rassis (g)": {
+                    "ingredient": {
+                      "nom": "Mie de pain rassis (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 50
+                  },
+                  "Champignons de paris": {
+                    "ingredient": {
+                      "nom": "Champignons de paris",
+                      "disponibilité": []
+                    },
+                    "quantite": 12
+                  },
                   "Beurre (g)": {
                     "ingredient": {
                       "nom": "Beurre (g)",
                       "disponibilité": []
                     },
                     "quantite": 90
+                  },
+                  "Persil": {
+                    "ingredient": {
+                      "nom": "Persil",
+                      "disponibilité": []
+                    },
+                    "quantite": 1
                   },
                   "Crème fraîche (cl)": {
                     "ingredient": {
@@ -1299,26 +491,12 @@
                     },
                     "quantite": 6
                   },
-                  "Mie de pain rassis (g)": {
+                  "Oeuf": {
                     "ingredient": {
-                      "nom": "Mie de pain rassis (g)",
+                      "nom": "Oeuf",
                       "disponibilité": []
                     },
-                    "quantite": 50
-                  },
-                  "Lait (cl)": {
-                    "ingredient": {
-                      "nom": "Lait (cl)",
-                      "disponibilité": []
-                    },
-                    "quantite": 5
-                  },
-                  "Champignons de paris": {
-                    "ingredient": {
-                      "nom": "Champignons de paris",
-                      "disponibilité": []
-                    },
-                    "quantite": 12
+                    "quantite": 1
                   },
                   "Gousse d'ail": {
                     "ingredient": {
@@ -1327,20 +505,6 @@
                     },
                     "quantite": 2
                   },
-                  "Sel": {
-                    "ingredient": {
-                      "nom": "Sel",
-                      "disponibilité": []
-                    },
-                    "quantite": 1
-                  },
-                  "Lard de poitrine (g)": {
-                    "ingredient": {
-                      "nom": "Lard de poitrine (g)",
-                      "disponibilité": []
-                    },
-                    "quantite": 150
-                  },
                   "Poivre": {
                     "ingredient": {
                       "nom": "Poivre",
@@ -1348,16 +512,9 @@
                     },
                     "quantite": 1
                   },
-                  "Persil": {
+                  "Sel": {
                     "ingredient": {
-                      "nom": "Persil",
-                      "disponibilité": []
-                    },
-                    "quantite": 1
-                  },
-                  "Oeuf": {
-                    "ingredient": {
-                      "nom": "Oeuf",
+                      "nom": "Sel",
                       "disponibilité": []
                     },
                     "quantite": 1
@@ -1412,48 +569,6 @@
               "duree": 40,
               "ingredients": {
                 "ingredients": {
-                  "Beurre (g)": {
-                    "ingredient": {
-                      "nom": "Beurre (g)",
-                      "disponibilité": []
-                    },
-                    "quantite": 90
-                  },
-                  "Crème fraîche (cl)": {
-                    "ingredient": {
-                      "nom": "Crème fraîche (cl)",
-                      "disponibilité": []
-                    },
-                    "quantite": 80
-                  },
-                  "Echalotes": {
-                    "ingredient": {
-                      "nom": "Echalotes",
-                      "disponibilité": []
-                    },
-                    "quantite": 6
-                  },
-                  "Mie de pain rassis (g)": {
-                    "ingredient": {
-                      "nom": "Mie de pain rassis (g)",
-                      "disponibilité": []
-                    },
-                    "quantite": 50
-                  },
-                  "Lait (cl)": {
-                    "ingredient": {
-                      "nom": "Lait (cl)",
-                      "disponibilité": []
-                    },
-                    "quantite": 5
-                  },
-                  "Champignons de paris": {
-                    "ingredient": {
-                      "nom": "Champignons de paris",
-                      "disponibilité": []
-                    },
-                    "quantite": 12
-                  },
                   "Gousse d'ail": {
                     "ingredient": {
                       "nom": "Gousse d'ail",
@@ -1468,16 +583,58 @@
                     },
                     "quantite": 1
                   },
-                  "Lard de poitrine (g)": {
+                  "Mie de pain rassis (g)": {
                     "ingredient": {
-                      "nom": "Lard de poitrine (g)",
+                      "nom": "Mie de pain rassis (g)",
                       "disponibilité": []
                     },
-                    "quantite": 150
+                    "quantite": 50
+                  },
+                  "Crème fraîche (cl)": {
+                    "ingredient": {
+                      "nom": "Crème fraîche (cl)",
+                      "disponibilité": []
+                    },
+                    "quantite": 80
+                  },
+                  "Lait (cl)": {
+                    "ingredient": {
+                      "nom": "Lait (cl)",
+                      "disponibilité": []
+                    },
+                    "quantite": 5
                   },
                   "Poivre": {
                     "ingredient": {
                       "nom": "Poivre",
+                      "disponibilité": []
+                    },
+                    "quantite": 1
+                  },
+                  "Echalotes": {
+                    "ingredient": {
+                      "nom": "Echalotes",
+                      "disponibilité": []
+                    },
+                    "quantite": 6
+                  },
+                  "Beurre (g)": {
+                    "ingredient": {
+                      "nom": "Beurre (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 90
+                  },
+                  "Champignons de paris": {
+                    "ingredient": {
+                      "nom": "Champignons de paris",
+                      "disponibilité": []
+                    },
+                    "quantite": 12
+                  },
+                  "Oeuf": {
+                    "ingredient": {
+                      "nom": "Oeuf",
                       "disponibilité": []
                     },
                     "quantite": 1
@@ -1489,12 +646,12 @@
                     },
                     "quantite": 1
                   },
-                  "Oeuf": {
+                  "Lard de poitrine (g)": {
                     "ingredient": {
-                      "nom": "Oeuf",
+                      "nom": "Lard de poitrine (g)",
                       "disponibilité": []
                     },
-                    "quantite": 1
+                    "quantite": 150
                   }
                 }
               },
@@ -1532,12 +689,26 @@
               "duree": 40,
               "ingredients": {
                 "ingredients": {
-                  "Beurre (g)": {
+                  "Mie de pain rassis (g)": {
                     "ingredient": {
-                      "nom": "Beurre (g)",
+                      "nom": "Mie de pain rassis (g)",
                       "disponibilité": []
                     },
-                    "quantite": 90
+                    "quantite": 50
+                  },
+                  "Persil": {
+                    "ingredient": {
+                      "nom": "Persil",
+                      "disponibilité": []
+                    },
+                    "quantite": 1
+                  },
+                  "Lard de poitrine (g)": {
+                    "ingredient": {
+                      "nom": "Lard de poitrine (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 150
                   },
                   "Crème fraîche (cl)": {
                     "ingredient": {
@@ -1553,27 +724,6 @@
                     },
                     "quantite": 6
                   },
-                  "Mie de pain rassis (g)": {
-                    "ingredient": {
-                      "nom": "Mie de pain rassis (g)",
-                      "disponibilité": []
-                    },
-                    "quantite": 50
-                  },
-                  "Lait (cl)": {
-                    "ingredient": {
-                      "nom": "Lait (cl)",
-                      "disponibilité": []
-                    },
-                    "quantite": 5
-                  },
-                  "Champignons de paris": {
-                    "ingredient": {
-                      "nom": "Champignons de paris",
-                      "disponibilité": []
-                    },
-                    "quantite": 12
-                  },
                   "Gousse d'ail": {
                     "ingredient": {
                       "nom": "Gousse d'ail",
@@ -1581,19 +731,19 @@
                     },
                     "quantite": 2
                   },
-                  "Sel": {
+                  "Oeuf": {
                     "ingredient": {
-                      "nom": "Sel",
+                      "nom": "Oeuf",
                       "disponibilité": []
                     },
                     "quantite": 1
                   },
-                  "Lard de poitrine (g)": {
+                  "Beurre (g)": {
                     "ingredient": {
-                      "nom": "Lard de poitrine (g)",
+                      "nom": "Beurre (g)",
                       "disponibilité": []
                     },
-                    "quantite": 150
+                    "quantite": 90
                   },
                   "Poivre": {
                     "ingredient": {
@@ -1602,19 +752,26 @@
                     },
                     "quantite": 1
                   },
-                  "Persil": {
+                  "Lait (cl)": {
                     "ingredient": {
-                      "nom": "Persil",
+                      "nom": "Lait (cl)",
+                      "disponibilité": []
+                    },
+                    "quantite": 5
+                  },
+                  "Sel": {
+                    "ingredient": {
+                      "nom": "Sel",
                       "disponibilité": []
                     },
                     "quantite": 1
                   },
-                  "Oeuf": {
+                  "Champignons de paris": {
                     "ingredient": {
-                      "nom": "Oeuf",
+                      "nom": "Champignons de paris",
                       "disponibilité": []
                     },
-                    "quantite": 1
+                    "quantite": 12
                   }
                 }
               },
@@ -1647,13 +804,6 @@
               "duree": 75,
               "ingredients": {
                 "ingredients": {
-                  "Bœuf paré sans os (morceaux de 0,050 kg environ) (paleron, côtes découvertes, gîte à la noix)": {
-                    "ingredient": {
-                      "nom": "Bœuf paré sans os (morceaux de 0,050 kg environ) (paleron, côtes découvertes, gîte à la noix)",
-                      "disponibilité": []
-                    },
-                    "quantite": 2
-                  },
                   "Bouquet garni": {
                     "ingredient": {
                       "nom": "Bouquet garni",
@@ -1668,26 +818,12 @@
                     },
                     "quantite": 250
                   },
-                  "Petits oignons (g)": {
+                  "Bœuf paré sans os (morceaux de 0,050 kg environ) (paleron, côtes découvertes, gîte à la noix)": {
                     "ingredient": {
-                      "nom": "Petits oignons (g)",
+                      "nom": "Bœuf paré sans os (morceaux de 0,050 kg environ) (paleron, côtes découvertes, gîte à la noix)",
                       "disponibilité": []
                     },
-                    "quantite": 250
-                  },
-                  "Oignons (g)": {
-                    "ingredient": {
-                      "nom": "Oignons (g)",
-                      "disponibilité": []
-                    },
-                    "quantite": 200
-                  },
-                  "Farine (g)": {
-                    "ingredient": {
-                      "nom": "Farine (g)",
-                      "disponibilité": []
-                    },
-                    "quantite": 60
+                    "quantite": 2
                   },
                   "Huile (ml)": {
                     "ingredient": {
@@ -1703,12 +839,19 @@
                     },
                     "quantite": 1
                   },
-                  "Vin rouge (passetoutgrain) (ml)": {
+                  "Farine (g)": {
                     "ingredient": {
-                      "nom": "Vin rouge (passetoutgrain) (ml)",
+                      "nom": "Farine (g)",
                       "disponibilité": []
                     },
-                    "quantite": 750
+                    "quantite": 60
+                  },
+                  "Oignons (g)": {
+                    "ingredient": {
+                      "nom": "Oignons (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 200
                   },
                   "Poitrine de porc demi-sel (g)": {
                     "ingredient": {
@@ -1744,6 +887,20 @@
                       "disponibilité": []
                     },
                     "quantite": 20
+                  },
+                  "Vin rouge (passetoutgrain) (ml)": {
+                    "ingredient": {
+                      "nom": "Vin rouge (passetoutgrain) (ml)",
+                      "disponibilité": []
+                    },
+                    "quantite": 750
+                  },
+                  "Petits oignons (g)": {
+                    "ingredient": {
+                      "nom": "Petits oignons (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 250
                   }
                 }
               },
@@ -1776,75 +933,12 @@
               "duree": 75,
               "ingredients": {
                 "ingredients": {
-                  "Bœuf paré sans os (morceaux de 0,050 kg environ) (paleron, côtes découvertes, gîte à la noix)": {
-                    "ingredient": {
-                      "nom": "Bœuf paré sans os (morceaux de 0,050 kg environ) (paleron, côtes découvertes, gîte à la noix)",
-                      "disponibilité": []
-                    },
-                    "quantite": 2
-                  },
-                  "Bouquet garni": {
-                    "ingredient": {
-                      "nom": "Bouquet garni",
-                      "disponibilité": []
-                    },
-                    "quantite": 1
-                  },
-                  "Champignons de Paris (g)": {
-                    "ingredient": {
-                      "nom": "Champignons de Paris (g)",
-                      "disponibilité": []
-                    },
-                    "quantite": 250
-                  },
-                  "Petits oignons (g)": {
-                    "ingredient": {
-                      "nom": "Petits oignons (g)",
-                      "disponibilité": []
-                    },
-                    "quantite": 250
-                  },
                   "Oignons (g)": {
                     "ingredient": {
                       "nom": "Oignons (g)",
                       "disponibilité": []
                     },
                     "quantite": 200
-                  },
-                  "Farine (g)": {
-                    "ingredient": {
-                      "nom": "Farine (g)",
-                      "disponibilité": []
-                    },
-                    "quantite": 60
-                  },
-                  "Huile (ml)": {
-                    "ingredient": {
-                      "nom": "Huile (ml)",
-                      "disponibilité": []
-                    },
-                    "quantite": 70
-                  },
-                  "Sucre semoule": {
-                    "ingredient": {
-                      "nom": "Sucre semoule",
-                      "disponibilité": []
-                    },
-                    "quantite": 1
-                  },
-                  "Vin rouge (passetoutgrain) (ml)": {
-                    "ingredient": {
-                      "nom": "Vin rouge (passetoutgrain) (ml)",
-                      "disponibilité": []
-                    },
-                    "quantite": 750
-                  },
-                  "Poitrine de porc demi-sel (g)": {
-                    "ingredient": {
-                      "nom": "Poitrine de porc demi-sel (g)",
-                      "disponibilité": []
-                    },
-                    "quantite": 250
                   },
                   "Carottes (g)": {
                     "ingredient": {
@@ -1853,12 +947,61 @@
                     },
                     "quantite": 200
                   },
+                  "Vin rouge (passetoutgrain) (ml)": {
+                    "ingredient": {
+                      "nom": "Vin rouge (passetoutgrain) (ml)",
+                      "disponibilité": []
+                    },
+                    "quantite": 750
+                  },
                   "Fond brun de veau clair (non lié) (ml)": {
                     "ingredient": {
                       "nom": "Fond brun de veau clair (non lié) (ml)",
                       "disponibilité": []
                     },
                     "quantite": 800
+                  },
+                  "Farine (g)": {
+                    "ingredient": {
+                      "nom": "Farine (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 60
+                  },
+                  "Sucre semoule": {
+                    "ingredient": {
+                      "nom": "Sucre semoule",
+                      "disponibilité": []
+                    },
+                    "quantite": 1
+                  },
+                  "Poitrine de porc demi-sel (g)": {
+                    "ingredient": {
+                      "nom": "Poitrine de porc demi-sel (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 250
+                  },
+                  "Bouquet garni": {
+                    "ingredient": {
+                      "nom": "Bouquet garni",
+                      "disponibilité": []
+                    },
+                    "quantite": 1
+                  },
+                  "Bœuf paré sans os (morceaux de 0,050 kg environ) (paleron, côtes découvertes, gîte à la noix)": {
+                    "ingredient": {
+                      "nom": "Bœuf paré sans os (morceaux de 0,050 kg environ) (paleron, côtes découvertes, gîte à la noix)",
+                      "disponibilité": []
+                    },
+                    "quantite": 2
+                  },
+                  "Champignons de Paris (g)": {
+                    "ingredient": {
+                      "nom": "Champignons de Paris (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 250
                   },
                   "Ail (2 gousses) (g)": {
                     "ingredient": {
@@ -1873,6 +1016,20 @@
                       "disponibilité": []
                     },
                     "quantite": 20
+                  },
+                  "Huile (ml)": {
+                    "ingredient": {
+                      "nom": "Huile (ml)",
+                      "disponibilité": []
+                    },
+                    "quantite": 70
+                  },
+                  "Petits oignons (g)": {
+                    "ingredient": {
+                      "nom": "Petits oignons (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 250
                   }
                 }
               },
@@ -1900,19 +1057,19 @@
               "duree": 75,
               "ingredients": {
                 "ingredients": {
-                  "Bœuf paré sans os (morceaux de 0,050 kg environ) (paleron, côtes découvertes, gîte à la noix)": {
+                  "Sucre semoule": {
                     "ingredient": {
-                      "nom": "Bœuf paré sans os (morceaux de 0,050 kg environ) (paleron, côtes découvertes, gîte à la noix)",
-                      "disponibilité": []
-                    },
-                    "quantite": 2
-                  },
-                  "Bouquet garni": {
-                    "ingredient": {
-                      "nom": "Bouquet garni",
+                      "nom": "Sucre semoule",
                       "disponibilité": []
                     },
                     "quantite": 1
+                  },
+                  "Beurre (g)": {
+                    "ingredient": {
+                      "nom": "Beurre (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 20
                   },
                   "Champignons de Paris (g)": {
                     "ingredient": {
@@ -1935,33 +1092,19 @@
                     },
                     "quantite": 200
                   },
-                  "Farine (g)": {
-                    "ingredient": {
-                      "nom": "Farine (g)",
-                      "disponibilité": []
-                    },
-                    "quantite": 60
-                  },
-                  "Huile (ml)": {
-                    "ingredient": {
-                      "nom": "Huile (ml)",
-                      "disponibilité": []
-                    },
-                    "quantite": 70
-                  },
-                  "Sucre semoule": {
-                    "ingredient": {
-                      "nom": "Sucre semoule",
-                      "disponibilité": []
-                    },
-                    "quantite": 1
-                  },
                   "Vin rouge (passetoutgrain) (ml)": {
                     "ingredient": {
                       "nom": "Vin rouge (passetoutgrain) (ml)",
                       "disponibilité": []
                     },
                     "quantite": 750
+                  },
+                  "Bouquet garni": {
+                    "ingredient": {
+                      "nom": "Bouquet garni",
+                      "disponibilité": []
+                    },
+                    "quantite": 1
                   },
                   "Poitrine de porc demi-sel (g)": {
                     "ingredient": {
@@ -1977,6 +1120,27 @@
                     },
                     "quantite": 200
                   },
+                  "Farine (g)": {
+                    "ingredient": {
+                      "nom": "Farine (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 60
+                  },
+                  "Bœuf paré sans os (morceaux de 0,050 kg environ) (paleron, côtes découvertes, gîte à la noix)": {
+                    "ingredient": {
+                      "nom": "Bœuf paré sans os (morceaux de 0,050 kg environ) (paleron, côtes découvertes, gîte à la noix)",
+                      "disponibilité": []
+                    },
+                    "quantite": 2
+                  },
+                  "Huile (ml)": {
+                    "ingredient": {
+                      "nom": "Huile (ml)",
+                      "disponibilité": []
+                    },
+                    "quantite": 70
+                  },
                   "Fond brun de veau clair (non lié) (ml)": {
                     "ingredient": {
                       "nom": "Fond brun de veau clair (non lié) (ml)",
@@ -1990,13 +1154,6 @@
                       "disponibilité": []
                     },
                     "quantite": 15
-                  },
-                  "Beurre (g)": {
-                    "ingredient": {
-                      "nom": "Beurre (g)",
-                      "disponibilité": []
-                    },
-                    "quantite": 20
                   }
                 }
               },
@@ -2013,5 +1170,1020 @@
       }
     ],
     "tMax": 200
+  },
+  {
+    "days": [
+      {
+        "menu": [
+          {
+            "name": "petit-dej",
+            "nbPersonne": 0,
+            "recette": null,
+            "entree": null,
+            "dessert": null
+          },
+          {
+            "name": "dej",
+            "nbPersonne": 0,
+            "recette": null,
+            "entree": null,
+            "dessert": null
+          },
+          {
+            "name": "gouter",
+            "nbPersonne": 0,
+            "recette": null,
+            "entree": null,
+            "dessert": null
+          },
+          {
+            "name": "diner",
+            "nbPersonne": 2,
+            "recette": {
+              "name": "Boulettes de cabillaud",
+              "nbPersonne": 4,
+              "duree": 40,
+              "ingredients": {
+                "ingredients": {
+                  "Filets de cabillaud (g)": {
+                    "ingredient": {
+                      "nom": "Filets de cabillaud (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 500
+                  },
+                  "Estragon": {
+                    "ingredient": {
+                      "nom": "Estragon",
+                      "disponibilité": []
+                    },
+                    "quantite": 1
+                  },
+                  "Biscottes": {
+                    "ingredient": {
+                      "nom": "Biscottes",
+                      "disponibilité": []
+                    },
+                    "quantite": 4
+                  },
+                  "Ciboulette": {
+                    "ingredient": {
+                      "nom": "Ciboulette",
+                      "disponibilité": []
+                    },
+                    "quantite": 1
+                  },
+                  "Lait (verre)": {
+                    "ingredient": {
+                      "nom": "Lait (verre)",
+                      "disponibilité": []
+                    },
+                    "quantite": 1
+                  },
+                  "Farine": {
+                    "ingredient": {
+                      "nom": "Farine",
+                      "disponibilité": []
+                    },
+                    "quantite": 1
+                  },
+                  "Carottes": {
+                    "ingredient": {
+                      "nom": "Carottes",
+                      "disponibilité": []
+                    },
+                    "quantite": 2
+                  },
+                  "Vinaigre (c. à soupe)": {
+                    "ingredient": {
+                      "nom": "Vinaigre (c. à soupe)",
+                      "disponibilité": []
+                    },
+                    "quantite": 1
+                  },
+                  "Bouquet garni": {
+                    "ingredient": {
+                      "nom": "Bouquet garni",
+                      "disponibilité": []
+                    },
+                    "quantite": 1
+                  },
+                  "Persil": {
+                    "ingredient": {
+                      "nom": "Persil",
+                      "disponibilité": []
+                    },
+                    "quantite": 1
+                  },
+                  "Échalotes": {
+                    "ingredient": {
+                      "nom": "Échalotes",
+                      "disponibilité": []
+                    },
+                    "quantite": 2
+                  },
+                  "Poivre": {
+                    "ingredient": {
+                      "nom": "Poivre",
+                      "disponibilité": []
+                    },
+                    "quantite": 1
+                  },
+                  "Oignon": {
+                    "ingredient": {
+                      "nom": "Oignon",
+                      "disponibilité": []
+                    },
+                    "quantite": 1
+                  },
+                  "Feuille de laurier": {
+                    "ingredient": {
+                      "nom": "Feuille de laurier",
+                      "disponibilité": []
+                    },
+                    "quantite": 1
+                  },
+                  "Sel": {
+                    "ingredient": {
+                      "nom": "Sel",
+                      "disponibilité": []
+                    },
+                    "quantite": 1
+                  }
+                }
+              },
+              "recette": "1. Dans une grande marmite, versez 2 litres d'eau salée. Épluchez, coupez en petits tronçons les carottes, en rondelles l'oignon, hachez les échalotes. Ajoutez-les avec le bouquet garni, une feuille de laurier, le vinaigre et quelques grains de poivre. Portez à ébullition.\n2. Lavez les filets de cabillaud, plongez-les dans votre court-bouillon, faites-les cuire à feu doux 5 à 6 minutes, puis égouttez-les, écrasez-les dans un saladier à l'aide d'une fourchette afin d'obtenir une purée.\n3. Lavez, hachez finement la ciboulette, le persil et l'estragon. Dans une assiette, faites ramollir les biscottes avec un verre de lait, essorez-les et mélangez-les avec les herbes hachées dans le saladier. Bien mélanger l'ensemble, ajoutez les deux œufs entiers, mélangez, salez, poivrez.\n4. Fabriquez avec vos mains des petites boulettes de cette pâte aplatissez-les légèrement puis passez-les à la farine.\n5. Dans une sauteuse, faites fondre le beurre, faites dorer vos boulettes des 2 côtés 5 minutes.\n\nAstuce : Afin d'éviter que la pâte des boulettes ne colle à vos mains, passez-les sous l'eau et gardez-les humides.",
+              "activable": true,
+              "est_reste": false,
+              "tags": [
+                "Poisson",
+                "Legumes",
+                "Oeufs",
+                "Halal"
+              ]
+            },
+            "entree": null,
+            "dessert": null
+          }
+        ],
+        "date": "2026-11-30T20:17:35.620739300+01:00"
+      },
+      {
+        "menu": [
+          {
+            "name": "petit-dej",
+            "nbPersonne": 0,
+            "recette": null,
+            "entree": null,
+            "dessert": null
+          },
+          {
+            "name": "dej",
+            "nbPersonne": 0,
+            "recette": null,
+            "entree": null,
+            "dessert": null
+          },
+          {
+            "name": "gouter",
+            "nbPersonne": 0,
+            "recette": null,
+            "entree": null,
+            "dessert": null
+          },
+          {
+            "name": "diner",
+            "nbPersonne": 2,
+            "recette": {
+              "name": "Boulettes de cabillaud",
+              "nbPersonne": 4,
+              "duree": 40,
+              "ingredients": {
+                "ingredients": {
+                  "Filets de cabillaud (g)": {
+                    "ingredient": {
+                      "nom": "Filets de cabillaud (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 500
+                  },
+                  "Estragon": {
+                    "ingredient": {
+                      "nom": "Estragon",
+                      "disponibilité": []
+                    },
+                    "quantite": 1
+                  },
+                  "Biscottes": {
+                    "ingredient": {
+                      "nom": "Biscottes",
+                      "disponibilité": []
+                    },
+                    "quantite": 4
+                  },
+                  "Ciboulette": {
+                    "ingredient": {
+                      "nom": "Ciboulette",
+                      "disponibilité": []
+                    },
+                    "quantite": 1
+                  },
+                  "Lait (verre)": {
+                    "ingredient": {
+                      "nom": "Lait (verre)",
+                      "disponibilité": []
+                    },
+                    "quantite": 1
+                  },
+                  "Farine": {
+                    "ingredient": {
+                      "nom": "Farine",
+                      "disponibilité": []
+                    },
+                    "quantite": 1
+                  },
+                  "Carottes": {
+                    "ingredient": {
+                      "nom": "Carottes",
+                      "disponibilité": []
+                    },
+                    "quantite": 2
+                  },
+                  "Vinaigre (c. à soupe)": {
+                    "ingredient": {
+                      "nom": "Vinaigre (c. à soupe)",
+                      "disponibilité": []
+                    },
+                    "quantite": 1
+                  },
+                  "Bouquet garni": {
+                    "ingredient": {
+                      "nom": "Bouquet garni",
+                      "disponibilité": []
+                    },
+                    "quantite": 1
+                  },
+                  "Persil": {
+                    "ingredient": {
+                      "nom": "Persil",
+                      "disponibilité": []
+                    },
+                    "quantite": 1
+                  },
+                  "Échalotes": {
+                    "ingredient": {
+                      "nom": "Échalotes",
+                      "disponibilité": []
+                    },
+                    "quantite": 2
+                  },
+                  "Poivre": {
+                    "ingredient": {
+                      "nom": "Poivre",
+                      "disponibilité": []
+                    },
+                    "quantite": 1
+                  },
+                  "Oignon": {
+                    "ingredient": {
+                      "nom": "Oignon",
+                      "disponibilité": []
+                    },
+                    "quantite": 1
+                  },
+                  "Feuille de laurier": {
+                    "ingredient": {
+                      "nom": "Feuille de laurier",
+                      "disponibilité": []
+                    },
+                    "quantite": 1
+                  },
+                  "Sel": {
+                    "ingredient": {
+                      "nom": "Sel",
+                      "disponibilité": []
+                    },
+                    "quantite": 1
+                  }
+                }
+              },
+              "recette": "1. Dans une grande marmite, versez 2 litres d'eau salée. Épluchez, coupez en petits tronçons les carottes, en rondelles l'oignon, hachez les échalotes. Ajoutez-les avec le bouquet garni, une feuille de laurier, le vinaigre et quelques grains de poivre. Portez à ébullition.\n2. Lavez les filets de cabillaud, plongez-les dans votre court-bouillon, faites-les cuire à feu doux 5 à 6 minutes, puis égouttez-les, écrasez-les dans un saladier à l'aide d'une fourchette afin d'obtenir une purée.\n3. Lavez, hachez finement la ciboulette, le persil et l'estragon. Dans une assiette, faites ramollir les biscottes avec un verre de lait, essorez-les et mélangez-les avec les herbes hachées dans le saladier. Bien mélanger l'ensemble, ajoutez les deux œufs entiers, mélangez, salez, poivrez.\n4. Fabriquez avec vos mains des petites boulettes de cette pâte aplatissez-les légèrement puis passez-les à la farine.\n5. Dans une sauteuse, faites fondre le beurre, faites dorer vos boulettes des 2 côtés 5 minutes.\n\nAstuce : Afin d'éviter que la pâte des boulettes ne colle à vos mains, passez-les sous l'eau et gardez-les humides.",
+              "activable": true,
+              "est_reste": true,
+              "tags": [
+                "Poisson",
+                "Legumes",
+                "Oeufs",
+                "Halal"
+              ]
+            },
+            "entree": null,
+            "dessert": null
+          }
+        ],
+        "date": "2026-12-01T20:17:35.620739300+01:00"
+      },
+      {
+        "menu": [
+          {
+            "name": "petit-dej",
+            "nbPersonne": 0,
+            "recette": null,
+            "entree": null,
+            "dessert": null
+          },
+          {
+            "name": "dej",
+            "nbPersonne": 0,
+            "recette": null,
+            "entree": null,
+            "dessert": null
+          },
+          {
+            "name": "gouter",
+            "nbPersonne": 0,
+            "recette": null,
+            "entree": null,
+            "dessert": null
+          },
+          {
+            "name": "diner",
+            "nbPersonne": 2,
+            "recette": {
+              "name": "Gratin de salsifis",
+              "nbPersonne": 4,
+              "duree": 60,
+              "ingredients": {
+                "ingredients": {
+                  "Vinaigre (c. à soupe)": {
+                    "ingredient": {
+                      "nom": "Vinaigre (c. à soupe)",
+                      "disponibilité": []
+                    },
+                    "quantite": 3
+                  },
+                  "Farine (c. à soupe)": {
+                    "ingredient": {
+                      "nom": "Farine (c. à soupe)",
+                      "disponibilité": []
+                    },
+                    "quantite": 4
+                  },
+                  "Lait (ml)": {
+                    "ingredient": {
+                      "nom": "Lait (ml)",
+                      "disponibilité": []
+                    },
+                    "quantite": 500
+                  },
+                  "Gruyère râpé (g)": {
+                    "ingredient": {
+                      "nom": "Gruyère râpé (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 40
+                  },
+                  "Salsifis (g)": {
+                    "ingredient": {
+                      "nom": "Salsifis (g)",
+                      "disponibilité": [
+                        "Automne",
+                        "Hiver"
+                      ]
+                    },
+                    "quantite": 1800
+                  },
+                  "Beurre (g)": {
+                    "ingredient": {
+                      "nom": "Beurre (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 60
+                  }
+                }
+              },
+              "recette": "1. Lavez et épluchez les salsifis, coupez-les en tronçons et plongez-les au fur et à mesure dans une bassine d'eau avec 3 cuillères à soupe de vinaigre.\n2. Dans un faitout, faites bouillir de l'eau salée, versez une cuillère à soupe de vinaigre, ajoutez 2 cuillères à soupe de farine, mélangez, plongez les salsifis et faites-les cuire 1 heure et demie.\n3. Allumez le gril du four. Dans une casserole, faites fondre à feu doux 50 g de beurre sans le laisser blondir. Ajoutez petit à petit 2 cuillères à soupe de farine en mélangeant à l'aide d'une cuillère à bois jusqu'à ce que cette préparation devienne mousseuse.\n4. Faites chauffer le lait, versez sur le roux blanc en fouettant énergiquement. Laissez cuire 10 minutes à feu doux sans laisser bouillir et sans cesser de remuer. Assaisonnez.\n5. Égouttez les salsifis et rangez-les dans un plat à gratin, versez la sauce dessus, parsemez le reste de beurre en noisettes et saupoudrez de gruyère râpé et faites gratiner 8 minutes.\n\nAstuce : Pour peler facilement les salsifis, laissez-les tremper 1 heure dans l'eau froide.",
+              "activable": true,
+              "est_reste": false,
+              "tags": [
+                "Legumes",
+                "Fromage",
+                "Vegetarien",
+                "Halal",
+                "Four"
+              ]
+            },
+            "entree": null,
+            "dessert": null
+          }
+        ],
+        "date": "2026-12-02T20:17:35.620739300+01:00"
+      },
+      {
+        "menu": [
+          {
+            "name": "petit-dej",
+            "nbPersonne": 0,
+            "recette": null,
+            "entree": null,
+            "dessert": null
+          },
+          {
+            "name": "dej",
+            "nbPersonne": 0,
+            "recette": null,
+            "entree": null,
+            "dessert": null
+          },
+          {
+            "name": "gouter",
+            "nbPersonne": 0,
+            "recette": null,
+            "entree": null,
+            "dessert": null
+          },
+          {
+            "name": "diner",
+            "nbPersonne": 2,
+            "recette": {
+              "name": "Gratin de salsifis",
+              "nbPersonne": 4,
+              "duree": 60,
+              "ingredients": {
+                "ingredients": {
+                  "Vinaigre (c. à soupe)": {
+                    "ingredient": {
+                      "nom": "Vinaigre (c. à soupe)",
+                      "disponibilité": []
+                    },
+                    "quantite": 3
+                  },
+                  "Farine (c. à soupe)": {
+                    "ingredient": {
+                      "nom": "Farine (c. à soupe)",
+                      "disponibilité": []
+                    },
+                    "quantite": 4
+                  },
+                  "Lait (ml)": {
+                    "ingredient": {
+                      "nom": "Lait (ml)",
+                      "disponibilité": []
+                    },
+                    "quantite": 500
+                  },
+                  "Gruyère râpé (g)": {
+                    "ingredient": {
+                      "nom": "Gruyère râpé (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 40
+                  },
+                  "Salsifis (g)": {
+                    "ingredient": {
+                      "nom": "Salsifis (g)",
+                      "disponibilité": [
+                        "Automne",
+                        "Hiver"
+                      ]
+                    },
+                    "quantite": 1800
+                  },
+                  "Beurre (g)": {
+                    "ingredient": {
+                      "nom": "Beurre (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 60
+                  }
+                }
+              },
+              "recette": "1. Lavez et épluchez les salsifis, coupez-les en tronçons et plongez-les au fur et à mesure dans une bassine d'eau avec 3 cuillères à soupe de vinaigre.\n2. Dans un faitout, faites bouillir de l'eau salée, versez une cuillère à soupe de vinaigre, ajoutez 2 cuillères à soupe de farine, mélangez, plongez les salsifis et faites-les cuire 1 heure et demie.\n3. Allumez le gril du four. Dans une casserole, faites fondre à feu doux 50 g de beurre sans le laisser blondir. Ajoutez petit à petit 2 cuillères à soupe de farine en mélangeant à l'aide d'une cuillère à bois jusqu'à ce que cette préparation devienne mousseuse.\n4. Faites chauffer le lait, versez sur le roux blanc en fouettant énergiquement. Laissez cuire 10 minutes à feu doux sans laisser bouillir et sans cesser de remuer. Assaisonnez.\n5. Égouttez les salsifis et rangez-les dans un plat à gratin, versez la sauce dessus, parsemez le reste de beurre en noisettes et saupoudrez de gruyère râpé et faites gratiner 8 minutes.\n\nAstuce : Pour peler facilement les salsifis, laissez-les tremper 1 heure dans l'eau froide.",
+              "activable": true,
+              "est_reste": true,
+              "tags": [
+                "Legumes",
+                "Fromage",
+                "Vegetarien",
+                "Halal",
+                "Four"
+              ]
+            },
+            "entree": null,
+            "dessert": null
+          }
+        ],
+        "date": "2026-12-03T20:17:35.620739300+01:00"
+      },
+      {
+        "menu": [
+          {
+            "name": "petit-dej",
+            "nbPersonne": 0,
+            "recette": null,
+            "entree": null,
+            "dessert": null
+          },
+          {
+            "name": "dej",
+            "nbPersonne": 0,
+            "recette": null,
+            "entree": null,
+            "dessert": null
+          },
+          {
+            "name": "gouter",
+            "nbPersonne": 0,
+            "recette": null,
+            "entree": null,
+            "dessert": null
+          },
+          {
+            "name": "diner",
+            "nbPersonne": 2,
+            "recette": {
+              "name": "Gratin de potiron",
+              "nbPersonne": 4,
+              "duree": 45,
+              "ingredients": {
+                "ingredients": {
+                  "Pommes de terre (g)": {
+                    "ingredient": {
+                      "nom": "Pommes de terre (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 250
+                  },
+                  "Potiron (g)": {
+                    "ingredient": {
+                      "nom": "Potiron (g)",
+                      "disponibilité": [
+                        "Automne",
+                        "Hiver"
+                      ]
+                    },
+                    "quantite": 1000
+                  },
+                  "Œufs": {
+                    "ingredient": {
+                      "nom": "Œufs",
+                      "disponibilité": []
+                    },
+                    "quantite": 2
+                  },
+                  "Beurre (g)": {
+                    "ingredient": {
+                      "nom": "Beurre (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 60
+                  },
+                  "Gruyère râpé (g)": {
+                    "ingredient": {
+                      "nom": "Gruyère râpé (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 100
+                  },
+                  "Chapelure (g)": {
+                    "ingredient": {
+                      "nom": "Chapelure (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 50
+                  }
+                }
+              },
+              "recette": "1. Épluchez, enlevez les graines et coupez en cubes le potiron. Dans une casserole remplie d'eau bouillante, faites-le cuire 20 minutes avec une pincée de sel. Égouttez-le.\n2. Épluchez les pommes de terre et faites-les bouillir dans une autre casserole d'eau salée. Égouttez-les. Passez au moulin à légumes la pulpe de potiron et les pommes de terre afin d'obtenir une purée.\n3. Allumez votre four TH. 7. Battez les œufs en omelette et mélangez-les à cette purée. Ajoutez 60 g de beurre, salez, poivrez.\n4. Mettez cette purée dans un plat allant au four, saupoudrez de gruyère râpé et de chapelure, déposez dessus en noisettes le reste de beurre et faites gratiner 10 minutes.\n\nAstuce : Vous pouvez ajouter à cette recette un oignon et une gousse d'ail, hachés.",
+              "activable": true,
+              "est_reste": false,
+              "tags": [
+                "Legumes",
+                "Patates",
+                "Oeufs",
+                "Fromage",
+                "Vegetarien",
+                "Halal",
+                "Four"
+              ]
+            },
+            "entree": null,
+            "dessert": null
+          }
+        ],
+        "date": "2026-12-04T20:17:35.620739300+01:00"
+      },
+      {
+        "menu": [
+          {
+            "name": "petit-dej",
+            "nbPersonne": 0,
+            "recette": null,
+            "entree": null,
+            "dessert": null
+          },
+          {
+            "name": "dej",
+            "nbPersonne": 2,
+            "recette": {
+              "name": "Gratin de potiron",
+              "nbPersonne": 4,
+              "duree": 45,
+              "ingredients": {
+                "ingredients": {
+                  "Pommes de terre (g)": {
+                    "ingredient": {
+                      "nom": "Pommes de terre (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 250
+                  },
+                  "Potiron (g)": {
+                    "ingredient": {
+                      "nom": "Potiron (g)",
+                      "disponibilité": [
+                        "Automne",
+                        "Hiver"
+                      ]
+                    },
+                    "quantite": 1000
+                  },
+                  "Œufs": {
+                    "ingredient": {
+                      "nom": "Œufs",
+                      "disponibilité": []
+                    },
+                    "quantite": 2
+                  },
+                  "Beurre (g)": {
+                    "ingredient": {
+                      "nom": "Beurre (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 60
+                  },
+                  "Gruyère râpé (g)": {
+                    "ingredient": {
+                      "nom": "Gruyère râpé (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 100
+                  },
+                  "Chapelure (g)": {
+                    "ingredient": {
+                      "nom": "Chapelure (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 50
+                  }
+                }
+              },
+              "recette": "1. Épluchez, enlevez les graines et coupez en cubes le potiron. Dans une casserole remplie d'eau bouillante, faites-le cuire 20 minutes avec une pincée de sel. Égouttez-le.\n2. Épluchez les pommes de terre et faites-les bouillir dans une autre casserole d'eau salée. Égouttez-les. Passez au moulin à légumes la pulpe de potiron et les pommes de terre afin d'obtenir une purée.\n3. Allumez votre four TH. 7. Battez les œufs en omelette et mélangez-les à cette purée. Ajoutez 60 g de beurre, salez, poivrez.\n4. Mettez cette purée dans un plat allant au four, saupoudrez de gruyère râpé et de chapelure, déposez dessus en noisettes le reste de beurre et faites gratiner 10 minutes.\n\nAstuce : Vous pouvez ajouter à cette recette un oignon et une gousse d'ail, hachés.",
+              "activable": true,
+              "est_reste": true,
+              "tags": [
+                "Legumes",
+                "Patates",
+                "Oeufs",
+                "Fromage",
+                "Vegetarien",
+                "Halal",
+                "Four"
+              ]
+            },
+            "entree": null,
+            "dessert": null
+          },
+          {
+            "name": "gouter",
+            "nbPersonne": 0,
+            "recette": null,
+            "entree": null,
+            "dessert": null
+          },
+          {
+            "name": "diner",
+            "nbPersonne": 2,
+            "recette": {
+              "name": "Truites aux oignons",
+              "nbPersonne": 4,
+              "duree": 45,
+              "ingredients": {
+                "ingredients": {
+                  "Beurre (g)": {
+                    "ingredient": {
+                      "nom": "Beurre (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 100
+                  },
+                  "Sucre en poudre (c. à café)": {
+                    "ingredient": {
+                      "nom": "Sucre en poudre (c. à café)",
+                      "disponibilité": []
+                    },
+                    "quantite": 1
+                  },
+                  "Petits oignons blancs": {
+                    "ingredient": {
+                      "nom": "Petits oignons blancs",
+                      "disponibilité": []
+                    },
+                    "quantite": 12
+                  },
+                  "Vin rouge (ml)": {
+                    "ingredient": {
+                      "nom": "Vin rouge (ml)",
+                      "disponibilité": []
+                    },
+                    "quantite": 300
+                  },
+                  "Carotte": {
+                    "ingredient": {
+                      "nom": "Carotte",
+                      "disponibilité": []
+                    },
+                    "quantite": 1
+                  },
+                  "Truites": {
+                    "ingredient": {
+                      "nom": "Truites",
+                      "disponibilité": []
+                    },
+                    "quantite": 4
+                  },
+                  "Persil": {
+                    "ingredient": {
+                      "nom": "Persil",
+                      "disponibilité": []
+                    },
+                    "quantite": 1
+                  },
+                  "Poivre": {
+                    "ingredient": {
+                      "nom": "Poivre",
+                      "disponibilité": []
+                    },
+                    "quantite": 1
+                  },
+                  "Sel": {
+                    "ingredient": {
+                      "nom": "Sel",
+                      "disponibilité": []
+                    },
+                    "quantite": 1
+                  },
+                  "Oignon": {
+                    "ingredient": {
+                      "nom": "Oignon",
+                      "disponibilité": []
+                    },
+                    "quantite": 1
+                  },
+                  "Farine (c. à soupe)": {
+                    "ingredient": {
+                      "nom": "Farine (c. à soupe)",
+                      "disponibilité": []
+                    },
+                    "quantite": 1
+                  },
+                  "Champignons de Paris (g)": {
+                    "ingredient": {
+                      "nom": "Champignons de Paris (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 250
+                  }
+                }
+              },
+              "recette": "1. Demandez à votre poissonnier de vous préparer les truites, en gardant les têtes. Épluchez les petits oignons en les laissant entiers. Épluchez vos légumes, lavez et coupez en fines lamelles les champignons. Coupez en julienne l'oignon et la carotte.\n2. Dans une poêle, faites fondre 20 g de beurre, placez les oignons, versez 10 cl de vin rouge et complétez avec de l'eau pour recouvrir à mi-hauteur. Ajoutez le sucre en poudre, salez. Laissez cuire les oignons 15 minutes, retournez-les à mi-cuisson, laissez s'évaporer le jus de cuisson. Allumez votre four Th. 8.\n3. Dans un plat allant au four, faites fondre 50 g de beurre puis nappez le fond du plat avec les champignons et la julienne de légumes. Ajoutez le bouquet garni et versez le reste de vin rouge. Laissez cuire 15 minutes.\n4. Dans un bol, mélangez au fouet 30 g de beurre ramolli avec la farine. Après avoir retiré les truites, ajoutez ce beurre au jus de cuisson. Faites réchauffer l'ensemble pour épaissir la sauce au vin. Dans un plat de service, rangez les truites nappées de sauce et entourées par les petits oignons, saupoudrés de persil haché.\n\nAstuce : Vos oignons doivent avoir une consistance sirupeuse et une belle couleur brillante. En fin de cuisson, roulez-les dans le jus de cuisson.",
+              "activable": true,
+              "est_reste": false,
+              "tags": [
+                "Poisson",
+                "Legumes",
+                "Four"
+              ]
+            },
+            "entree": null,
+            "dessert": null
+          }
+        ],
+        "date": "2026-12-05T20:17:35.620739300+01:00"
+      },
+      {
+        "menu": [
+          {
+            "name": "petit-dej",
+            "nbPersonne": 0,
+            "recette": null,
+            "entree": null,
+            "dessert": null
+          },
+          {
+            "name": "dej",
+            "nbPersonne": 2,
+            "recette": {
+              "name": "Truites aux oignons",
+              "nbPersonne": 4,
+              "duree": 45,
+              "ingredients": {
+                "ingredients": {
+                  "Beurre (g)": {
+                    "ingredient": {
+                      "nom": "Beurre (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 100
+                  },
+                  "Sucre en poudre (c. à café)": {
+                    "ingredient": {
+                      "nom": "Sucre en poudre (c. à café)",
+                      "disponibilité": []
+                    },
+                    "quantite": 1
+                  },
+                  "Petits oignons blancs": {
+                    "ingredient": {
+                      "nom": "Petits oignons blancs",
+                      "disponibilité": []
+                    },
+                    "quantite": 12
+                  },
+                  "Vin rouge (ml)": {
+                    "ingredient": {
+                      "nom": "Vin rouge (ml)",
+                      "disponibilité": []
+                    },
+                    "quantite": 300
+                  },
+                  "Carotte": {
+                    "ingredient": {
+                      "nom": "Carotte",
+                      "disponibilité": []
+                    },
+                    "quantite": 1
+                  },
+                  "Truites": {
+                    "ingredient": {
+                      "nom": "Truites",
+                      "disponibilité": []
+                    },
+                    "quantite": 4
+                  },
+                  "Persil": {
+                    "ingredient": {
+                      "nom": "Persil",
+                      "disponibilité": []
+                    },
+                    "quantite": 1
+                  },
+                  "Poivre": {
+                    "ingredient": {
+                      "nom": "Poivre",
+                      "disponibilité": []
+                    },
+                    "quantite": 1
+                  },
+                  "Sel": {
+                    "ingredient": {
+                      "nom": "Sel",
+                      "disponibilité": []
+                    },
+                    "quantite": 1
+                  },
+                  "Oignon": {
+                    "ingredient": {
+                      "nom": "Oignon",
+                      "disponibilité": []
+                    },
+                    "quantite": 1
+                  },
+                  "Farine (c. à soupe)": {
+                    "ingredient": {
+                      "nom": "Farine (c. à soupe)",
+                      "disponibilité": []
+                    },
+                    "quantite": 1
+                  },
+                  "Champignons de Paris (g)": {
+                    "ingredient": {
+                      "nom": "Champignons de Paris (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 250
+                  }
+                }
+              },
+              "recette": "1. Demandez à votre poissonnier de vous préparer les truites, en gardant les têtes. Épluchez les petits oignons en les laissant entiers. Épluchez vos légumes, lavez et coupez en fines lamelles les champignons. Coupez en julienne l'oignon et la carotte.\n2. Dans une poêle, faites fondre 20 g de beurre, placez les oignons, versez 10 cl de vin rouge et complétez avec de l'eau pour recouvrir à mi-hauteur. Ajoutez le sucre en poudre, salez. Laissez cuire les oignons 15 minutes, retournez-les à mi-cuisson, laissez s'évaporer le jus de cuisson. Allumez votre four Th. 8.\n3. Dans un plat allant au four, faites fondre 50 g de beurre puis nappez le fond du plat avec les champignons et la julienne de légumes. Ajoutez le bouquet garni et versez le reste de vin rouge. Laissez cuire 15 minutes.\n4. Dans un bol, mélangez au fouet 30 g de beurre ramolli avec la farine. Après avoir retiré les truites, ajoutez ce beurre au jus de cuisson. Faites réchauffer l'ensemble pour épaissir la sauce au vin. Dans un plat de service, rangez les truites nappées de sauce et entourées par les petits oignons, saupoudrés de persil haché.\n\nAstuce : Vos oignons doivent avoir une consistance sirupeuse et une belle couleur brillante. En fin de cuisson, roulez-les dans le jus de cuisson.",
+              "activable": true,
+              "est_reste": true,
+              "tags": [
+                "Poisson",
+                "Legumes",
+                "Four"
+              ]
+            },
+            "entree": null,
+            "dessert": null
+          },
+          {
+            "name": "gouter",
+            "nbPersonne": 0,
+            "recette": null,
+            "entree": null,
+            "dessert": null
+          },
+          {
+            "name": "diner",
+            "nbPersonne": 2,
+            "recette": {
+              "name": "Gratin s'asperges",
+              "nbPersonne": 4,
+              "duree": 50,
+              "ingredients": {
+                "ingredients": {
+                  "Crème fraîche (ml)": {
+                    "ingredient": {
+                      "nom": "Crème fraîche (ml)",
+                      "disponibilité": []
+                    },
+                    "quantite": 200
+                  },
+                  "Sel": {
+                    "ingredient": {
+                      "nom": "Sel",
+                      "disponibilité": []
+                    },
+                    "quantite": 1
+                  },
+                  "Jambon blanc (tranches)": {
+                    "ingredient": {
+                      "nom": "Jambon blanc (tranches)",
+                      "disponibilité": []
+                    },
+                    "quantite": 4
+                  },
+                  "Farine (g)": {
+                    "ingredient": {
+                      "nom": "Farine (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 40
+                  },
+                  "Asperge (g)": {
+                    "ingredient": {
+                      "nom": "Asperge (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 1000
+                  },
+                  "Gruyère râpé (g)": {
+                    "ingredient": {
+                      "nom": "Gruyère râpé (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 80
+                  },
+                  "Noix de muscade moulue": {
+                    "ingredient": {
+                      "nom": "Noix de muscade moulue",
+                      "disponibilité": []
+                    },
+                    "quantite": 1
+                  },
+                  "Beurre (g)": {
+                    "ingredient": {
+                      "nom": "Beurre (g)",
+                      "disponibilité": []
+                    },
+                    "quantite": 50
+                  },
+                  "Poivre": {
+                    "ingredient": {
+                      "nom": "Poivre",
+                      "disponibilité": []
+                    },
+                    "quantite": 1
+                  }
+                }
+              },
+              "recette": "1. Epluchez les asperges avec soin, supprimez la partie dure de la tige. Dans un marmite d'eau bouillante salée, faites-les cuire environ 20min. Egouttez-les ussitôt, réservez le jus de cuisson.\n\n2. Faites fondre le beurre dans une casserole, ajoutez la farine et mélangez avec la cuillère en bois. Dès que ce roux blanc commence à mousser, versez avec 40cl de jus de cuisson les asperges. Laissez cuire, 10min en continuant de remuer.\n\n3. Hors du feu, ajoutez la crème à cette sauce puis 50g de fromage râpé. Assaisonnez, ajoutez une pointe de muscade.\n\n4. Allumez le gril du four. Divisez les asperges en 4 bottes, entourez-les avec une tranche de jambon. Dans un plat à gratin beurré, rangez-les puis nappez-les de sauce. Saupoudrez le plat avec le reste de gruyère râpé. Glissez le plat sous le gril du four et laissez gratiner. Servez aussitôt.\n\nBonus : Attachez les asperges en bottes afin d'éviter qu'elles ne se cassent. Coupez chaque botte d'asperges de la même longueur.",
+              "activable": true,
+              "est_reste": false,
+              "tags": [
+                "Porc",
+                "Legumes",
+                "Viande"
+              ]
+            },
+            "entree": null,
+            "dessert": null
+          }
+        ],
+        "date": "2026-12-06T20:17:35.620739300+01:00"
+      }
+    ],
+    "tMax": 500
   }
 ]

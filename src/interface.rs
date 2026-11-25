@@ -686,6 +686,7 @@ pub struct MonApp {
     /// Dernier message d'envoi : (texte, succès ?)
     pub message_envoi: Option<(String, bool)>,
     pub filtres_tags: HashSet<Tag>,
+    pub filtres_tags_exclus: HashSet<Tag>,
     /// Formulaire de création / modification d'une recette (page Edition)
     pub edition: Option<EtatEdition>,
     /// Filtre de la page Recettes : durée de préparation maximale
@@ -728,7 +729,7 @@ impl MonApp {
         }
     }
 
-    /// Mini fenêtre d'options d'un repas : entrée, dessert et tag imposé
+    /// Mini fenêtre d'options d'un repas : entrée, dessert, tags imposés et tags exclus
     fn fenetre_options(&mut self, ctx: &egui::Context, semaine: &Week) {
         // Identifiant de l'animation d'ouverture
         let id_anim = egui::Id::new("anim_fenetre_options");
@@ -785,39 +786,168 @@ impl MonApp {
             .collapsible(false)
             .resizable(false)
             .show(ctx, |ui| {
-                ui.set_min_width(230.0);
+                ui.set_min_width(340.0);
+                ui.set_max_width(390.0);
                 ui.checkbox(&mut self.config.list_entree[index], "Ajouter une entrée");
                 ui.checkbox(&mut self.config.list_dessert[index], "Ajouter un dessert");
                 ui.add_space(6.0);
-                ui.label(RichText::new("Tag imposé au plat").color(TEXTE_DISCRET));
 
-                let actuel: Option<Tag> = self.config.list_tag_force[index];
-                let texte_tag = match actuel {
-                    Some(t) => t.nom(),
-                    None => "Aucun",
-                };
-                egui::ComboBox::from_id_source("tag_force_fenetre")
-                    .width(200.0)
-                    .selected_text(texte_tag)
-                    .show_ui(ui, |ui| {
-                        if ui.selectable_label(actuel.is_none(), "Aucun").clicked() {
-                            self.config.list_tag_force[index] = None;
-                        }
-                        for &t in Tag::TOUS.iter() {
-                            // forcer « Dessert » / « Entrée » n'a pas de sens pour un plat
-                            if t == Tag::Dessert || t == Tag::Entree {
-                                continue;
-                            }
-                            if ui.selectable_label(actuel == Some(t), t.nom()).clicked() {
-                                self.config.list_tag_force[index] = Some(t);
-                            }
-                        }
+                // --- Menus déroulants côte à côte : Imposés (gauche) / Exclus (droite) ---
+                ui.columns(2, |cols| {
+                    cols[0].label(RichText::new("Tags imposés au plat").color(TEXTE_DISCRET));
+                    cols[0].menu_button("Imposer des tags", |ui| {
+                        ui.set_min_width(180.0);
+                        egui::ScrollArea::vertical()
+                            .max_height(220.0)
+                            .show(ui, |ui| {
+                                for &tag in Tag::TOUS.iter() {
+                                    // Forcer « Dessert » / « Entrée » ou un tag exclu globalement n'a pas de sens
+                                    if tag == Tag::Dessert
+                                        || tag == Tag::Entree
+                                        || self.config.tags_exclus.contains(&tag)
+                                    {
+                                        continue;
+                                    }
+                                    let mut force =
+                                        self.config.list_tag_force[index].contains(&tag);
+                                    if ui.checkbox(&mut force, tag.nom()).changed() {
+                                        if force {
+                                            self.config.list_tag_force[index].insert(tag);
+                                            self.config.list_tags_exclus[index].remove(&tag);
+                                        } else {
+                                            self.config.list_tag_force[index].remove(&tag);
+                                        }
+                                    }
+                                }
+                            });
                     });
 
-                ui.add_space(8.0);
-                if ui.button("Fermer").clicked() {
-                    fermer = true;
+                    cols[1].label(RichText::new("Tags exclus pour ce repas").color(TEXTE_DISCRET));
+                    cols[1].menu_button("Exclure des tags", |ui| {
+                        ui.set_min_width(180.0);
+                        egui::ScrollArea::vertical()
+                            .max_height(220.0)
+                            .show(ui, |ui| {
+                                for &tag in Tag::TOUS.iter() {
+                                    if tag == Tag::Dessert
+                                        || tag == Tag::Entree
+                                        || self.config.tags_exclus.contains(&tag)
+                                    {
+                                        continue;
+                                    }
+                                    let mut exclu =
+                                        self.config.list_tags_exclus[index].contains(&tag);
+                                    if ui.checkbox(&mut exclu, tag.nom()).changed() {
+                                        if exclu {
+                                            self.config.list_tags_exclus[index].insert(tag);
+                                            self.config.list_tag_force[index].remove(&tag);
+                                        } else {
+                                            self.config.list_tags_exclus[index].remove(&tag);
+                                        }
+                                    }
+                                }
+                            });
+                    });
+                });
+
+                // --- Tableau scrollable sous les menus déroulants (forcés à gauche, exclus à droite) ---
+                let forces: Vec<Tag> = Tag::TOUS
+                    .iter()
+                    .copied()
+                    .filter(|t| self.config.list_tag_force[index].contains(t))
+                    .collect();
+                let exclus: Vec<Tag> = Tag::TOUS
+                    .iter()
+                    .copied()
+                    .filter(|t| self.config.list_tags_exclus[index].contains(t))
+                    .collect();
+
+                if !forces.is_empty() || !exclus.is_empty() {
+                    ui.add_space(6.0);
+                    let mut force_a_retirer: Option<Tag> = None;
+                    let mut exclu_a_retirer: Option<Tag> = None;
+
+                    carte(CARD)
+                        .inner_margin(egui::Margin::same(8.0))
+                        .show(ui, |ui| {
+                            let largeur_totale = ui.available_width();
+                            let largeur_col = ((largeur_totale - 14.0) * 0.5).max(120.0);
+
+                            let rep = egui::ScrollArea::vertical()
+                                .id_source("scroll_tableau_tags_repas")
+                                .max_height(150.0)
+                                .show(ui, |ui| {
+                                    egui::Grid::new("tableau_tags_repas")
+                                        .num_columns(2)
+                                        .min_col_width(largeur_col)
+                                        .spacing([14.0, 5.0])
+                                        .show(ui, |ui| {
+                                            ui.label(
+                                                RichText::new(format!(
+                                                    "Imposés ({})",
+                                                    forces.len()
+                                                ))
+                                                .size(12.0)
+                                                .strong()
+                                                .color(eclaircir(OK, 0.45)),
+                                            );
+                                            ui.label(
+                                                RichText::new(format!("Exclus ({})", exclus.len()))
+                                                    .size(12.0)
+                                                    .strong()
+                                                    .color(eclaircir(KO, 0.45)),
+                                            );
+                                            ui.end_row();
+
+                                            let nb_lignes = forces.len().max(exclus.len());
+                                            for ligne in 0..nb_lignes {
+                                                if let Some(&tag) = forces.get(ligne) {
+                                                    if puce_supprimable(ui, tag.nom(), OK) {
+                                                        force_a_retirer = Some(tag);
+                                                    }
+                                                } else {
+                                                    ui.label("");
+                                                }
+
+                                                if let Some(&tag) = exclus.get(ligne) {
+                                                    if puce_supprimable(ui, tag.nom(), KO) {
+                                                        exclu_a_retirer = Some(tag);
+                                                    }
+                                                } else {
+                                                    ui.label("");
+                                                }
+                                                ui.end_row();
+                                            }
+                                        });
+                                });
+
+                            // Séparateur vertical central du tableau
+                            let rect = rep.inner_rect;
+                            ui.painter().vline(
+                                rect.center().x,
+                                rect.y_range(),
+                                Stroke::new(1.0, Color32::from_rgb(58, 63, 77)),
+                            );
+                        });
+
+                    if let Some(tag) = force_a_retirer {
+                        self.config.list_tag_force[index].remove(&tag);
+                    }
+                    if let Some(tag) = exclu_a_retirer {
+                        self.config.list_tags_exclus[index].remove(&tag);
+                    }
                 }
+
+                ui.add_space(8.0);
+                ui.horizontal(|ui| {
+                    if ui.button("Fermer").clicked() {
+                        fermer = true;
+                    }
+                    if forces.len() + exclus.len() > 1 && ui.button("Tout effacer").clicked() {
+                        self.config.list_tag_force[index].clear();
+                        self.config.list_tags_exclus[index].clear();
+                    }
+                });
             });
 
         // Le fond sombre peut avoir été remonté au premier plan par le clic qui a fermé la fenêtre
@@ -1557,7 +1687,7 @@ impl MonApp {
 
     /// Grille compacte d'une semaine.
     /// - page Semaine : une pastille cliquable par repas (+ entrée / dessert s'il y en a)
-    /// - page Réglages : nombre de mangeurs, entrée / dessert à cocher et tag forcé pour chaque repas
+    /// - page Réglages : nombre de mangeurs, entrée / dessert à cocher, tags forcés et tags exclus pour chaque repas
     pub fn afficher_grille_semaine(&mut self, ui: &mut egui::Ui, week: &Week) {
         let mode_config = matches!(self.page, Page::Config);
         if mode_config {
@@ -1650,19 +1780,26 @@ impl MonApp {
                                             add_value(&mut self.config.list_nb_mangeur[index], 1);
                                         }
 
-                                        // Options du repas (entrée, dessert, tag) dans une mini fenêtre
-                                        let mut options: Vec<&str> = Vec::new();
+                                        // Options du repas (entrée, dessert, tags) dans une mini fenêtre
+                                        let mut options: Vec<String> = Vec::new();
                                         if self.config.list_entree[index] {
-                                            options.push("Entrée");
+                                            options.push("Entrée".to_string());
                                         }
                                         if self.config.list_dessert[index] {
-                                            options.push("Dessert");
+                                            options.push("Dessert".to_string());
                                         }
-                                        if let Some(t) = self.config.list_tag_force[index] {
-                                            options.push(t.nom());
+                                        for &t in Tag::TOUS.iter() {
+                                            if self.config.list_tag_force[index].contains(&t) {
+                                                options.push(t.nom().to_string());
+                                            }
+                                        }
+                                        for &t in Tag::TOUS.iter() {
+                                            if self.config.list_tags_exclus[index].contains(&t) {
+                                                options.push(format!("Sauf {}", t.nom()));
+                                            }
                                         }
                                         let survol = if options.is_empty() {
-                                            "Options du repas (entrée, dessert, tag)".to_string()
+                                            "Options du repas (entrée, dessert, tags)".to_string()
                                         } else {
                                             format!("Options : {}", options.join(", "))
                                         };
@@ -1796,7 +1933,7 @@ impl MonApp {
                 titre_section(ui, "Repas de la semaine");
                 ui.label(
                     RichText::new(format!(
-                        "0 (rouge) = pas de repas prévu. Bouton ⚙ : entrée, dessert et tag imposé pour ce repas. (affichage : semaine {})",
+                        "0 (rouge) = pas de repas prévu. Bouton ⚙ : entrée, dessert, tags imposés et tags exclus pour ce repas. (affichage : semaine {})",
                         semaine.numero()
                     ))
                     .size(12.5)
@@ -1825,6 +1962,52 @@ impl MonApp {
                     ui.horizontal_wrapped(|ui| {
                         interrupteur(ui, &mut self.config.is_recette_filtre);
                         ui.label("Exclure les recettes hors saison");
+                    });
+
+                    ui.horizontal_wrapped(|ui| {
+                        ui.menu_button("Exclure des tags", |ui| {
+                            ui.set_min_width(180.0);
+                            egui::ScrollArea::vertical()
+                                .max_height(250.0)
+                                .show(ui, |ui| {
+                                    for &tag in Tag::TOUS.iter() {
+                                        let mut exclu = self.config.tags_exclus.contains(&tag);
+                                        if ui.checkbox(&mut exclu, tag.nom()).changed() {
+                                            if exclu {
+                                                self.config.tags_exclus.insert(tag);
+                                                for force in self.config.list_tag_force.iter_mut() {
+                                                    force.remove(&tag);
+                                                }
+                                                for exclus_repas in
+                                                    self.config.list_tags_exclus.iter_mut()
+                                                {
+                                                    exclus_repas.remove(&tag);
+                                                }
+                                            } else {
+                                                self.config.tags_exclus.remove(&tag);
+                                            }
+                                        }
+                                    }
+                                });
+                        });
+
+                        let mut a_retirer: Option<Tag> = None;
+                        for &tag in Tag::TOUS.iter() {
+                            if self.config.tags_exclus.contains(&tag)
+                                && puce_supprimable(ui, tag.nom(), KO)
+                            {
+                                a_retirer = Some(tag);
+                            }
+                        }
+                        if let Some(tag) = a_retirer {
+                            self.config.tags_exclus.remove(&tag);
+                        }
+
+                        if self.config.tags_exclus.len() > 1
+                            && ui.small_button("Tout effacer").clicked()
+                        {
+                            self.config.tags_exclus.clear();
+                        }
                     });
 
                     ui.add_space(6.0);
@@ -1953,16 +2136,93 @@ impl MonApp {
         // ---- Filtres : tags + durée de préparation ----
         ui.horizontal_wrapped(|ui| {
             ui.menu_button("Filtrer", |ui| {
-                for &tag in Tag::TOUS.iter() {
-                    let mut actif = self.filtres_tags.contains(&tag);
-                    if ui.checkbox(&mut actif, tag.nom()).changed() {
-                        if actif {
-                            self.filtres_tags.insert(tag);
-                        } else {
-                            self.filtres_tags.remove(&tag);
+                ui.set_min_width(195.0);
+                ui.label(
+                    RichText::new("+ inclure   ·   − exclure")
+                        .size(11.5)
+                        .color(TEXTE_DISCRET),
+                );
+                ui.separator();
+
+                egui::ScrollArea::vertical()
+                    .max_height(260.0)
+                    .show(ui, |ui| {
+                        for &tag in Tag::TOUS.iter() {
+                            let inclus = self.filtres_tags.contains(&tag);
+                            let exclu = self.filtres_tags_exclus.contains(&tag);
+
+                            ui.horizontal(|ui| {
+                                ui.spacing_mut().item_spacing.x = 4.0;
+
+                                // Bouton d'inclusion (+)
+                                let btn_plus = if inclus {
+                                    egui::Button::new(RichText::new("+").strong().color(SUR_OK))
+                                        .fill(OK)
+                                } else {
+                                    egui::Button::new(RichText::new("+").color(TEXTE_DISCRET))
+                                };
+                                if ui
+                                    .add_sized([22.0, 22.0], btn_plus)
+                                    .on_hover_text("Inclure ce tag")
+                                    .clicked()
+                                {
+                                    if inclus {
+                                        self.filtres_tags.remove(&tag);
+                                    } else {
+                                        self.filtres_tags_exclus.remove(&tag);
+                                        self.filtres_tags.insert(tag);
+                                    }
+                                }
+
+                                // Bouton d'exclusion (−)
+                                let btn_moins = if exclu {
+                                    egui::Button::new(
+                                        RichText::new("−").strong().color(Color32::WHITE),
+                                    )
+                                    .fill(KO)
+                                } else {
+                                    egui::Button::new(RichText::new("−").color(TEXTE_DISCRET))
+                                };
+                                if ui
+                                    .add_sized([22.0, 22.0], btn_moins)
+                                    .on_hover_text("Exclure ce tag")
+                                    .clicked()
+                                {
+                                    if exclu {
+                                        self.filtres_tags_exclus.remove(&tag);
+                                    } else {
+                                        self.filtres_tags.remove(&tag);
+                                        self.filtres_tags_exclus.insert(tag);
+                                    }
+                                }
+
+                                // Clic sur le nom : bascule l'inclusion
+                                let couleur_nom = if inclus {
+                                    OK
+                                } else if exclu {
+                                    KO
+                                } else {
+                                    TEXTE
+                                };
+                                if ui
+                                    .add(
+                                        egui::Label::new(
+                                            RichText::new(tag.nom()).color(couleur_nom),
+                                        )
+                                        .sense(egui::Sense::click()),
+                                    )
+                                    .clicked()
+                                {
+                                    if inclus {
+                                        self.filtres_tags.remove(&tag);
+                                    } else {
+                                        self.filtres_tags_exclus.remove(&tag);
+                                        self.filtres_tags.insert(tag);
+                                    }
+                                }
+                            });
                         }
-                    }
-                }
+                    });
             });
 
             ui.separator();
@@ -1982,28 +2242,44 @@ impl MonApp {
             }
             ui.separator();
 
-            let mut a_retirer: Option<Tag> = None;
+            // Puces des tags inclus (orange)
+            let mut a_retirer_inclus: Option<Tag> = None;
             for &tag in Tag::TOUS.iter() {
                 if self.filtres_tags.contains(&tag) && puce_supprimable(ui, tag.nom(), ACCENT) {
-                    a_retirer = Some(tag);
+                    a_retirer_inclus = Some(tag);
                 }
             }
-            if let Some(tag) = a_retirer {
+            if let Some(tag) = a_retirer_inclus {
                 self.filtres_tags.remove(&tag);
             }
 
+            // Puces des tags exclus (rouge)
+            let mut a_retirer_exclu: Option<Tag> = None;
+            for &tag in Tag::TOUS.iter() {
+                if self.filtres_tags_exclus.contains(&tag)
+                    && puce_supprimable(ui, &format!("Sauf {}", tag.nom()), KO)
+                {
+                    a_retirer_exclu = Some(tag);
+                }
+            }
+            if let Some(tag) = a_retirer_exclu {
+                self.filtres_tags_exclus.remove(&tag);
+            }
+
             let nb_filtres = self.filtres_tags.len()
+                + self.filtres_tags_exclus.len()
                 + self.filtre_duree_actif as usize
                 + !self.recherche.trim().is_empty() as usize;
             if nb_filtres > 1 && ui.small_button("Tout effacer").clicked() {
                 self.filtres_tags.clear();
+                self.filtres_tags_exclus.clear();
                 self.filtre_duree_actif = false;
                 self.recherche.clear();
             }
         });
         ui.add_space(8.0);
 
-        // Recettes qui passent les filtres (tous les tags + durée + recherche)
+        // Recettes qui passent les filtres (tous les tags inclus + aucun tag exclu + durée + recherche)
         let mots: Vec<String> = normaliser(&self.recherche)
             .split_whitespace()
             .map(|m| m.to_string())
@@ -2012,12 +2288,18 @@ impl MonApp {
             .filter(|&r| {
                 let rec = &self.recettes[r];
                 self.filtres_tags.iter().all(|t| rec.tags.contains(t))
+                    && self
+                        .filtres_tags_exclus
+                        .iter()
+                        .all(|t| !rec.tags.contains(t))
                     && (!self.filtre_duree_actif || rec.duree <= self.filtre_duree_max)
                     && correspond_recherche(rec, &mots)
             })
             .collect();
-        let filtre_actif =
-            !self.filtres_tags.is_empty() || self.filtre_duree_actif || !mots.is_empty();
+        let filtre_actif = !self.filtres_tags.is_empty()
+            || !self.filtres_tags_exclus.is_empty()
+            || self.filtre_duree_actif
+            || !mots.is_empty();
 
         // "Tout cocher / décocher" : agit uniquement sur les recettes affichées
         // (donc sur le résultat des filtres, de la durée et de la recherche en cours)
@@ -2271,14 +2553,20 @@ impl MonApp {
                         .filter(|t| !e.tags.contains(t))
                         .collect();
                     ui.menu_button("+ Tag", |ui| {
+                        ui.set_min_width(160.0);
                         if disponibles.is_empty() {
                             ui.label("Tous les tags sont déjà ajoutés.");
-                        }
-                        for tag in disponibles {
-                            if ui.button(tag.nom()).clicked() {
-                                e.tags.push(tag);
-                                ui.close_menu();
-                            }
+                        } else {
+                            egui::ScrollArea::vertical()
+                                .max_height(250.0)
+                                .show(ui, |ui| {
+                                    for tag in disponibles {
+                                        if ui.button(tag.nom()).clicked() {
+                                            e.tags.push(tag);
+                                            ui.close_menu();
+                                        }
+                                    }
+                                });
                         }
                     });
                 });

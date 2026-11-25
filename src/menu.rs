@@ -27,10 +27,25 @@ pub enum Tag {
     Gouter,
     Dessert,
     Entree,
+    Veau,
+    Agneau,
+    Canard,
+    Gibier,
+    Lapin,
+    Abats,
+    Soupe,
+    Crustaces,
+    Salade,
+    Tarte,
+    Friteuse,
+    Four,
+    Vapeur,
+    Gril,
+    SansCuisson,
 }
 impl Tag {
     /// Tous les tags, dans l'ordre d'affichage (à compléter si tu ajoutes une variante)
-    pub const TOUS: [Tag; 19] = [
+    pub const TOUS: [Tag; 34] = [
         Tag::Viande,
         Tag::Boeuf,
         Tag::Porc,
@@ -50,6 +65,21 @@ impl Tag {
         Tag::Gouter,
         Tag::Dessert,
         Tag::Entree,
+        Tag::Veau,
+        Tag::Agneau,
+        Tag::Canard,
+        Tag::Gibier,
+        Tag::Lapin,
+        Tag::Abats,
+        Tag::Soupe,
+        Tag::Crustaces,
+        Tag::Salade,
+        Tag::Tarte,
+        Tag::Friteuse,
+        Tag::Four,
+        Tag::Vapeur,
+        Tag::Gril,
+        Tag::SansCuisson,
     ];
 
     /// Nom affiché dans l'interface
@@ -74,6 +104,21 @@ impl Tag {
             Tag::Gouter => "Goûter",
             Tag::Dessert => "Dessert",
             Tag::Entree => "Entrée",
+            Tag::Veau => "Veau",
+            Tag::Agneau => "Agneau",
+            Tag::Canard => "Canard",
+            Tag::Gibier => "Gibier",
+            Tag::Lapin => "Lapin",
+            Tag::Abats => "Abats",
+            Tag::Soupe => "Soupe",
+            Tag::Crustaces => "Crustacés",
+            Tag::Salade => "Salade",
+            Tag::Tarte => "Tarte",
+            Tag::Friteuse => "Friteuse",
+            Tag::Four => "Four",
+            Tag::Vapeur => "Vapeur",
+            Tag::Gril => "Gril",
+            Tag::SansCuisson => "Sans cuisson",
         }
     }
 }
